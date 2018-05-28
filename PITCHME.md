@@ -1,0 +1,1070 @@
+---?image=assets/images/gitpitch-audience.jpg
+@title[Writing_UEFI_App_Lab]
+<br><br><br><br><br>
+## <span class="gold"   >UEFI & EDK II Training</span>
+
+#### How to Write a UEFI Application
+
+<br>
+<span style="font-size:0.75em" ><a href='http://www.tianocore.org'>tianocore.org</a></span>
+Note:
+  PITCHME.md for UEFI / EDK II Training  How to Write a UEFI Application Lab
+
+  Copyright (c) 2018, Intel Corporation. All rights reserved.<BR>
+
+  Redistribution and use in source (original document form) and 'compiled'
+  forms (converted to PDF, epub, HTML and other formats) with or without
+  modification, are permitted provided that the following conditions are met:
+
+  1) Redistributions of source code (original document form) must retain the
+     above copyright notice, this list of conditions and the following
+     disclaimer as the first lines of this file unmodified.
+
+  2) Redistributions in compiled form (transformed to other DTDs, converted to
+     PDF, epub, HTML and other formats) must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+
+  THIS DOCUMENTATION IS PROVIDED BY TIANOCORE PROJECT "AS IS" AND ANY EXPRESS OR
+  IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+  EVENT SHALL TIANOCORE PROJECT  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS DOCUMENTATION, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+
+---  
+@title[Lesson Objective]
+<BR>
+### <p align="center"<span class="gold"   >Lesson Objective </span></p><br>
+
+<!---  Add bullets using https://fontawesome.com/cheatsheet certificate
+-->
+<br>
+<ul style="list-style-type:none">
+ <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;UEFI Application with PCDs</span> </li>
+ <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Simple UEFI Application</span></li>
+ <li>@fa[certificate gp-bullet-yellow]<span style="font-size:0.9em">&nbsp;&nbsp;Add functionality to UEFI Application</span> </li>
+ <li>@fa[certificate gp-bullet-magenta]<span style="font-size:0.9em">&nbsp;&nbsp;Using EADK with UEFI Application</span></li>
+</ul>
+
+---?image=assets/images/binary-strings-black2.jpg
+@title[UEFI Application w/ PCDs Section]
+<br><br><br><br><br><br><br>
+### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UEFI Application w/ PCDs </span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+
+---?image=/assets/images/slides/Slide4.JPG
+@title[EDK II PCD’s Purpose and Goals]
+<br>
+<p align="center"><span class="gold" >EDK II PCD’s Purpose and Goals</span></p>
+@fa[github gp-bullet-gold]<span style="font-size:0.7em">&nbsp;&nbsp;Documentaton :  <a href="https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Universal/PCD/Dxe/Pcd.inf"> MdeModulePkg/Universal/PCD/Dxe/Pcd.inf  </a> </span>
+<br>
+<div class="left1">
+<span style="font-size:01.0em" ><font color="cyan">Purpose</font></span>
+<ul>
+  <li><span style="font-size:0.8em" >Establishes platform common definitions </span>  </li>
+  <li><span style="font-size:0.8em" >Build-time/Run-time aspects </span>  </li>
+  <li><span style="font-size:0.8em" >Binary Editing Capabilities </span>  </li>
+</ul>
+</div>
+<div class="right1">
+<span style="font-size:01.0em" ><font color="cyan">Goals</font></span>
+<ul>
+  <li><span style="font-size:0.8em" >Simplify porting </span>  </li>
+  <li><span style="font-size:0.8em" >Easy to associate with a module or platform </span>  </li>
+</ul>
+</div>
+
+Note:
+
+### Common definitions are established for platform component settings
+- Standardize exposure of platform & module settings
+- Help with Platform Porting
+### Build-time aspects
+- Component information is collected from PCD definitions that are associated with a given module
+### Run-time aspects
+- APIs are provided which allow access to component settings during the operation of the platform
+### Binary Editing Capabilities
+- A module can carry its own PCD data in the binary image and have it exposed so the data can be edited in the flash image
+
+
+
+---?image=/assets/images/slides/Slide6.JPG
+@title[PCD Syntax review]
+### <p align="center"><span class="gold" >PCD Syntax</span></p>
+<span style="font-size:0.9em"><font color="yellow">PCDs can be located anywhere within the Workspace even though a different package will use those PCDs for a given project</font></span>
+
+Note:
+
+- The Platform configuration database is generated by the build process parsing the build description files that define and specify PCD entries.
+
+- What we see on this slide is how the PCD data is being used in various levels of the build description files
+
+- First we have the DEC file – this Defines a list of PCD tokens that modules can use. 
+ 	It Defines the PCD entries that will exist under the GUID for that  package, the PCD restriction, valid types for the PCD, and a default value for the PCD. There is a whole syntax and how to define a PCD in the DEC file.
+
+- Next we have PCB entries in the INF file- and this Defines the usage of PCD tokens by the module.
+	It Defines what PCD entries are being used within the module, the PCD restriction (or DYNAMIC for none), and a Optional default value for the PCD within this module only.
+
+- Next is the DSC file – This is at the Platform level and describes the contents of the build for a specific platform. 
+	PCD entries are assigned values and types for the platform build. You would define a value here to be used by that platform. The value could be different when it is defined in the DEC file but the value in the DSC would be the final value . And They Cannot conflict with established restrictions.
+
+- Not on this slide but also there is the FDF build description File – and this file would have flash layout related values 
+
+
+#### additional notes 
+##### DEC:
+- Defines list of PCD tokens that modules can use.
+
+- Defines the PCD entries that will exist under the GUID for that  package, the PDC restriction, valid types for the PCD, and a default value for the PCD.
+- The DEC file is part of a package.  Any package may define PCD entries. Any module that depends on a package may use the PCD entries defined in that packages' DEC file  
+
+##### INF:
+- Defines usage of PCD tokens by the module
+
+- Defines what PCD entries are being used within the module, the PCD restriction (or DYNAMIC for none), and a default value for the PCD within this module only.
+- The INF file also carries descriptive text for a given PCD entry
+
+
+##### DSC:
+- Platform level file which describes the contents of the build for a specific platform.
+- PCD entries are assigned values and types for the platform build.  Cannot conflict with established restrictions.
+- In most cases, PCD entries do not have SKU enabled and have a single value associated with them. However, a SKU PCD entry may have multiple values.
+
+
+
+
+---?image=/assets/images/slides/Slide8.JPG
+@title[EDK II HelloWorld  App  Lab ]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/2">Lab Setup </a></span>
+
+Note:
+
+- So the steps for getting the source code, hopefully everyone did this prior to this training because it does take some time to download.
+- So here are the steps:
+
+- First create a directory, and for our example case we are using the directory “~src/Fw”
+
+- Use instructions on wiki here: https://github.com/tianocore/tianocore.github.io/wiki/UDK2018-How-to-Build or use the lab material edk2 
+
+- Edit and add the following line (at the end of the file)
+- Edit OvmfPkg/OvmfPkgX64.dsc  add HelloWorld.inf - Save
+
+
+- [Components]
+ 
+- # Add new modules here
+ - `MdeModulePkg/Application/HelloWorld/HelloWorld.inf`
+
+- Build the OvmfPkgX64 from Terminal Prompt (Cnt-Alt-T)
+ - `bash$ cd ~/src/edk2`
+ - `bash$ build`
+
+---
+@title[EDK II HelloWorld  App  Lab steps]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+1. <span style="font-size:0.8em" >Copy the HelloWorld.efi to the ~run-ovmf/hda-contents directory</span>
+```shell
+  bash$ cd ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi
+```
+2. <span style="font-size:0.8em" >CD to the run-ovmf directory and run Qemu with the RunQemu.sh shell</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
+```
+3. <span style="font-size:0.8em" >At the UEFI Shell prompt</span>
+```shell
+Shell> Helloworld
+UEFI Hello World!
+Shell> 
+```
+<br>
+<span style="font-size:0.9em" ><font color="cyan">How can we force the HelloWorld application to print out 3 times ?</font></span>
+
+
+Note:
+
+Same as slide
+
+---?image=/assets/images/slides/Slide11.JPG
+@title[EDK II HelloWorld  App  Lab location]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<br>
+@fa[github gp-bullet-gold]<span style="font-size:0.7em"><a href="https://github.com/tianocore/edk2/tree/master/MdeModulePkg/Application/HelloWorld"> MdeModulePkg/Application/HelloWorld </a></span>
+
+
+Note:
+
+
+
+---
+@title[EDK II HelloWorld  App  Lab code]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<br>
+<span style="font-size:01.0em" >Source: <font color="yellow">Helloworld.c</font></span>
+```C
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
+	UINT32 Index;
+	Index = 0;
+  // Three PCD type (FeatureFlag, UINT32 
+  // and String) are used as the sample.
+  if (FeaturePcdGet (PcdHelloWorldPrintEnable)) {
+  	for (Index = 0; Index < PcdGet32   (PcdHelloWorldPrintTimes); Index ++) {
+  	  
+  	  // Use UefiLib Print API to print
+      // string to UEFI console
+  	  
+    	Print ((CHAR16*)PcdGetPtr (PcdHelloWorldPrintString));
+    }
+  }
+
+  return EFI_SUCCESS;
+}
+```
+@[12](PCD that is a boolean for if this feature is enabled)
+@[13](PCD that is an integer `For` loop for how many times to print to the the string)
+@[18](PCD that is a pointer for the string to print out) 
+
+Note:
+
+
+Source from Helloworld.c 
+
+
+
+---?image=/assets/images/slides/Slide14.JPG
+@title[EDK II HelloWorld  App  Lab solution]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Solution </span></p>
+
+
+Note:
+
+
+- ## This PCD defines the print string.
+-  #  This PCD is a sample to explain String typed PCD usage.
+-  gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintString|L"UEFI Hello World!\n"|VOID*|0x40000004
+
+
+1. Edit the file OvmfPkg/OvmfPkgX64.dsc
+- After the section [PcdsFixedAtBuild], add the new line (~line 428):  
+- `[PcdsFixedAtBuild]`
+- `gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3`
+
+2. Re-Build – Cd to ~/src/edk2 dir 
+- `bash$ build`
+
+3. Copy  Helloworld.efi 	 
+- `bash$ cd ~/run-ovmf/hda-contents`
+- `bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .`
+
+
+---?image=/assets/images/slides/Slide16.JPG
+@title[EDK II HelloWorld  App  Lab solution 02]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Solution </span></p>
+
+
+Note:
+5. Run Qemu
+- `bash$ cd ~/run-ovmf`
+- ` bash$ . RunQemu.sh`
+
+6. At the Shell prompt
+- `Shell> Helloworld`
+- `UEFI Hello World!`
+- `UEFI Hello World!`
+- `UEFI Hello World!`
+- `Shell> `
+
+
+- How can we change the string of the HelloWorld application?
+- Also see  ~src/edk2/MdeModulePkg/MdeModulePkg.Dec
+
+
+
+---?image=assets/images/binary-strings-black2.jpg
+@title[Write a Simple UEFI Application ]
+<br><br><br><br><br><br><br>
+### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Write a Simple UEFI App  </span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+---
+@title[Lab 2 - Write A Simple App]
+<p align="right"><span class="gold" ><b>LAB 2</b> - Writing a Simple UEFI Application</span></p>
+<span style="font-size:0.9em"  >In this lab, you’ll learn how to write simple UEFI applications. </span>
+
+<div class="left1">
+<span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
+<pre>
+```
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE *SystemTable
+)
+{ 
+  return EFI_SUCCESS;
+}
+```
+</pre>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ><font color="yellow">.inf file</font></span>
+<pre>
+```
+[Defines]
+  INF_VERSION    = 
+  BASE_NAME      = 
+  FILE_GUID      = 
+  MODULE_TYPE    = 
+  VERSION_STRING = 
+  ENTRY_POINT    = 
+ 
+[Sources]
+ 
+[Packages]
+ 
+[LibraryClasses]
+
+```
+</pre>
+</div>
+
+Note:
+
+- Start with what should go into the Simplest .INF file
+- What goes into a Simplest “C”
+
+
+---?image=/assets/images/slides/Slide20.JPG
+@title[Application Lab –start with .c and .inf template]
+<p align="right"><span class="gold" >Application Lab –start with .c and .inf template</span></p>
+
+Note:
+
+##### Steps
+1. Copy the LabSampleCode/SampleApp directory to ~/src/edk2
+2. Edit SampleApp.inf
+- Look in the INF for “XXXXXXXXXXX” sections that will need information  
+- Create Name & GUID, and then fill in the MODULE_TYPE 
+
+
+---?image=/assets/images/slides/Slide22.JPG
+@title[Sample Application INF file]
+<p align="right"><span class="gold" >Sample Application INF file</span></p>
+<br>
+<br>
+<br>
+<br>
+<p align="right"><span style="font-size:0.5em">Get a GUID: <a href="http://www.guidgenerator.com/">guidgerator.com</a></span></p>
+
+Note:
+
+#### to get a Guid - http://www.guidgenerator.com/
+
+- Now here is a sample INF file
+- This is for an application called SampleApp
+- When the program starts is going to call the function called UefiMain inside the application. 
+- The prototype for UefiMain is predetermined and you can see an example of a prototype by downloading a sample application. 
+- So a couple of the things that the prototype will require are a pointer to the system table and a image handle parameter. 
+
+
+---?image=/assets/images/slides/Slide24.JPG
+@title[Sample Application C file]
+<p align="right"><span class="gold" >Sample Application ‘C’ file</span></p>
+
+Note:
+
+<pre>
+/** @file
+  This is a simple shell application
+**/
+ EFI_STATUS
+ EFIAPI
+ UefiMain (
+   IN EFI_HANDLE        ImageHandle,
+   IN EFI_SYSTEM_TABLE  *SystemTable
+   )
+ {
+   return EFI_SUCCESS;
+ }
+</pre>
+
+---
+@title[Will it compile now?]
+<p align="right"><span class="gold" >Will it compile now?</span></p>
+<br>
+Not yet . . .
+<br>
+
+1. Need to add headers to the .C file
+2. Need to add a reference to INF from the platform DSC
+3. Need to add a few Package dependencies and libraries to the .INF
+
+
+Note:
+
+- So the question is will it compile now?
+- And the answer is no it will not compile yet
+- First you need to add some headers to the.C. we need to be able to let some things.
+- We need to add a reference to the INF from the platform in DSC.  Because If you build it now the build is going to say I don’t have a platform and so the build is going to break. 
+- Then the next thing we need to add is a few package dependencies and libraries to the INF file because, for instance, features like the UEFI Application entry point will need to be added, because it doesn’t know how to do an entry point until you’ve added that. 
+
+---
+@title[Application Lab – Update Files]
+<p align="right"><span class="gold" >Application Lab – Update Files</span></p>
+<br>
+<ul style="list-style-type:none">
+ <li><span style="font-size:0.8em" >1. `.DSC` (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
+  <ul style="list-style-type:none">
+     <li><span style="font-size:0.7em" >[Components . . .]</span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;Add INF to components section, before build options </span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add to the end of the file SampleApp/SampleApp.inf </span>  </li>
+ </ul>
+ <li><span style="font-size:0.8em" >2. `.INF` File (SampleApp/SampleApp.inf) </span>  </li>
+  <ul style="list-style-type:none">
+     <li><span style="font-size:0.7em" >Packages (all depend on MdePkg)</span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;[Packages]		  MdePkg/MdePkg.dec </span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;[LibraryClasses] 		UefiApplicationEntryPoint</span>  </li>
+ </ul>
+ <li><span style="font-size:0.8em" >3. `C` file - Header references File (SampleApp/SampleApp.c) </span>  </li>
+  <ul style="list-style-type:none">
+     <li><span style="font-size:0.7em" >`#include <Uefi.h>`</span>  </li>
+     <li><span style="font-size:0.7em" >`#include <Library/UefiApplicationEntryPoint.h>`</span>  </li>
+ </ul>
+</ul>
+
+
+Note:
+
+- So what are our steps for adding that
+- So first we need to add the MDE package to the INF file and you need to reference the file by the DEC file so under the [packages] section you Are going to add “MdePkg/MdePkg.dec” 
+- Under the [LibraryClasses] section of the INF you’re going to add a reference to “UefiApplicationsEntryPoint” . And just as an interesting note is actually dependent on the “UefiBootServiecesTableLib”.
+- Next in the .C. file you are going to add some header references, the “<Uefi.h>” and “<Library/UefiApplicationEntryPoint.h>”  
+- Then in the DSC file under the “[components]” section you’re going to add a reference to your new sample INF file.
+
+
+---?image=/assets/images/slides/Slide28.JPG
+@title[Lab cont. Solution ]
+<p align="right"><span class="gold" >Lab cont. Solution </span></p>
+
+
+Note:
+
+<pre>
+ SampleApp/SampleApp.inf
+ MdePkg/MdePkg.dec
+ UefiApplicationEntryPoint
+ #include <Uefi.h>
+ #include <Library/UefiApplicationEntryPoint.h>
+</pre>
+
+
+
+
+---?image=/assets/images/slides/Slide30.JPG
+@title[Will it compile now? ]
+<p align="right"><span class="gold" >Will it compile now?</span></p>
+
+
+Note:
+- So the question is will it compile now?
+
+- Build SampleApp – Cd to ~/src/edk2 directory 
+ - bash$ build
+
+- Copy  SampleApp.efi  to hda-contents	  
+ - bash$ cd ~/run-ovmf/hda-contents
+ - bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi .
+- Test by Invoking Qemu
+ - bash$ cd ~/run-ovmf
+ - bash$ . RunQemu.sh
+- Run the application from the shell
+- 	Shell> SampleApp
+- 	Shell>
+
+- another note:   The program will immediately unload because the main function is empty
+ 
+
+- And the answer is yes. So as a note here the Lab sample code in SA2.c & SA2.inf is where we are in the lab at this point.
+- It will compile and it will even run at this point but we haven’t really added any functionality to this sample code at this point and so since the main function is empty it will unload as soon as it is called.
+- So to test it after it has build successfully you then type build run in the EDK2 directory and to run your application type in the base name that you gave it in your INF file, type that name at the shell and it will run, but it won’t do anything because there is nothing for it to do.
+
+---?image=/assets/images/slides/Slide32.JPG
+@title[Possible Build Errors ]
+<p align="right"><span class="gold" >Possible Build Errors</span></p>
+
+Note:
+
+
+
+---?image=/assets/images/slides/Slide34.JPG
+@title[Possible Build Errors 02 ]
+<p align="right"><span class="gold" >Possible Build Errors</span></p>
+
+Note:
+
+
+---?image=/assets/images/slides/Slide36.JPG
+@title[Possible Build Errors 03]
+<p align="right"><span class="gold" >Possible Build Errors</span></p>
+
+Note:
+
+---
+@title[If there are Build Errors ]
+<p align="right"><span class="gold" >If there are build errors …</span></p>
+<br>
+<span style="font-size:0.9em" >See class files for the solution </span>
+<ul>
+  <li><span style="font-size:0.8em" >LabSampleCode/LessonB.2 </span>  </li>
+  <li><span style="font-size:0.8em" >Copy the .inf and .c files to  ~src/edk2/SampleApp </span>  </li>
+  <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
+</ul>
+<br>
+<span style="font-size:0.9em" >Invoke <b>`build`</b> again and check the solution </span>
+
+Note:
+
+same as slide
+
+
+---?image=assets/images/binary-strings-black2.jpg
+@title[Add more Functionality Section]
+<br><br><br><br><br>
+### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Functionality </span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Functionality to the Simple UEFI Application : Next 3 Labs</span>
+<ul style="list-style-type:none">
+ <li><span style="font-size:0.8em" ><font color="cyan">Lab 3:</font>Print the UEFI System Table </span>  </li>
+ <li><span style="font-size:0.8em" ><font color="cyan">Lab 4:</font>Wait for an Event </span>  </li>
+ <li><span style="font-size:0.8em" ><font color="cyan">Lab 5:</font>Create a Simple Typewriter function </span>  </li>
+</ul>
+
+
+
+---?image=/assets/images/slides/Slide40.JPG
+@title[Lab 3 : Add System Table Code]
+<p align="right"><span class="gold" >Lab 3 : Add System Table Code</span></p>
+
+Note:
+
+- So let’s extend this and give it something useful to do
+ - so for this example we are going to have our sample application print out the system table pointer
+- So how do we do that. Well remember to find a function we want we can use the help documentation or CHM file.so what we will find if we do this is that the print function is part of the UefiLib. So in order to add the print functionality we would need to add the UefiLib  to our list of library classes in our INF file
+- To see this example look in the files in our sample lab code SA3.c and SA3.inf.
+- So also as an exercise you can look at the file in the sample lab code Min.dsc, this is a platform description file without a platform or any packages that go with it,  and this demonstrates the minimal contents for a DSC file that can build this application. So it will build a single application orientated toward the one we just created except nothing else. So unlike the NT32 platform description file, if you were to look at it, There are huge amounts of other components, library classes, and all of that, this Min.dsc only does the minimum requirements.
+
+
+---?image=/assets/images/slides/Slide42.JPG
+@title[Locating the “Print” Function ]
+<p align="right"><span class="gold" >Lab 3 : Locating the `Print()` Function </span></p>
+
+Note:
+
+1. Search the MdePkg.chm and find that the Print function by clicking on the “Index” tab
+2. Type “Print” and double click
+3. Scroll to the top in the right window to see that the print function is in the UefiLib.h file
+- * NOTE -:  Install a CHM Viewer for Ubuntu
+- bash$ sudo aptitude install kchmviewer
+
+
+---?image=/assets/images/slides/Slide44.JPG
+@title[Modifying .C & .INF Files ]
+<p align="right"><span class="gold" >Lab 3 : Modifying .C & .INF Files</span></p>
+
+Note:
+
+- SampleApp.c
+<pre>
+  #include <Uefi.h>
+  #include <Library/UefiApplicationEntryPoint.h>
+  #include <Library/UefiLib.h>
+
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
+  Print(L"System Table: 0x%08x\n“, SystemTable); 
+  return EFI_SUCCESS;
+}
+
+- SampleApp.inf
+ [LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+
+</pre>
+ 
+
+
+---
+@title[Build and Test SampleApp]
+<p align="right"><span class="gold" >Lab 3 : Build and Test SampleApp</span></p>
+<br>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+```
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
+```
+  bash$ cd ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Run the application from the shell</span>
+```
+ Shell> SampleApp
+ System Table: 0x07E34018
+ Shell> 
+```
+
+
+Note:
+
+Same as slide
+
+End of LAB 3
+
+
+---?image=/assets/images/slides/Slide47.JPG
+@title[Lab 4 : Add Wait for Event ]
+<p align="right"><span class="gold" >Lab 4 : Add Wait for Event</span></p>
+<br>
+<span style="font-size:0.8em" >Add code to make your application wait for a key press event (WaitForEvent / WaitForKey)</span>
+<br>
+<br>
+<br>
+<br>
+<ul>
+  <li><span style="font-size:0.8em" >Where are these functions located?</span> </li>
+  <li><span style="font-size:0.8em" >What else can you do with the key press? </span> </li>
+</ul>  
+
+
+Note:
+
+- Add code to make your application wait for an event (WaitForEvent) and use the (WaitForKey) as the event
+
+- Hint: use the MdePkg.chm to find where the “WaitForEvent” and the “WaitForKey” functions are located
+- Another Hint: The system table is passed in as a parameter to your sample application
+- Search the EDK II code for “WaitForEvent” 
+- Test by running your application in the Shell
+
+---
+@title[Lab 4 : How to locate functions ]
+<p align="right"><span class="gold" >Lab 4 : HOW? - Locate Functions </span><span style="font-size:0.6em" >`WaitForEvent / WaitForKey`</span></p>
+<br>
+<ul>
+  <li><span style="font-size:0.8em" >Search MdePkg.chm</span> </li>
+
+   <ul>
+    <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
+    <li><span style="font-size:0.7em" >Locate `WaitForKey` and find(EFI_SIMPLE_TEXT_INPUT_PROTOCOL and Part of ConIn ) </span> </li>
+   </ul>
+  <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
+    <ul>
+	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via System Table </span> </li>
+	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the System Table passed into the application</span> </li>
+    </ul>
+  <li><span style="font-size:0.8em" ><font color="yellow">OR</font> Search the working space for `WaitForEvent` for an example</span> </li>
+    <ul>
+	<li><span style="font-size:0.7em" >One can be found in <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">MdePkg/Library/UefiLib/Console.c</a>  ~ ln 569: </span> </li>
+    </ul>
+   
+</ul> 
+
+
+Note:
+
+1. Search the MdePkg.chm and find where the “WaitForEvent” is located.  It is part of the “Boot Services”.
+2. Search the MdePkg.chm and find where the “WaitForKey” is located.  It is part of the “EFI_SIMPLE_TEXT_INPUT_PROTOCOL as part of ConIn.
+3. The WaitForEvent can be referenced through the Boot Services pointer which can be referenced through the System Table
+4. The WaitForKey can be referenced through the System Table passed into our Sample application
+5. Check the UEFI Spec for the parameters needed
+6. An example can be found in MdePkg\Library\UefiLib\Console.c :
+  - gBS->WaitForEvent (1, &gST->ConIn->WaitForKey, &EventIndex);
+
+
+
+---?image=/assets/images/slides/Slide50.JPG
+@title[Lab 4 :Update the C File for WaitForKey ]
+<p align="right"><span class="gold" >Lab 4 : Update the C File for WaitForKey</span></p>
+<br>
+
+
+
+Note:
+
+Next sub slide to copy past from
+
++++
+@title[Lab 4 :Update the C File for WaitForKey 02 ]
+<p align="right"><span class="gold" >Lab 4 : Update the C File for WaitForKey</span></p>
+<br>
+<span style="font-size:0.8em" >Add the following to SampleApp.c</span>
+```
+// Lab 4
+ UINTN                      EventIndex; 
+
+// Lab 3
+ Print(L"System Table: 0x%08x",SystemTable); 
+
+ // Lab 4
+ Print(L"\nPress any Key to continue : \n");
+ gBS->WaitForEvent (1, &gST->ConIn->WaitForKey, &EventIndex);
+
+ ```
+
+ 
+---?image=/assets/images/slides/Slide53.JPG
+@title[Lab 4 :Test Compile ]
+<p align="right"><span class="gold" >Lab 4 :Test Compile</span></p>
+<br>
+
+
+
+Note:
+- However, this won’t compile … gBS and gST are not defined.
+
+- Search the MdePkg.chm for “gBS” and “gST” – they are located in UefiBootServicesTableLib.h
+
+  - Add the boot services lib to SampleApp.c …
+  - #include <Library/UefiBootServicesTableLib.h>
+
+-  (hint: Lesson B.4 has the solution)
+
+ 
+---?image=/assets/images/slides/Slide55.JPG
+@title[Lab 4 :Update SampleApp.c for gBS & gST ]
+<p align="right"><span class="gold" >Lab 4 :Update for gBS & gST</span></p>
+<br>
+
+Note:
+
+- add:
+- `#include <Library/UefiBootServicesTableLib.h>`
+
+
+---
+@title[Lab 4 :Build and Test SampleApp ]
+<p align="right"><span class="gold" >Lab 4 :Build and Test SampleApp</span></p>
+<br>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+```
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
+```
+  bash$ cd ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Run the application from the shell</span>
+```
+ Shell> SampleApp
+ System Table: 0x07E34018
+
+ Press any key to continue:
+
+ ```
+
+
+Note:
+
+Same as slide
+
+
+ 
+---?image=/assets/images/slides/Slide58.JPG
+@title[Lab 5 :Create a Simple Typewriter Function]
+<p align="right"><span class="gold" >Lab 5 : Typewriter Function</span></p>
+<br>
+<span style="font-size:01.0em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
+<br>
+<span style="font-size:0.9em" ><font color="#87E2A9">Requirements:</font></span>
+<br>
+<div class="left1">
+<ul>
+  <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (Like Lab 4)</span>  </li>
+  <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
+  <li><span style="font-size:0.8em" >To exit, press “.” and  then <Enter> key</span>  </li>
+</ul>
+</div>
+<div class="right1">
+<span style="font-size:01.0em" ><font color="cyan"></font></span>
+</div>
+
+
+
+Note:
+Same as Slide
+
+
+
+ 
+---?image=/assets/images/slides/Slide58.JPG
+@title[Lab 5 :Create a Simple Typewriter Function How]
+<p align="right"><span class="gold" >Lab 5 : Typewriter Function</span></p>
+<br>
+<span style="font-size:01.0em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
+<br>
+<span style="font-size:0.9em" ><font color="#87E2A9">How:</font></span>
+<br>
+<div class="left1">
+<ol>
+  <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
+  <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
+  <li><span style="font-size:0.8em" >Print back each key to console</span>  </li>
+  <li><span style="font-size:0.8em" >Exit the loop when “.” character followed by a <Enter> key </span>  </li>
+</ol>
+</div>
+<div class="right1">
+<span style="font-size:01.0em" ><font color="cyan"></font></span>
+</div>
+
+
+
+Note:
+Same as Slide
+
+
+ 
+---
+@title[Lab 5 : How Hints]
+<p align="right"><span class="gold" >Lab 5 : How Process (Hints)</span></p>
+<br>
+<ul style="list-style-type:disc">
+  <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
+```
+  Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);
+```
+  <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY` ~ ln 399</span>  </li>
+```
+  OUT EFI_INPUT_KEY  *Key, 
+```
+  <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
+   <ul style="list-style-type:disc">
+      <li><span style="font-size:0.7em" >Use MdePkg.chm to find `ZeroMem()` function</span>  </li>
+      <li><span style="font-size:0.7em" >Use `ZeroMem()` on your variable buffer “`Key`” of type `EFI_INPUT_KEY`</span>  </li>
+   </ul> 
+  <li><span style="font-size:0.8em" >Use Boolean flag “`ExitLoop`” to exit your loop once the user enters a “.” character.</span>  </li>
+</ul>
+
+Note:
+same as slide
+
+
+ 
+---?image=/assets/images/slides/Slide62.JPG
+@title[Lab 5 :Typewriter Function Solution]
+<p align="right"><span class="gold" >Lab 5 : Solution</span></p>
+<br>
+
++++
+@title[Lab 5 :Typewriter Function Solution]
+<p align="right"><span class="gold" >Lab 5 :  Solution</span></p>
+<br>
+<span style="font-size:0.8em" >SampleApp.c Should have the following: </span>
+<br>
+```c
+#include <Uefi.h>
+#include <Library/UefiApplicationEntryPoint.h>
+#include <Library/UefiLib.h>
+#include <Library/BaseMemoryLib.h>
+#include <Library/UefiBootServicesTableLib.h>
+#define CHAR_DOT  0x002E    // '.' in Unicode
+
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
+  UINTN          EventIndex;
+  BOOLEAN        ExitLoop;
+  EFI_INPUT_KEY  Key;
+  
+// Lab 3
+ Print(L"System Table: 0x%08x\n",SystemTable); 
+
+//Lab 4
+ Print( L"\nPress any Key to continue : \n\n");
+ gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,    	&EventIndex);
+
+// Lab 5
+ Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n\n”);
+ ZeroMem (&Key, sizeof (EFI_INPUT_KEY));
+ gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
+ ExitLoop = FALSE;
+ do {
+	 gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,&EventIndex);
+	 gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
+	 Print(L"%c", Key.UnicodeChar);
+	 if (Key.UnicodeChar == CHAR_DOT){
+		ExitLoop = TRUE;
+    	 }
+    } while (!(Key.UnicodeChar == CHAR_LINEFEED  || 
+       Key.UnicodeChar == CHAR_CARRIAGE_RETURN) || 
+       !(ExitLoop) );
+
+ Print(L"\n");
+ return EFI_SUCCESS;
+}
+
+// End of lab
+```
+
+Note:
+
+---
+@title[Lab 5 :Build and Test SampleApp ]
+<p align="right"><span class="gold" >Lab 5 :Build and Test SampleApp</span></p>
+<br>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+```
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
+```
+  bash$ cd ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Run the application from the shell</span>
+```
+ Shell> SampleApp
+ System Table: 0x07E34018
+
+ Press any key to continue:
+ Enter text. Include a dot ('.') in a sentence then <Enter> to exit:
+ this is the first line fromn the typwriter fucntion.  
+ Shell>
+
+```
+
+
+Note:
+
+End of Lab 5
+
+
+ 
+---?image=/assets/images/slides/Slide67.JPG
+@title[Bonus Lab :Open Protocol example]
+<p align="right"><span class="gold" >Bonus Exercise: Open Protocol Example</span></p>
+<br>
+
+Note:
+
+- Write an Application using argv, argc parameters
+  - Captures command line parameters using Open Protocol
+  - Need to open SHELL_INTERFACE_PROTOCOL
+  - Note  : Requires ShellPkg
+
+- Build SampleApp – Cd to ~/src/edk2     	bash$ build
+
+- Copy  SampleApp.efi  to hda-contents	`bash$ cp Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi \`
+										`~/run-ovmf/hda-contents`
+
+- Test by Invoking Qemu 		`bash$ cd ~/run-ovmf`
+ 							 	`bash$ . RunQemu.sh`
+- Run the application from the shell
+
+- `Shell> SampleApp  test1 test2`
+
+- (hint: ~FW/LabSampleCode/ShellAppSample has the solution)
+
+
+
+
+
+---  
+@title[Summary]
+<BR>
+### <p align="center"><span class="gold"   >Summary </span></p><br>
+<br>
+<ul style="list-style-type:none">
+ <li>@fa[certificate gp-bullet-green]<span style="font-size:0.9em">&nbsp;&nbsp;UEFI Application with PCDs</span> </li>
+ <li>@fa[certificate gp-bullet-cyan]<span style="font-size:0.9em">&nbsp;&nbsp;Simple UEFI Application</span></li>
+ <li>@fa[certificate gp-bullet-yellow]<span style="font-size:0.9em">&nbsp;&nbsp;Add functionality to UEFI Application</span> </li>
+ <li>@fa[certificate gp-bullet-magenta]<span style="font-size:0.9em">&nbsp;&nbsp;Using EADK with UEFI Application</span></li>
+</ul>
+
+ 
+
+---?image=assets/images/gitpitch-audience.jpg
+@title[Questions]
+<br>
+![Questions](/assets/images/questions.JPG) 
+
+
+---?image=assets/images/gitpitch-audience.jpg
+@title[Logo Slide]
+<br><br><br>
+![Logo Slide](/assets/images/TianocoreLogo.png =10x)
+
+
+---
+@title[Acknowledgements]
+#### <p align="center"><span class="gold"   >Acknowledgements</span></p>
+
+```c++
+/**
+Redistribution and use in source (original document form) and 'compiled' forms (converted
+to PDF, epub, HTML and other formats) with or without modification, are permitted provided
+that the following conditions are met:
+
+Redistributions of source code (original document form) must retain the above copyright 
+notice, this list of conditions and the following disclaimer as the first lines of this 
+file unmodified.
+
+Redistributions in compiled form (transformed to other DTDs, converted to PDF, epub, HTML
+and other formats) must reproduce the above copyright notice, this list of conditions and 
+the following disclaimer in the documentation and/or other materials provided with the 
+distribution.
+
+THIS DOCUMENTATION IS PROVIDED BY TIANOCORE PROJECT "AS IS" AND ANY EXPRESS OR IMPLIED 
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL TIANOCORE PROJECT BE 
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY 
+OF SUCH DAMAGE.
+
+Copyright (c) 2018, Intel Corporation. All rights reserved.
+**/
+
+```
