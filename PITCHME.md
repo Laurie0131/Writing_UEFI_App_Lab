@@ -438,13 +438,13 @@ Note:
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Add INF to components section, before build options </span>  </li>
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add to the end of the file SampleApp/SampleApp.inf </span>  </li>
  </ul>
- <li><span style="font-size:0.8em" >2.&nbsp;&nbsp; <font color="yellow">`.INF` </font> File (SampleApp/SampleApp.inf) </span>  </li>
+ <li><span style="font-size:0.8em" >2.&nbsp;&nbsp; <font color="yellow">`.INF` </font> file (SampleApp/SampleApp.inf) </span>  </li>
   <ul style="list-style-type:none">
      <li><span style="font-size:0.7em" >Packages (all depend on MdePkg)</span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[Packages]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MdePkg/MdePkg.dec` </span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[LibraryClasses]&nbsp;&nbsp;UefiApplicationEntryPoint`</span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[Packages]`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`MdePkg/MdePkg.dec` </span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[LibraryClasses]`&nbsp;&nbsp;`UefiApplicationEntryPoint`</span>  </li>
  </ul>
- <li><span style="font-size:0.8em" >3.&nbsp;&nbsp; <font color="yellow">`C` </font> file - Header references File (SampleApp/SampleApp.c) </span>  </li>
+ <li><span style="font-size:0.8em" >3.&nbsp;&nbsp; <font color="yellow">`.C` </font> file - Header references File (SampleApp/SampleApp.c) </span>  </li>
   <ul style="list-style-type:none">
      <li><span style="font-size:0.7em" >`#include <Uefi.h>`</span>  </li>
      <li><span style="font-size:0.7em" >`#include <Library/UefiApplicationEntryPoint.h>`</span>  </li>
@@ -620,11 +620,12 @@ UefiMain (
 @title[Modifying .C & .INF Files 02 ]
 <p align="right"><span class="gold" >Lab 3 : Modifying .C & .INF Files</span></p>
 
-- SampleApp.c
-```c
-  #include <Uefi.h>
-  #include <Library/UefiApplicationEntryPoint.h>
-  #include <Library/UefiLib.h>
+- <span style="font-size:0.8em" >SampleApp.c</span>
+
+```C++
+#include <Uefi.h>
+#include <Library/UefiApplicationEntryPoint.h>
+#include <Library/UefiLib.h>
 
 EFI_STATUS
 EFIAPI
@@ -637,8 +638,10 @@ UefiMain (
   return EFI_SUCCESS;
 }
 ```
-- SampleApp.inf
-```
+
+- <span style="font-size:0.8em" > SampleApp.inf</span>
+
+```Shell
  [LibraryClasses]
   UefiApplicationEntryPoint
   UefiLib
@@ -652,7 +655,6 @@ Note:
 ---
 @title[Build and Test SampleApp]
 <p align="right"><span class="gold" >Lab 3 : Build and Test SampleApp</span></p>
-<br>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```
   bash$ build
@@ -710,8 +712,7 @@ Note:
 ---
 @title[Lab 4 : How to locate functions ]
 <p align="right"><span class="gold" >Lab 4 : HOW?</span></p>
-<br>
-<span style="font-size:0.8em" >Locate Functions </span><span style="font-size:0.7em" >`WaitForEvent / WaitForKey`</span>
+<span style="font-size:0.8em" >Locate Functions </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
 <ul>
   <li><span style="font-size:0.8em" >Search MdePkg.chm</span> </li>
 
@@ -759,7 +760,7 @@ Next sub slide to copy past from
 @title[Lab 4 :Update the C File for WaitForKey 02 ]
 <p align="right"><span class="gold" >Lab 4 : Update the C File for WaitForKey</span></p>
 <br>
-<span style="font-size:0.8em" >Add the following to SampleApp.c</span>
+<span style="font-size:0.8em" >Add the following "Lab 4" statements to SampleApp.c</span>
 ```c
 // Lab 4
  UINTN                      EventIndex; 
@@ -793,8 +794,8 @@ Note:
 
  
 ---?image=/assets/images/slides/Slide55.JPG
-@title[Lab 4 :Update SampleApp.c for gBS & gST ]
-<p align="right"><span class="gold" >Lab 4 :Update for `gBS` & `gST`</span></p>
+@title[Lab 4 : Update SampleApp.c for gBS & gST ]
+<p align="right"><span class="gold" >Lab 4 : Update for `gBS` & `gST`</span></p>
 <br>
 
 Note:
@@ -804,9 +805,8 @@ Note:
 
 
 ---
-@title[Lab 4 :Build and Test SampleApp ]
-<p align="right"><span class="gold" >Lab 4 :Build and Test SampleApp</span></p>
-<br>
+@title[Lab 4 : Build and Test SampleApp ]
+<p align="right"><span class="gold" >Lab 4 : Build and Test SampleApp</span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```
   bash$ build
@@ -843,7 +843,7 @@ Same as slide
 <br>
 <span style="font-size:01.0em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
 <br>
-<span style="font-size:0.9em" ><font color="#87E2A9">Requirements:</font></span>
+<span style="font-size:0.9em" ><font color="cyan">Requirements:</font></span>
 <br>
 <div class="left1">
 <ul>
@@ -870,8 +870,7 @@ Same as Slide
 <br>
 <span style="font-size:01.0em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
 <br>
-<span style="font-size:0.9em" ><font color="#87E2A9">How:</font></span>
-<br>
+<span style="font-size:0.9em" ><font color="cyan">How:</font></span>
 <div class="left1">
 <ol>
   <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
@@ -894,22 +893,21 @@ Same as Slide
 ---
 @title[Lab 5 : How Hints]
 <p align="right"><span class="gold" >Lab 5 : How Process (Hints)</span></p>
-<br>
 <ul style="list-style-type:disc">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.7em" >`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></li>
+   <li><span style="font-size:0.6em" ><font color="gray"><span style="background-color: #1f1c18">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li>
   </ul>
-  <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY` ~ ln 399</span>  </li>
+  <li><span style="font-size:0.8em" ><font color="gray"><span style="background-color: #1f1c18">`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY`</span></font>&nbsp;&nbsp; ~ ln 399</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.7em" >`OUT EFI_INPUT_KEY  *Key,`</span></li>
+   <li><span style="font-size:0.6em" >`OUT EFI_INPUT_KEY  *Key,`</span></li>
   </ul>
   <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
    <ul style="list-style-type:disc">
       <li><span style="font-size:0.7em" >Use MdePkg.chm to find `ZeroMem()` function</span>  </li>
       <li><span style="font-size:0.7em" >Use `ZeroMem()` on your variable buffer “`Key`” of type `EFI_INPUT_KEY`</span>  </li>
    </ul> 
-  <li><span style="font-size:0.8em" >Use Boolean flag “`ExitLoop`” to exit your loop once the user enters a “.” character.</span>  </li>
+  <li><span style="font-size:0.8em" >Use Boolean flag “`ExitLoop`” to exit your loop once the user enters a DOT “.” character.</span>  </li>
 </ul>
 
 Note:
@@ -922,11 +920,16 @@ same as slide
 <p align="right"><span class="gold" >Lab 5 : Solution</span></p>
 <br>
 
+Note:
+
+Copy and paste from the following sub slide
+
 +++
 @title[Lab 5 :Typewriter Function Solution]
 <p align="right"><span class="gold" >Lab 5 :  Solution</span></p>
 <span style="font-size:0.8em" >SampleApp.c Should have the following: </span>
-```c
+
+```C++
 #include <Uefi.h>
 #include <Library/UefiApplicationEntryPoint.h>
 #include <Library/UefiLib.h>
@@ -953,19 +956,19 @@ UefiMain (
  gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,    	&EventIndex);
 
 // Lab 5
- Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n ”);
+ Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n ”); //
  ZeroMem (&Key, sizeof (EFI_INPUT_KEY));
  gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
  ExitLoop = FALSE;
- do {
+ do {    // Do loop until "DOT" and "enter" 
 	 gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,&EventIndex);
 	 gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
 	 Print(L"%c", Key.UnicodeChar);
 	 if (Key.UnicodeChar == CHAR_DOT){
 		ExitLoop = TRUE;
     	 }
-    } while (!(Key.UnicodeChar == CHAR_LINEFEED  || 
-       Key.UnicodeChar == CHAR_CARRIAGE_RETURN) || 
+    } while (!(Key.UnicodeChar == CHAR_LINEFEED  ||  
+	    Key.UnicodeChar == CHAR_CARRIAGE_RETURN) || 
        !(ExitLoop) );
 
  Print(L"\n");
@@ -976,6 +979,7 @@ UefiMain (
 ```
 
 Note:
+
 
 ---
 @title[Lab 5 :Build and Test SampleApp ]
