@@ -209,7 +209,6 @@ Note:
 ---
 @title[EDK II HelloWorld  App  Lab code]
 <p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
-<br>
 <span style="font-size:01.0em" >Source: <font color="yellow">Helloworld.c</font></span>
 ```C
 EFI_STATUS
@@ -371,6 +370,9 @@ Note:
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
 <p align="right"><span style="font-size:0.5em">Get a GUID: <a href="http://www.guidgenerator.com/">guidgerator.com</a></span></p>
 
 Note:
@@ -430,19 +432,19 @@ Note:
 <p align="right"><span class="gold" >Application Lab – Update Files</span></p>
 <br>
 <ul style="list-style-type:none">
- <li><span style="font-size:0.8em" >1. `.DSC` (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
+ <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow">`.DSC` </font> (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
   <ul style="list-style-type:none">
-     <li><span style="font-size:0.7em" >[Components . . .]</span>  </li>
+     <li><span style="font-size:0.7em" >`[Components . . .]`</span>  </li>
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Add INF to components section, before build options </span>  </li>
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add to the end of the file SampleApp/SampleApp.inf </span>  </li>
  </ul>
- <li><span style="font-size:0.8em" >2. `.INF` File (SampleApp/SampleApp.inf) </span>  </li>
+ <li><span style="font-size:0.8em" >2.&nbsp;&nbsp; <font color="yellow">`.INF` </font> File (SampleApp/SampleApp.inf) </span>  </li>
   <ul style="list-style-type:none">
      <li><span style="font-size:0.7em" >Packages (all depend on MdePkg)</span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;[Packages]		  MdePkg/MdePkg.dec </span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;[LibraryClasses] 		UefiApplicationEntryPoint</span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[Packages]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MdePkg/MdePkg.dec` </span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[LibraryClasses]&nbsp;&nbsp;UefiApplicationEntryPoint`</span>  </li>
  </ul>
- <li><span style="font-size:0.8em" >3. `C` file - Header references File (SampleApp/SampleApp.c) </span>  </li>
+ <li><span style="font-size:0.8em" >3.&nbsp;&nbsp; <font color="yellow">`C` </font> file - Header references File (SampleApp/SampleApp.c) </span>  </li>
   <ul style="list-style-type:none">
      <li><span style="font-size:0.7em" >`#include <Uefi.h>`</span>  </li>
      <li><span style="font-size:0.7em" >`#include <Library/UefiApplicationEntryPoint.h>`</span>  </li>
@@ -501,7 +503,7 @@ Note:
 - another note:   The program will immediately unload because the main function is empty
  
 
-- And the answer is yes. So as a note here the Lab sample code in SA2.c & SA2.inf is where we are in the lab at this point.
+- And the answer is yes. 
 - It will compile and it will even run at this point but we haven’t really added any functionality to this sample code at this point and so since the main function is empty it will unload as soon as it is called.
 - So to test it after it has build successfully you then type build run in the EDK2 directory and to run your application type in the base name that you gave it in your INF file, type that name at the shell and it will run, but it won’t do anything because there is nothing for it to do.
 
@@ -546,13 +548,14 @@ same as slide
 
 ---?image=assets/images/binary-strings-black2.jpg
 @title[Add more Functionality Section]
-<br><br><br><br><br>
+<br><br><br>
 ### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Functionality </span>
-<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Functionality to the Simple UEFI Application : Next 3 Labs</span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add Functionality to the Simple UEFI Application : </span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Next 3 Labs</span>
 <ul style="list-style-type:none">
- <li><span style="font-size:0.8em" ><font color="cyan">Lab 3:</font>Print the UEFI System Table </span>  </li>
- <li><span style="font-size:0.8em" ><font color="cyan">Lab 4:</font>Wait for an Event </span>  </li>
- <li><span style="font-size:0.8em" ><font color="cyan">Lab 5:</font>Create a Simple Typewriter function </span>  </li>
+ <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 3:&nbsp;&nbsp;</font>Print the UEFI System Table </span>  </li>
+ <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 4:&nbsp;&nbsp;</font>Wait for an Event </span>  </li>
+ <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 5:&nbsp;&nbsp;</font>Create a Simple Typewriter function </span>  </li>
 </ul>
 
 
@@ -613,6 +616,37 @@ UefiMain (
 
 </pre>
  
++++
+@title[Modifying .C & .INF Files 02 ]
+<p align="right"><span class="gold" >Lab 3 : Modifying .C & .INF Files</span></p>
+
+- SampleApp.c
+```c
+  #include <Uefi.h>
+  #include <Library/UefiApplicationEntryPoint.h>
+  #include <Library/UefiLib.h>
+
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
+  Print(L"System Table: 0x%08x\n“, SystemTable); 
+  return EFI_SUCCESS;
+}
+```
+- SampleApp.inf
+```
+ [LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+```
+
+Note:
+ 
+ - c code and inf file
 
 
 ---
@@ -657,6 +691,7 @@ End of LAB 3
 <br>
 <br>
 <br>
+<br>
 <ul>
   <li><span style="font-size:0.8em" >Where are these functions located?</span> </li>
   <li><span style="font-size:0.8em" >What else can you do with the key press? </span> </li>
@@ -674,22 +709,23 @@ Note:
 
 ---
 @title[Lab 4 : How to locate functions ]
-<p align="right"><span class="gold" >Lab 4 : HOW? - Locate Functions </span><span style="font-size:0.6em" >`WaitForEvent / WaitForKey`</span></p>
+<p align="right"><span class="gold" >Lab 4 : HOW?</span></p>
 <br>
+<span style="font-size:0.8em" >Locate Functions </span><span style="font-size:0.7em" >`WaitForEvent / WaitForKey`</span>
 <ul>
   <li><span style="font-size:0.8em" >Search MdePkg.chm</span> </li>
 
-   <ul>
+  <ul style="list-style-type:disc">
     <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
     <li><span style="font-size:0.7em" >Locate `WaitForKey` and find(EFI_SIMPLE_TEXT_INPUT_PROTOCOL and Part of ConIn ) </span> </li>
    </ul>
   <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
-    <ul>
-	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via System Table </span> </li>
-	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the System Table passed into the application</span> </li>
+   <ul style="list-style-type:disc">
+	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
+	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
     </ul>
-  <li><span style="font-size:0.8em" ><font color="yellow">OR</font> Search the working space for `WaitForEvent` for an example</span> </li>
-    <ul>
+  <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font> Search the working space for `WaitForEvent` for an example</span> </li>
+    <ul style="list-style-type:disc">
 	<li><span style="font-size:0.7em" >One can be found in <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">MdePkg/Library/UefiLib/Console.c</a>  ~ ln 569: </span> </li>
     </ul>
    
@@ -710,7 +746,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide50.JPG
 @title[Lab 4 :Update the C File for WaitForKey ]
-<p align="right"><span class="gold" >Lab 4 : Update the C File for WaitForKey</span></p>
+<p align="right"><span class="gold" >Lab 4 : Update the C File for `WaitForKey`</span></p>
 <br>
 
 
@@ -724,7 +760,7 @@ Next sub slide to copy past from
 <p align="right"><span class="gold" >Lab 4 : Update the C File for WaitForKey</span></p>
 <br>
 <span style="font-size:0.8em" >Add the following to SampleApp.c</span>
-```
+```c
 // Lab 4
  UINTN                      EventIndex; 
 
@@ -758,7 +794,7 @@ Note:
  
 ---?image=/assets/images/slides/Slide55.JPG
 @title[Lab 4 :Update SampleApp.c for gBS & gST ]
-<p align="right"><span class="gold" >Lab 4 :Update for gBS & gST</span></p>
+<p align="right"><span class="gold" >Lab 4 :Update for `gBS` & `gST`</span></p>
 <br>
 
 Note:
@@ -841,7 +877,7 @@ Same as Slide
   <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
   <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key to console</span>  </li>
-  <li><span style="font-size:0.8em" >Exit the loop when “.” character followed by a <Enter> key </span>  </li>
+  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an `Enter` key </span>  </li>
 </ol>
 </div>
 <div class="right1">
@@ -861,13 +897,13 @@ Same as Slide
 <br>
 <ul style="list-style-type:disc">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
-```
-  Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);
-```
+  <ul style="list-style-type:none">
+   <li><span style="font-size:0.7em" >`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></li>
+  </ul>
   <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY` ~ ln 399</span>  </li>
-```
-  OUT EFI_INPUT_KEY  *Key, 
-```
+  <ul style="list-style-type:none">
+   <li><span style="font-size:0.7em" >`OUT EFI_INPUT_KEY  *Key,`</span></li>
+  </ul>
   <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
    <ul style="list-style-type:disc">
       <li><span style="font-size:0.7em" >Use MdePkg.chm to find `ZeroMem()` function</span>  </li>
@@ -889,9 +925,7 @@ same as slide
 +++
 @title[Lab 5 :Typewriter Function Solution]
 <p align="right"><span class="gold" >Lab 5 :  Solution</span></p>
-<br>
 <span style="font-size:0.8em" >SampleApp.c Should have the following: </span>
-<br>
 ```c
 #include <Uefi.h>
 #include <Library/UefiApplicationEntryPoint.h>
@@ -919,7 +953,7 @@ UefiMain (
  gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,    	&EventIndex);
 
 // Lab 5
- Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n\n”);
+ Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n ”);
  ZeroMem (&Key, sizeof (EFI_INPUT_KEY));
  gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
  ExitLoop = FALSE;
@@ -946,7 +980,6 @@ Note:
 ---
 @title[Lab 5 :Build and Test SampleApp ]
 <p align="right"><span class="gold" >Lab 5 :Build and Test SampleApp</span></p>
-<br>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```
   bash$ build
