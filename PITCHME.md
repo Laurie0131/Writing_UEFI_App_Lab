@@ -507,6 +507,38 @@ Note:
 - It will compile and it will even run at this point but we haven’t really added any functionality to this sample code at this point and so since the main function is empty it will unload as soon as it is called.
 - So to test it after it has build successfully you then type build run in the EDK2 directory and to run your application type in the base name that you gave it in your INF file, type that name at the shell and it will run, but it won’t do anything because there is nothing for it to do.
 
+
++++
+@title[Will it compile now? 02 ]
+<p align="right"><span class="gold" >Lab 2 : Will it compile now?</span></p>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+```shell
+  bash$ build
+```
+<span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
+```shell
+  bash$ cd ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Run the application from the shell</span>
+```shell
+ Shell> SampleApp
+ Shell>
+```
+<span style="font-size:0.6em" >Notice that the program will immediately unload because the main function is empty</span>
+
+Note:
+
+Same as slide
+
+
+
+
 ---?image=/assets/images/slides/Slide32.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" >Possible Build Errors</span></p>
@@ -612,6 +644,7 @@ UefiMain (
 - SampleApp.inf
  [LibraryClasses]
   UefiApplicationEntryPoint
+  
   UefiLib
 
 </pre>
@@ -625,6 +658,7 @@ UefiMain (
 ```C++
 #include <Uefi.h>
 #include <Library/UefiApplicationEntryPoint.h>
+// Lab 3
 #include <Library/UefiLib.h>
 
 EFI_STATUS
@@ -634,6 +668,7 @@ UefiMain (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
+// Lab 3
   Print(L"System Table: 0x%08x\n", SystemTable); //
   return EFI_SUCCESS;
 }
@@ -644,6 +679,7 @@ UefiMain (
 ```Shell
  [LibraryClasses]
   UefiApplicationEntryPoint
+# Lab 3
   UefiLib
 ```
 
@@ -803,6 +839,39 @@ Note:
 - add:
 - `#include <Library/UefiBootServicesTableLib.h>`
 
++++
+@title[Lab 4 : Update SampleApp.c for gBS & gST 02]
+<p align="right"><span class="gold" >Lab 4 : Update for `gBS` & `gST`</span></p>
+<span style="font-size:0.8em" >SampleApp.c Should have the following: </span>
+
+```C++
+#include <Uefi.h>
+#include <Library/UefiApplicationEntryPoint.h>
+#include <Library/UefiLib.h>
+#include <Library/UefiBootServicesTableLib.h>
+
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
+  UINTN          EventIndex;
+  
+// Lab 3
+ Print(L"System Table: 0x%08x\n",SystemTable); 
+
+//Lab 4
+ Print( L"\nPress any Key to continue : \n\n");
+ gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,    	&EventIndex);
+ return EFI_SUCCESS;
+}
+
+// End of lab
+```
+
+Note:
 
 ---
 @title[Lab 4 : Build and Test SampleApp ]
