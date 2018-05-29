@@ -1214,6 +1214,7 @@ Note:
   AppPkg/Applications/SampleCApp/SampleCApp.inf #  LAB 6 
   
 ```
+@[9](Add to the Components section)
 
 Note:
 
