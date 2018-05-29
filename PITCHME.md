@@ -880,8 +880,8 @@ Note:
 
  Press any key to continue:
 
- ```
- <br>
+```
+
 <span style="font-size:0.7em" >Notice that the SampleApp will wait until a key press to continue.</span>
 
 Note:
@@ -1170,7 +1170,7 @@ Note:
 [Defines]
   INF_VERSION    = 1.25
   BASE_NAME      = SampleCApp
-  FILE_GUID      = 4ea9…
+  FILE_GUID      = 54321…
   MODULE_TYPE    = UEFI_APPLICATION
   VERSION_STRING = 0.1
   ENTRY_POINT    = ShellCEntryLib
@@ -1195,10 +1195,31 @@ Note:
 
 
 ---
+@title[Lab 6 : Update AppPkg.dsc ]
+<p align="right"><span class="gold" >Lab 6 : Update AppPkg.dsc </span></p>
+<span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span><br>
+- <span style="font-size:0.6em" > (hint: search for "#### Sample Applications")</span>
+- <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
+<br>
+```
+[Components]
+
+#### Sample Applications.
+  AppPkg/Applications/Hello/Hello.inf        # No LibC includes or functions.
+  AppPkg/Applications/Main/Main.inf          # Simple invocation. No other LibC functions.
+  AppPkg/Applications/Enquire/Enquire.inf    #
+  AppPkg/Applications/ArithChk/ArithChk.inf  #
+  
+  AppPkg/Applications/SampleCApp/SampleCApp.inf #  LAB 6 
+  
+```
+
+Note:
+
+
+---
 @title[Lab 6 :Build and Test SampleCApp ]
 <p align="right"><span class="gold" >Lab 6 :Build and Test SampleCApp</span></p>
-<span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span><span style="font-size:0.5em" > (hint: search for "#### Sample Applications")</span>
-- <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
 <span style="font-size:0.8em" >Build AppPkg </span>
 ```shell
   bash$ build -p AppPkg/AppPkg.dsc –m AppPkg/Applications/SampleCApp/SampleCApp.inf
@@ -1283,11 +1304,11 @@ main (
  
 // Lab 5
    puts ("Enter text. Include a dot ('.') in a sentence then <Enter> to exit:");
-  do {
+   do {
       c=(char)getchar();
      } while (c != '.');
-  puts ("\n");
-  return 0;
+   puts ("\n");
+   return 0;
 }
 ```
 </pre>
@@ -1299,7 +1320,7 @@ main (
 [Defines]
   INF_VERSION    = 1.25
   BASE_NAME      = SampleCApp
-  FILE_GUID      = 4ea9…
+  FILE_GUID      = 54321…
   MODULE_TYPE    = UEFI_APPLICATION
   VERSION_STRING = 0.1
   ENTRY_POINT    = ShellCEntryLib
@@ -1322,6 +1343,35 @@ main (
 
 Note:
 
+
+
+---
+@title[Lab 6 :Build and Test SampleCApp 02]
+<p align="right"><span class="gold" >Lab 6 :Build and Test SampleCApp</span></p>
+<span style="font-size:0.8em" >Build AppPkg </span>
+```shell
+  bash$ build -p AppPkg/AppPkg.dsc –m AppPkg/Applications/SampleCApp/SampleCApp.inf
+```
+<span style="font-size:0.8em" >Copy the built application to the run OVMF hda-contents directory</span>
+```shell
+  bash$ cp Build/AppPkg/DEBUG_GCC5/X64/SampleCApp.efi ~/run-ovmf/hda-contents
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Run the application from the shell</span>
+```shell
+Shell> SampleCApp
+System Table: 0x7e34018
+Press any Key and then <Enter> to Continue :
+Enter text. Include a dot (‘.’) in a sentence then <Enter> to exit:
+This is sample text. 
+Shell>
+```
+
+Note:
 
 
 
