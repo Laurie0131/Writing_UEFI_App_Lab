@@ -99,7 +99,7 @@ Note:
 ---?image=/assets/images/slides/Slide6.JPG
 @title[PCD Syntax review]
 ### <p align="center"><span class="gold" >PCD Syntax</span></p>
-<span style="font-size:0.9em"><font color="yellow">PCDs can be located anywhere within the Workspace even though a different package will use those PCDs for a given project</font></span>
+<span style="font-size:0.9em">PCDs can be located anywhere within the Workspace even though a different package will use those PCDs for a given project</span>
 
 Note:
 
@@ -187,7 +187,7 @@ Shell> Helloworld
 UEFI Hello World!
 Shell> 
 ```
-<br>
+
 <span style="font-size:0.9em" ><font color="cyan">How can we force the HelloWorld application to print out 3 times ?</font></span>
 
 
@@ -605,7 +605,7 @@ UefiMain (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-  Print(L"System Table: 0x%08x\n“, SystemTable); 
+  Print(L"System Table: 0x%08x\n", SystemTable); 
   return EFI_SUCCESS;
 }
 
@@ -634,7 +634,7 @@ UefiMain (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-  Print(L"System Table: 0x%08x\n“, SystemTable); 
+  Print(L"System Table: 0x%08x\n", SystemTable); //
   return EFI_SUCCESS;
 }
 ```
@@ -656,21 +656,21 @@ Note:
 @title[Build and Test SampleApp]
 <p align="right"><span class="gold" >Lab 3 : Build and Test SampleApp</span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
-```
+```shell
   bash$ build
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
-```
+```shell
   bash$ cd ~/run-ovmf/hda-contents
   bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
-```
+```shell
  bash$ cd ~/run-ovmf
  bash$ . RunQemu.sh
 ```
 <span style="font-size:0.8em" >Run the application from the shell</span>
-```
+```shell
  Shell> SampleApp
  System Table: 0x07E34018
  Shell> 
@@ -712,13 +712,13 @@ Note:
 ---
 @title[Lab 4 : How to locate functions ]
 <p align="right"><span class="gold" >Lab 4 : HOW?</span></p>
-<span style="font-size:0.8em" >Locate Functions </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
+<span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
 <ul>
   <li><span style="font-size:0.8em" >Search MdePkg.chm</span> </li>
 
   <ul style="list-style-type:disc">
     <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
-    <li><span style="font-size:0.7em" >Locate `WaitForKey` and find(EFI_SIMPLE_TEXT_INPUT_PROTOCOL and Part of ConIn ) </span> </li>
+    <li><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li>
    </ul>
   <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
    <ul style="list-style-type:disc">
@@ -808,21 +808,21 @@ Note:
 @title[Lab 4 : Build and Test SampleApp ]
 <p align="right"><span class="gold" >Lab 4 : Build and Test SampleApp</span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
-```
+```shell
   bash$ build
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
-```
+```shell
   bash$ cd ~/run-ovmf/hda-contents
   bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
-```
+```shell
  bash$ cd ~/run-ovmf
  bash$ . RunQemu.sh
 ```
 <span style="font-size:0.8em" >Run the application from the shell</span>
-```
+```shell
  Shell> SampleApp
  System Table: 0x07E34018
 
@@ -896,11 +896,11 @@ Same as Slide
 <ul style="list-style-type:disc">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="gray"><span style="background-color: #1f1c18">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #1f1c18">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li>
   </ul>
-  <li><span style="font-size:0.8em" ><font color="gray"><span style="background-color: #1f1c18">`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY`</span></font>&nbsp;&nbsp; ~ ln 399</span>  </li>
+  <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY`&nbsp;&nbsp; ~ ln 399</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" >`OUT EFI_INPUT_KEY  *Key,`</span></li>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #1f1c18">`OUT EFI_INPUT_KEY  *Key,`</span></font></span></li>
   </ul>
   <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
    <ul style="list-style-type:disc">
@@ -956,7 +956,7 @@ UefiMain (
  gBS->WaitForEvent (1, &gST->ConIn->WaitForKey,    	&EventIndex);
 
 // Lab 5
- Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n ”); //
+ Print(L"Enter text. Include a dot ('.') in a sentence then <Enter> to exit:\n "); //
  ZeroMem (&Key, sizeof (EFI_INPUT_KEY));
  gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
  ExitLoop = FALSE;
@@ -985,21 +985,21 @@ Note:
 @title[Lab 5 :Build and Test SampleApp ]
 <p align="right"><span class="gold" >Lab 5 :Build and Test SampleApp</span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
-```
+```shell
   bash$ build
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
-```
+```shell
   bash$ cd ~/run-ovmf/hda-contents
   bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
-```
+```shell
  bash$ cd ~/run-ovmf
  bash$ . RunQemu.sh
 ```
 <span style="font-size:0.8em" >Run the application from the shell</span>
-```
+```shell
  Shell> SampleApp
  System Table: 0x07E34018
 
