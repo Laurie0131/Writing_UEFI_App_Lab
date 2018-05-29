@@ -158,7 +158,7 @@ Note:
 - Edit and add the following line (at the end of the file)
 - Edit OvmfPkg/OvmfPkgX64.dsc  add HelloWorld.inf - Save
 
-
+<pre>
 - [Components]
  
 - # Add new modules here
@@ -167,7 +167,10 @@ Note:
 - Build the OvmfPkgX64 from Terminal Prompt (Cnt-Alt-T)
  - `bash$ cd ~/src/edk2`
  - `bash$ build`
-
+</pre>
+ 
+ 
+ 
 ---
 @title[EDK II HelloWorld  App  Lab steps]
 <p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
@@ -351,7 +354,7 @@ Note:
 
 
 ---?image=/assets/images/slides/Slide20.JPG
-@title[Application Lab –start with .c and .inf template]
+@title[Lab 2: Application Lab –start with .c and .inf template]
 <p align="right"><span class="gold" >Application Lab –start with .c and .inf template</span></p>
 
 Note:
@@ -364,8 +367,8 @@ Note:
 
 
 ---?image=/assets/images/slides/Slide22.JPG
-@title[Sample Application INF file]
-<p align="right"><span class="gold" >Sample Application INF file</span></p>
+@title[Lab 2: Sample Application INF file]
+<p align="right"><span class="gold" >Lab 2: Sample Application INF file</span></p>
 <br>
 <br>
 <br>
@@ -387,8 +390,8 @@ Note:
 
 
 ---?image=/assets/images/slides/Slide24.JPG
-@title[Sample Application C file]
-<p align="right"><span class="gold" >Sample Application ‘C’ file</span></p>
+@title[Lab 2: Sample Application C file]
+<p align="right"><span class="gold" >Lab 2: Sample Application ‘C’ file</span></p>
 
 Note:
 
@@ -408,8 +411,8 @@ Note:
 </pre>
 
 ---
-@title[Will it compile now?]
-<p align="right"><span class="gold" >Will it compile now?</span></p>
+@title[Lab 2: Will it compile now?]
+<p align="right"><span class="gold" >Lab 2: Will it compile now?</span></p>
 <br>
 Not yet . . .
 <br>
@@ -428,8 +431,8 @@ Note:
 - Then the next thing we need to add is a few package dependencies and libraries to the INF file because, for instance, features like the UEFI Application entry point will need to be added, because it doesn’t know how to do an entry point until you’ve added that. 
 
 ---
-@title[Application Lab – Update Files]
-<p align="right"><span class="gold" >Application Lab – Update Files</span></p>
+@title[Lab 2: Application Lab – Update Files]
+<p align="right"><span class="gold" >Lab 2: Application Lab – Update Files</span></p>
 <br>
 <ul style="list-style-type:none">
  <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow">`.DSC` </font> (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
@@ -462,8 +465,8 @@ Note:
 
 
 ---?image=/assets/images/slides/Slide28.JPG
-@title[Lab cont. Solution ]
-<p align="right"><span class="gold" >Lab cont. Solution </span></p>
+@title[Lab 2: Lab cont. Solution ]
+<p align="right"><span class="gold" >Lab 2: Lab cont. Solution </span></p>
 
 
 Note:
@@ -479,37 +482,8 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide30.JPG
-@title[Will it compile now? ]
-<p align="right"><span class="gold" >Will it compile now?</span></p>
-
-
-Note:
-- So the question is will it compile now?
-
-- Build SampleApp – Cd to ~/src/edk2 directory 
- - bash$ build
-
-- Copy  SampleApp.efi  to hda-contents	  
- - bash$ cd ~/run-ovmf/hda-contents
- - bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi .
-- Test by Invoking Qemu
- - bash$ cd ~/run-ovmf
- - bash$ . RunQemu.sh
-- Run the application from the shell
-- 	Shell> SampleApp
-- 	Shell>
-
-- another note:   The program will immediately unload because the main function is empty
- 
-
-- And the answer is yes. 
-- It will compile and it will even run at this point but we haven’t really added any functionality to this sample code at this point and so since the main function is empty it will unload as soon as it is called.
-- So to test it after it has build successfully you then type build run in the EDK2 directory and to run your application type in the base name that you gave it in your INF file, type that name at the shell and it will run, but it won’t do anything because there is nothing for it to do.
-
-
-+++
-@title[Will it compile now? 02 ]
+---
+@title[Lab 2: Will it compile now? ]
 <p align="right"><span class="gold" >Lab 2 : Will it compile now?</span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```shell
@@ -534,8 +508,15 @@ Note:
 
 Note:
 
-Same as slide
 
+
+- And the answer is yes. 
+- It will compile and it will even run at this point but we haven’t really added any functionality to this sample code at this point and so since the main function is empty it will unload as soon as it is called.
+- So to test it after it has build successfully you then type build run in the EDK2 directory and to run your application type in the base name that you gave it in your INF file, type that name at the shell and it will run, but it won’t do anything because there is nothing for it to do.
+
+
+- another note:   The program will immediately unload because the main function is empty
+ 
 
 
 
@@ -561,8 +542,8 @@ Note:
 Note:
 
 ---
-@title[If there are Build Errors ]
-<p align="right"><span class="gold" >If there are build errors …</span></p>
+@title[Lab 2: If there are Build Errors ]
+<p align="right"><span class="gold" >Lab 2: If there are build errors …</span></p>
 <br>
 <span style="font-size:0.9em" >See class files for the solution </span>
 <ul>
@@ -842,12 +823,13 @@ Note:
 +++
 @title[Lab 4 : Update SampleApp.c for gBS & gST 02]
 <p align="right"><span class="gold" >Lab 4 : Update for `gBS` & `gST`</span></p>
-<span style="font-size:0.8em" >SampleApp.c Should have the following: </span>
+<span style="font-size:0.8em" >SampleApp.c Should have the following for Lab 4: </span>
 
 ```C++
 #include <Uefi.h>
 #include <Library/UefiApplicationEntryPoint.h>
 #include <Library/UefiLib.h>
+// Lab 4
 #include <Library/UefiBootServicesTableLib.h>
 
 EFI_STATUS
@@ -996,14 +978,15 @@ Copy and paste from the following sub slide
 +++
 @title[Lab 5 :Typewriter Function Solution]
 <p align="right"><span class="gold" >Lab 5 :  Solution</span></p>
-<span style="font-size:0.8em" >SampleApp.c Should have the following: </span>
+<span style="font-size:0.8em" >SampleApp.c Should have the following for Lab 5: </span>
 
 ```C++
 #include <Uefi.h>
 #include <Library/UefiApplicationEntryPoint.h>
 #include <Library/UefiLib.h>
-#include <Library/BaseMemoryLib.h>
 #include <Library/UefiBootServicesTableLib.h>
+// Lab 5
+#include <Library/BaseMemoryLib.h>
 #define CHAR_DOT  0x002E    // '.' in Unicode
 
 EFI_STATUS
@@ -1014,6 +997,7 @@ UefiMain (
   )
 {
   UINTN          EventIndex;
+// Lab 5
   BOOLEAN        ExitLoop;
   EFI_INPUT_KEY  Key;
   
