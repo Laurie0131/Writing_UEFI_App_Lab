@@ -207,7 +207,7 @@ Same as slide
 
 Note:
 
-
+First let's look at the source code for the HellowWorld Application
 
 ---
 @title[EDK II HelloWorld  App  Lab code]
@@ -258,21 +258,21 @@ Note:
 
 
 - ## This PCD defines the print string.
--  #  This PCD is a sample to explain String typed PCD usage.
+-  This PCD is a sample to explain String typed PCD usage.
 -  gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintString|L"UEFI Hello World!\n"|VOID*|0x40000004
 
 
 1. Edit the file OvmfPkg/OvmfPkgX64.dsc
-- After the section [PcdsFixedAtBuild], add the new line (~line 428):  
-- `[PcdsFixedAtBuild]`
-- `gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3`
+  - After the section [PcdsFixedAtBuild], add the new line (~line 428):  
+  - `[PcdsFixedAtBuild]`
+  - `gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3`
 
 2. Re-Build – Cd to ~/src/edk2 dir 
-- `bash$ build`
+  - `bash$ build`
 
 3. Copy  Helloworld.efi 	 
-- `bash$ cd ~/run-ovmf/hda-contents`
-- `bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .`
+  - `bash$ cd ~/run-ovmf/hda-contents`
+  - `bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .`
 
 
 ---?image=/assets/images/slides/Slide16.JPG
@@ -282,15 +282,15 @@ Note:
 
 Note:
 5. Run Qemu
-- `bash$ cd ~/run-ovmf`
-- ` bash$ . RunQemu.sh`
+  - `bash$ cd ~/run-ovmf`
+  - ` bash$ . RunQemu.sh`
 
 6. At the Shell prompt
-- `Shell> Helloworld`
-- `UEFI Hello World!`
-- `UEFI Hello World!`
-- `UEFI Hello World!`
-- `Shell> `
+  - `Shell> Helloworld`
+  - `UEFI Hello World!`
+  - `UEFI Hello World!`
+  - `UEFI Hello World!`
+  - `Shell> `
 
 
 - How can we change the string of the HelloWorld application?
@@ -362,8 +362,8 @@ Note:
 ##### Steps
 1. Copy the LabSampleCode/SampleApp directory to ~/src/edk2
 2. Edit SampleApp.inf
-- Look in the INF for “XXXXXXXXXXX” sections that will need information  
-- Create Name & GUID, and then fill in the MODULE_TYPE 
+  - Look in the INF for “XXXXXXXXXXX” sections that will need information  
+  - Create Name & GUID, and then fill in the MODULE_TYPE 
 
 
 ---?image=/assets/images/slides/Slide22.JPG
@@ -380,7 +380,7 @@ Note:
 
 Note:
 
-#### to get a Guid - http://www.guidgenerator.com/
+#####  to get a Guid - http://www.guidgenerator.com/
 
 - Now here is a sample INF file
 - This is for an application called SampleApp
@@ -460,7 +460,7 @@ Note:
 - So what are our steps for adding that
 - So first we need to add the MDE package to the INF file and you need to reference the file by the DEC file so under the [packages] section you Are going to add “MdePkg/MdePkg.dec” 
 - Under the [LibraryClasses] section of the INF you’re going to add a reference to “UefiApplicationsEntryPoint” . And just as an interesting note is actually dependent on the “UefiBootServiecesTableLib”.
-- Next in the .C. file you are going to add some header references, the “<Uefi.h>” and “<Library/UefiApplicationEntryPoint.h>”  
+- Next in the .C. file you are going to add some header references, the “Uefi.h” and “Library/UefiApplicationEntryPoint.h”  
 - Then in the DSC file under the “[components]” section you’re going to add a reference to your new sample INF file.
 
 
@@ -475,8 +475,8 @@ Note:
  SampleApp/SampleApp.inf
  MdePkg/MdePkg.dec
  UefiApplicationEntryPoint
- #include <Uefi.h>
- #include <Library/UefiApplicationEntryPoint.h>
+ `#include <Uefi.h>`
+ `#include <Library/UefiApplicationEntryPoint.h>`
 </pre>
 
 
@@ -772,7 +772,7 @@ Note:
 
 Note:
 
-Next sub slide to copy past from
+Next sub slide to copy paste from
 
 +++
 @title[Lab 4 :Update the C File for WaitForKey 02 ]
@@ -968,7 +968,7 @@ same as slide
 
 
  
----?image=/assets/images/slides/Slide62.JPG
+---?image=/assets/images/slides/Slide62_1.JPG
 @title[Lab 5 :Typewriter Function Solution]
 <p align="right"><span class="gold" >Lab 5 : Solution</span></p>
 <br>
@@ -1034,6 +1034,8 @@ UefiMain (
 ```
 
 Note:
+
+Same as slide
 
 
 ---
