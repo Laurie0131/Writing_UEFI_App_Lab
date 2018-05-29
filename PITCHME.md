@@ -552,6 +552,7 @@ Note:
   <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
 </ul>
 <br>
+<br>
 <span style="font-size:0.9em" >Invoke <b>`build`</b> again and check the solution </span>
 
 Note:
@@ -880,7 +881,8 @@ Note:
  Press any key to continue:
 
  ```
-
+ <br>
+<span style="font-size:0.7em" >Notice that the SampleApp will wait until a key press to continue.</span>
 
 Note:
 
@@ -1094,6 +1096,234 @@ Note:
 - `Shell> SampleApp  test1 test2`
 
 - (hint: ~FW/LabSampleCode/ShellAppSample has the solution)
+
+
+
+---?image=assets/images/binary-strings-black2.jpg
+@title[Write a Simple UEFI Application ]
+<br><br><br><br><br><br><br>
+### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using EADK </span>
+<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using EADK with UEFI Application</span>
+
+
+ 
+---?image=/assets/images/slides/Slide70.JPG
+@title[Lab 6: With EDK II EADK]
+<p align="right"><span class="gold" >Lab 6: With EDK II EADK</span></p>
+<br>
+
+Note:
+
+- Write the same application with the same functionality as SampleApp.c using the LibC from the EADK
+- What libraries are needed 
+- What differences are there using the LibC
+
+---?image=/assets/images/slides/Slide72.JPG
+@title[Lab 6: EDK II using EADK]
+<p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
+<br>
+
+Note:
+- Start with the packages for EADK 
+- /edk2  - AppPkg	- has directory Applications
+- /edk2 -  StdLib 	- contains the LibC libraries
+
+
+- Copy and paste directory ~/FW/LabSampleCode/SampleCApp to ~src/edk2/AppPkg/Applications/SampleCApp 
+
+---?image=/assets/images/slides/Slide74.JPG
+@title[Lab 6: EDK II using EADK 02]
+<p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
+<br>
+
+Note:
+
+- EDK II using EADK
+- Check out AppPkg/Applications/SampleCApp
+
++++
+@title[Lab 6: EDK II using EADK 02-1]
+<p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
+<span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
+
+<div class="left1">
+<span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
+<pre>
+```
+#include <stdio.h>
+   // . . .
+   int
+   main (
+     IN int Argc,
+     IN char **Argv
+   )
+   {
+      return 0;
+   }
+```
+</pre>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ><font color="yellow">.inf file</font></span>
+<pre>
+```
+[Defines]
+  INF_VERSION    = 1.25
+  BASE_NAME      = SampleCApp
+  FILE_GUID      = 4ea9…
+  MODULE_TYPE    = UEFI_APPLICATION
+  VERSION_STRING = 0.1
+  ENTRY_POINT    = ShellCEntryLib
+
+[Sources]
+  SampleCApp.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+```
+</pre>
+</div>
+
+Note:
+
+
+
+---
+@title[Lab 6 :Build and Test SampleCApp ]
+<p align="right"><span class="gold" >Lab 6 :Build and Test SampleCApp</span></p>
+<span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span><span style="font-size:0.5em" > (hint: search for "#### Sample Applications")</span>
+- <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
+<span style="font-size:0.8em" >Build AppPkg </span>
+```shell
+  bash$ build -p AppPkg/AppPkg.dsc –m AppPkg/Applications/SampleCApp/SampleCApp.inf
+```
+<span style="font-size:0.8em" >Copy the built application to the run OVMF hda-contents directory</span>
+```shell
+  bash$ cp Build/AppPkg/DEBUG_GCC5/X64/SampleCApp.efi ~/run-ovmf/hda-contents
+```
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+```shell
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+<span style="font-size:0.8em" >Run the application from the shell</span>
+```shell
+ Shell> SampleCApp
+ Shell>
+```
+<span style="font-size:0.7em" >Notice that the program will immediately unload because the main function is empty</span>
+
+Note:
+
+
+ 
+---?image=/assets/images/slides/Slide79.JPG
+<!-- .slide: data-transition="none" -->
+@title[Lab 7: With EDK II EADK]
+<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+<br>
+
+Note:
+
++++?image=/assets/images/slides/Slide80.JPG
+<!-- .slide: data-background-transition="none" -->
+<!-- .slide: data-transition="none" -->
+@title[Lab 7: With EDK II EADK 02]
+<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+
+Note:
+
+
++++?image=/assets/images/slides/Slide81.JPG
+<!-- .slide: data-background-transition="none" -->
+<!-- .slide: data-transition="none" -->
+@title[Lab 7: With EDK II EADK 03]
+<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+
+Note:
+
+
++++?image=/assets/images/slides/Slide82.JPG
+<!-- .slide: data-background-transition="none" -->
+<!-- .slide: data-transition="none" -->
+@title[Lab 7: With EDK II EADK 04]
+<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+
+Note:
+
++++
+@title[Lab 7: With EDK II EADK solution]
+<p align="right"><span class="gold" >Lab 7: Solution</span></p>
+<span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
+
+<div class="left1">
+<span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
+<pre>
+```
+#include <stdio.h>
+#include <Library/UefiBootServicesTableLib.h>
+int
+main (
+  IN int Argc,
+  IN char **Argv
+  )
+{
+   char c;
+// Lab 3
+   printf("System Table: %p \n", gST) ; 
+// Lab 4
+   puts("Press any Key and then <Enter> to continue :  ");
+   c=(char)getchar();
+ 
+// Lab 5
+   puts ("Enter text. Include a dot ('.') in a sentence then <Enter> to exit:");
+  do {
+      c=(char)getchar();
+     } while (c != '.');
+  puts ("\n");
+  return 0;
+}
+```
+</pre>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" ><font color="yellow">.inf file</font></span>
+<pre>
+```
+[Defines]
+  INF_VERSION    = 1.25
+  BASE_NAME      = SampleCApp
+  FILE_GUID      = 4ea9…
+  MODULE_TYPE    = UEFI_APPLICATION
+  VERSION_STRING = 0.1
+  ENTRY_POINT    = ShellCEntryLib
+
+[Sources]
+  SampleCApp.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+  UefiBootServicesTableLib
+```
+</pre>
+</div>
+
+Note:
+
+
+
 
 
 
