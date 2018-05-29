@@ -1100,7 +1100,7 @@ Note:
 
 
 ---?image=assets/images/binary-strings-black2.jpg
-@title[Write a Simple UEFI Application ]
+@title[Write a EADK Application  Section]
 <br><br><br><br><br><br><br>
 ### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using EADK </span>
 <span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using EADK with UEFI Application</span>
