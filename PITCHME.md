@@ -1201,10 +1201,11 @@ Note:
 - <span style="font-size:0.6em" > (hint: search for "#### Sample Applications")</span>
 - <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
 <br>
-```
+
+```php
 [Components]
 
-#### Sample Applications.
+  #### Sample Applications.
   AppPkg/Applications/Hello/Hello.inf        # No LibC includes or functions.
   AppPkg/Applications/Main/Main.inf          # Simple invocation. No other LibC functions.
   AppPkg/Applications/Enquire/Enquire.inf    #
