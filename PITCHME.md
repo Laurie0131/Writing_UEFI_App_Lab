@@ -139,6 +139,22 @@ Note:
 - In most cases, PCD entries do not have SKU enabled and have a single value associated with them. However, a SKU PCD entry may have multiple values.
 
 
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 1: Writing UEFI Applications with PCDs]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 1: Writing UEFI Applications with PCDs</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll  learn how to write UEFI applications with PCDs.</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
+
 
 
 ---?image=/assets/images/slides/Slide8.JPG
@@ -298,11 +314,22 @@ Note:
 
 
 
----?image=assets/images/binary-strings-black2.jpg
-@title[Write a Simple UEFI Application ]
-<br><br><br><br><br><br><br>
-### <span class="gold"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Write a Simple UEFI App  </span>
-<span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 2: Write a Simple UEFI Application]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 2: Write a Simple UEFI Application</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll learn how to write simple UEFI applications.</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
 
 ---
 @title[Lab 2 - Write A Simple App]
@@ -560,6 +587,7 @@ Note:
 same as slide
 
 
+
 ---?image=assets/images/binary-strings-black2.jpg
 @title[Add more Functionality Section]
 <br><br><br>
@@ -571,6 +599,22 @@ same as slide
  <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 4:&nbsp;&nbsp;</font>Wait for an Event </span>  </li>
  <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 5:&nbsp;&nbsp;</font>Create a Simple Typewriter function </span>  </li>
 </ul>
+
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 3: Print the UEFI System Table]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 3: Print the UEFI System Table</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >Add code to print the hex address of the EFI System Table pointer to the console.</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
 
 
 
@@ -701,12 +745,27 @@ Same as slide
 
 End of LAB 3
 
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 4: Waiting for an Event]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 4: Waiting for an Event</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll learn how to locate code and .chm files to help write EFI code for waiting for an event</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
 
 ---?image=/assets/images/slides/Slide47.JPG
 @title[Lab 4 : Add Wait for Event ]
 <p align="right"><span class="gold" >Lab 4 : Add Wait for Event</span></p>
 <br>
-<span style="font-size:0.8em" >Add code to make your application wait for a key press event (WaitForEvent / WaitForKey)</span>
+<span style="font-size:0.8em" >Add code to make your application wait for a key press event (`WaitForEvent` / `WaitForKey`)</span>
 <br>
 <br>
 <br>
@@ -889,6 +948,21 @@ Note:
 Same as slide
 
 
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 5: Creating a Simple Typewriter Function]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 5: Creating a Simple Typewriter Function</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you'll learn how to create a simple typewriter function that retrieves the keys you type and subsequently prints each one back to the console</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
  
 ---?image=/assets/images/slides/Slide58.JPG
 @title[Lab 5 :Create a Simple Typewriter Function]
@@ -921,9 +995,9 @@ Same as Slide
 @title[Lab 5 :Create a Simple Typewriter Function How]
 <p align="right"><span class="gold" >Lab 5 : Typewriter Function</span></p>
 <br>
-<span style="font-size:01.0em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
+<span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
 <br>
-<span style="font-size:0.9em" ><font color="cyan">How:</font></span>
+<span style="font-size:01.0em" ><font color="cyan"><b>How:</b></font></span>
 <div class="left1">
 <ol>
   <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
@@ -946,6 +1020,7 @@ Same as Slide
 ---
 @title[Lab 5 : How Hints]
 <p align="right"><span class="gold" >Lab 5 : How Process (Hints)</span></p>
+<br>
 <ul style="list-style-type:disc">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
   <ul style="list-style-type:none">
@@ -1108,6 +1183,22 @@ Note:
 <span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using EADK with UEFI Application</span>
 
 
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 6: Writing UEFI Applications with EADK]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 6:  Writing UEFI Applications with EADK</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll write an application with the same functionality as SampleApp.c using LibC from the EDK II Application Development Kit (EADK)</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
  
 ---?image=/assets/images/slides/Slide70.JPG
 @title[Lab 6: With EDK II EADK]
@@ -1247,6 +1338,21 @@ Note:
 Note:
 
 
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 7: Adding Functionality to SampleCApp]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 7:  Adding Functionality to SampleCApp</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll add functionality to SampleCApp the same as in Lab 7.5. This lab will use EADK libraries so the coding style is similar to standard C.</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
  
 ---?image=/assets/images/slides/Slide79.JPG
 <!-- .slide: data-transition="none" -->
@@ -1350,8 +1456,8 @@ Note:
 
 
 ---
-@title[Lab 6 :Build and Test SampleCApp 02]
-<p align="right"><span class="gold" >Lab 6 :Build and Test SampleCApp</span></p>
+@title[Lab 7 :Build and Test SampleCApp 02]
+<p align="right"><span class="gold" >Lab 7 :Build and Test SampleCApp</span></p>
 <span style="font-size:0.8em" >Build AppPkg </span>
 ```shell
   bash$ build -p AppPkg/AppPkg.dsc –m AppPkg/Applications/SampleCApp/SampleCApp.inf
