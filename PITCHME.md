@@ -968,7 +968,7 @@ Note:
 @title[Lab 5 :Create a Simple Typewriter Function]
 <p align="right"><span class="gold" >Lab 5 : Typewriter Function</span></p>
 <br>
-<span style="font-size:01.0em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
+<span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
 <br>
 <span style="font-size:0.9em" ><font color="cyan">Requirements:</font></span>
 <br>
@@ -976,7 +976,7 @@ Note:
 <ul>
   <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (Like Lab 4)</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
-  <li><span style="font-size:0.8em" >To exit, press “.” and  then &lt;Enter&lgt; key</span>  </li>
+  <li><span style="font-size:0.8em" >To exit, press “.” and  then &lt;Enter&gt; </span>  </li>
 </ul>
 </div>
 <div class="right1">
@@ -1003,7 +1003,7 @@ Same as Slide
   <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
   <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key to console</span>  </li>
-  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&lt; key </span>  </li>
+  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span>  </li>
 </ol>
 </div>
 <div class="right1">
