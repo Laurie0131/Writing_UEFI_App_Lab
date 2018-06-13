@@ -976,7 +976,7 @@ Note:
 <ul>
   <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (Like Lab 4)</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
-  <li><span style="font-size:0.8em" >To exit, press “.” and  then <Enter> key</span>  </li>
+  <li><span style="font-size:0.8em" >To exit, press “.” and  then &lt;Enter&lgt; key</span>  </li>
 </ul>
 </div>
 <div class="right1">
@@ -1003,7 +1003,7 @@ Same as Slide
   <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
   <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key to console</span>  </li>
-  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an `Enter` key </span>  </li>
+  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&lt; key </span>  </li>
 </ol>
 </div>
 <div class="right1">
