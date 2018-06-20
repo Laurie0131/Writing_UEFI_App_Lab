@@ -185,7 +185,26 @@ Note:
  - `bash$ build`
 </pre>
  
- 
++++
+@title[EDK II HelloWorld  App  Lab copy & paste ]
+<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<span style="font-size:0.8em" >Copy HelloWorld.inf and paste into OvmfPkg/OvmfPkgX64.dsc at the End of the file - Save </span>
+```
+[Components]
+#  . . . 
+
+# Add new modules here
+ MdeModulePkg/Application/HelloWorld/HelloWorld.inf
+
+```
+<span style="font-size:0.8em" >Build OvmfPkgX64</span>
+```
+bash$ cd ~/src/edk2
+bash$ build
+```
+
+Note:
+
  
 ---
 @title[EDK II HelloWorld  App  Lab steps]
@@ -193,7 +212,7 @@ Note:
 1. <span style="font-size:0.8em" >Copy the HelloWorld.efi to the ~run-ovmf/hda-contents directory</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .
 ```
 2. <span style="font-size:0.8em" >CD to the run-ovmf directory and run Qemu with the RunQemu.sh shell</span>
 ```shell
@@ -279,7 +298,7 @@ Note:
 
 
 1. Edit the file OvmfPkg/OvmfPkgX64.dsc
-  - After the section [PcdsFixedAtBuild], add the new line (~line 428):  
+  - After the section [PcdsFixedAtBuild], add the new line (~line 455):  
   - `[PcdsFixedAtBuild]`
   - `gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3`
 
