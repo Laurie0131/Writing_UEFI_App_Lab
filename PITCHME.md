@@ -593,7 +593,7 @@ Note:
 <br>
 <span style="font-size:0.9em" >See class files for the solution </span>
 <ul>
-  <li><span style="font-size:0.8em" >LabSampleCode/LessonB.2 </span>  </li>
+  <li><span style="font-size:0.8em" >LabSampleCode/LabSolutions/LessonB.2 </span>  </li>
   <li><span style="font-size:0.8em" >Copy the .inf and .c files to  ~src/edk2/SampleApp </span>  </li>
   <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
 </ul>
@@ -618,7 +618,8 @@ same as slide
  <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 4:&nbsp;&nbsp;</font>Wait for an Event </span>  </li>
  <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 5:&nbsp;&nbsp;</font>Create a Simple Typewriter function </span>  </li>
 </ul>
-
+<br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solutions in LabSampleCode/LabSolutions/LessonB.<i>n</i></span>
 
 ---?image=/assets/images/slides/Slide_LabSec.JPG
 @title[Lab 3: Print the UEFI System Table]
