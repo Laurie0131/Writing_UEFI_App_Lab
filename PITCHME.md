@@ -860,6 +860,13 @@ Next sub slide to copy paste from
 <br>
 <span style="font-size:0.8em" >Add the following "Lab 4" statements to SampleApp.c</span>
 ```c
+EFI_STATUS
+EFIAPI
+UefiMain (
+  IN EFI_HANDLE        ImageHandle,
+  IN EFI_SYSTEM_TABLE  *SystemTable
+  )
+{
 // Lab 4
  UINTN                      EventIndex; 
 
