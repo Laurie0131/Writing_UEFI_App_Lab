@@ -619,7 +619,8 @@ same as slide
  <li><span style="font-size:0.8em" >&nbsp;&nbsp;&nbsp;&nbsp;<font color="cyan">Lab 5:&nbsp;&nbsp;</font>Create a Simple Typewriter function </span>  </li>
 </ul>
 <br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solutions in LabSampleCode/LabSolutions/LessonB.<i>n</i></span>
+<br>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a0a0a0">Solutions in LabSampleCode/LabSolutions/LessonB.<i>n</i></font></span>
 
 ---?image=/assets/images/slides/Slide_LabSec.JPG
 @title[Lab 3: Print the UEFI System Table]
