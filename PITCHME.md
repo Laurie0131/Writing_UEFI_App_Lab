@@ -355,8 +355,8 @@ Note:
 <p align="right"><span class="gold" ><b>LAB 2</b> - Writing a Simple UEFI Application</span></p>
 <span style="font-size:0.9em"  >In this lab, you’ll learn how to write simple UEFI applications. </span>
 
-<div class="left1">
-<span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
+<div class="left">
+<span style="font-size:0.9em" ><font color="cyan">“C” file</font></span>
 <pre>
 ```
 EFI_STATUS
@@ -372,7 +372,7 @@ UefiMain (
 </pre>
 </div>
 <div class="right1">
-<span style="font-size:0.8em" ><font color="yellow">.inf file</font></span>
+<span style="font-size:0.9em" ><font color="yellow">.inf file</font></span>
 <pre>
 ```
 [Defines]
@@ -485,18 +485,18 @@ Note:
   <ul style="list-style-type:none">
      <li><span style="font-size:0.7em" >`[Components . . .]`</span>  </li>
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Add INF to components section, before build options </span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add to the end of the file SampleApp/SampleApp.inf </span>  </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add to the end of the file <span style="background-color: #101010">`SampleApp/SampleApp.inf` </span> </span> </li>
  </ul>
  <li><span style="font-size:0.8em" >2.&nbsp;&nbsp; <font color="yellow">`.INF` </font> file (SampleApp/SampleApp.inf) </span>  </li>
   <ul style="list-style-type:none">
      <li><span style="font-size:0.7em" >Packages (all depend on MdePkg)</span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[Packages]`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`MdePkg/MdePkg.dec` </span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;`[LibraryClasses]`&nbsp;&nbsp;`UefiApplicationEntryPoint`</span>  </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010">&nbsp;&nbsp;`[Packages]`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`MdePkg/MdePkg.dec` </span> </span> </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010">&nbsp;&nbsp;`[LibraryClasses]`&nbsp;&nbsp;`UefiApplicationEntryPoint`</span> </span> </li>
  </ul>
  <li><span style="font-size:0.8em" >3.&nbsp;&nbsp; <font color="yellow">`.C` </font> file - Header references File (SampleApp/SampleApp.c) </span>  </li>
   <ul style="list-style-type:none">
-     <li><span style="font-size:0.7em" >`#include <Uefi.h>`</span>  </li>
-     <li><span style="font-size:0.7em" >`#include <Library/UefiApplicationEntryPoint.h>`</span>  </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010">`#include <Uefi.h>`</span> </span> </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010">`#include <Library/UefiApplicationEntryPoint.h>`</span></span>  </li>
  </ul>
 </ul>
 
@@ -593,7 +593,7 @@ Note:
 <br>
 <span style="font-size:0.9em" >See class files for the solution </span>
 <ul>
-  <li><span style="font-size:0.8em" >LabSampleCode/LabSolutions/LessonB.2 </span>  </li>
+  <li><span style="font-size:0.8em" >. . .FW/LabSampleCode/LabSolutions/LessonB.2 </span>  </li>
   <li><span style="font-size:0.8em" >Copy the .inf and .c files to  ~src/edk2/SampleApp </span>  </li>
   <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
 </ul>
@@ -620,7 +620,7 @@ same as slide
 </ul>
 <br>
 <br>
-<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a0a0a0">Solutions in LabSampleCode/LabSolutions/LessonB.<i>n</i></font></span>
+<span style="font-size:0.7em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#a0a0a0">Solutions in .../FW/LabSampleCode/LabSolutions/LessonB.<i>n</i></font></span>
 
 ---?image=/assets/images/slides/Slide_LabSec.JPG
 @title[Lab 3: Print the UEFI System Table]
@@ -658,6 +658,7 @@ Note:
 
 Note:
 
+- "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation
 1. Search the MdePkg.chm and find that the Print function by clicking on the “Index” tab
 2. Type “Print” and double click
 3. Scroll to the top in the right window to see that the print function is in the UefiLib.h file
@@ -812,7 +813,7 @@ Note:
 <p align="right"><span class="gold" >Lab 4 : HOW?</span></p>
 <span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
 <ul>
-  <li><span style="font-size:0.8em" >Search MdePkg.chm</span> </li>
+  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span> </li>
 
   <ul style="list-style-type:disc">
     <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
@@ -1267,7 +1268,7 @@ Note:
 <p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
 <span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
 
-<div class="left1">
+<div class="left">
 <span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
 <pre>
 ```
@@ -1421,7 +1422,7 @@ Note:
 <p align="right"><span class="gold" >Lab 7: Solution</span></p>
 <span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
 
-<div class="left1">
+<div class="left">
 <span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
 <pre>
 ```
