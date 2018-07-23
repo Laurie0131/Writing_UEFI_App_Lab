@@ -143,7 +143,7 @@ Note:
 @title[Lab 1: Writing UEFI Applications with PCDs]
 <br>
 <br>
-<p align="Left"><span class="gold" ><b>Lab 1: Writing UEFI Applications with PCDs</b></span></p>
+<p align="Left"><span class="gold" >Lab 1: Writing UEFI Applications with PCDs</span></p>
 <br>
 <div class="left1">
 <span style="font-size:0.8em" >In this lab, you’ll  learn how to write UEFI applications with PCDs.</span>
@@ -188,7 +188,7 @@ Note:
 +++
 @title[EDK II HelloWorld  App  Lab copy & paste ]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
-<span style="font-size:0.8em" >Copy HelloWorld.inf and paste into OvmfPkg/OvmfPkgX64.dsc at the End of the file - Save </span>
+<p style="line-height:80%"> <span style="font-size:0.8em" >Copy HelloWorld.inf and paste into OvmfPkg/OvmfPkgX64.dsc at the End of the file - Save </span></p>
 ```
 [Components]
 #  . . . 
@@ -235,7 +235,7 @@ Same as slide
 
 ---?image=/assets/images/slides/Slide11.JPG
 @title[EDK II HelloWorld  App  Lab location]
-<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b>span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <br>
 @fa[github gp-bullet-gold]<span style="font-size:0.7em"><a href="https://github.com/tianocore/edk2/tree/master/MdeModulePkg/Application/HelloWorld"> MdeModulePkg/Application/HelloWorld </a></span>
 
@@ -458,14 +458,14 @@ Note:
 
 ---
 @title[Lab 2: Will it compile now?]
-<p align="right"><span class="gold" ><b>Lab 2: Will it compile now?</b></span></p>
+<p align="center"><span class="gold" ><b>Lab 2: Will it compile now?</b></span></p>
 <br>
 Not yet . . .
 <br>
 
-1. Need to add headers to the .C file
-2. Need to add a reference to INF from the platform DSC
-3. Need to add a few Package dependencies and libraries to the .INF
+1. Need to add headers to the .C file |
+2. Need to add a reference to INF from the platform DSC |
+3. Need to add a few Package dependencies and libraries to the .INF |
 
 
 Note:
@@ -787,7 +787,7 @@ Note:
 @title[Lab 4 : Add Wait for Event ]
 <p align="right"><span class="gold" ><b>Lab 4 : Add Wait for Event</b></span></p>
 <br>
-<span style="font-size:0.8em" >Add code to make your application wait for a key press event (`WaitForEvent` / `WaitForKey`)</span>
+<p style="line-height:80%"><span style="font-size:0.8em" >Add code to make your application wait for a key press event (`WaitForEvent` / `WaitForKey`)</span></p>
 <br>
 <br>
 <br>
@@ -813,16 +813,16 @@ Note:
 <p align="right"><span class="gold" ><b>Lab 4 : HOW?</b></span></p>
 <span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
 <ul>
-  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span> </li>
+  <li><p style="line-height:70%"><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span> </p></li>
 
   <ul style="list-style-type:disc">
     <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
-    <li><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li>
+    <li><p style="line-height:60%"><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </p></li>
    </ul>
   <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
    <ul style="list-style-type:disc">
-	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
-	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
+	<li><p style="line-height:60%"><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span></p> </li>
+	<li><p style="line-height:60%"><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </p> </li>
     </ul>
   <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font> Search the working space for `WaitForEvent` for an example</span> </li>
     <ul style="list-style-type:disc">
@@ -997,7 +997,7 @@ Note:
 @title[Lab 5 :Create a Simple Typewriter Function]
 <p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
-<span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
+<p style="line-height:80%"><span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </p></span>
 <br>
 <span style="font-size:0.9em" ><font color="cyan">Requirements:</font></span>
 <br>
@@ -1024,15 +1024,15 @@ Same as Slide
 @title[Lab 5 :Create a Simple Typewriter Function How]
 <p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
-<span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
+<p style="line-height:80%"><span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </p></span>
 <br>
 <span style="font-size:01.0em" ><font color="cyan"><b>How:</b></font></span>
 <div class="left1">
 <ol>
-  <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span>  </li>
-  <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
-  <li><span style="font-size:0.8em" >Print back each key to console</span>  </li>
-  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span>  </li>
+  <li><p style="line-height:60%"><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </p> </li>
+  <li><p style="line-height:60%"><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span> </p> </li>
+  <li><p style="line-height:60%"><span style="font-size:0.8em" >Print back each key to console</span> </p> </li>
+  <li><p style="line-height:60%"><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span> </p> </li>
 </ol>
 </div>
 <div class="right1">
@@ -1319,7 +1319,7 @@ Note:
 ---
 @title[Lab 6 : Update AppPkg.dsc ]
 <p align="right"><span class="gold" ><b>Lab 6 : Update AppPkg.dsc </b></span></p>
-<span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span><br>
+<p style="line-height:70%"><span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span></p>
 - <span style="font-size:0.6em" > (hint: search for "#### Sample Applications")</span>
 - <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
 <br>
