@@ -996,13 +996,12 @@ Note:
 <p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
 <p style="line-height:80%"><span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </p></span>
-<br>
-<span style="font-size:0.9em" ><font color="cyan">Requirements:</font></span>
+<span style="font-size:0.9em" ><font color="cyan"><b>Requirements:</b></font></span>
 <div class="left1">
 <ul style="line-height:0.8;">
-  <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (Like Lab 4)</span>  </li>
+  <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (<i>Like</i> Lab 4)</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
-  <li><span style="font-size:0.8em" >To exit, press “.” and  then &lt;Enter&gt; </span>  </li>
+  <li><span style="font-size:0.8em" >To Exit, press  “.” (DOT) and  then &lt;Enter&gt; </span>  </li>
 </ul>
 </div>
 <div class="right1">
@@ -1046,14 +1045,14 @@ Same as Slide
 @title[Lab 5 : How Hints]
 <p align="right"><span class="gold" ><b>Lab 5 : How Process (Hints)</b></span></p>
 <br>
-<ul style="list-style-type:disc">
+<ul style="line-height:0.8;">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #1f1c18">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li>
   </ul>
   <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY`&nbsp;&nbsp; ~ ln 399</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #1f1c18">`OUT EFI_INPUT_KEY  *Key,`</span></font></span></li>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`OUT EFI_INPUT_KEY  *Key,`</span></font></span></li>
   </ul>
   <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
    <ul style="list-style-type:disc">
