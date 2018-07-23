@@ -810,21 +810,21 @@ Note:
 ---
 @title[Lab 4 : How to locate functions ]
 <p align="right"><span class="gold" ><b>Lab 4 : HOW?</b></span></p>
-<span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
+<span style="font-size:0.9em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
 <ul style="line-height:0.8;">
-  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - Note: "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span></li><br>
+  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - Note: "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span></li>
   <ul style="list-style-type:disc">
-    <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
-    <li><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li>
+    <li><span style="font-size:0.65em" >Locate `WaitForEvent` in Boot Services</span> </li>
+    <li><span style="font-size:0.65em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li><br>
    </ul>
   <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
    <ul style="list-style-type:disc">
-	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
-	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
+	<li><span style="font-size:0.65em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
+	<li><span style="font-size:0.65em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
     </ul>
   <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font><br> Search the working space for `WaitForEvent` for an example</span> </li>
     <ul style="list-style-type:disc">
-	<li><span style="font-size:0.7em" >One can be found in <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">MdePkg/Library/UefiLib/Console.c</a>  ~ ln 569: </span> </li>
+	<li><span style="font-size:0.65em" >One can be found in <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">MdePkg/Library/UefiLib/Console.c</a>  ~ ln 569: </span> </li>
     </ul>
    
 </ul> 
@@ -1027,7 +1027,7 @@ Same as Slide
   <li><span style="font-size:0.7em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </li>
   <li><span style="font-size:0.7em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
   <li><span style="font-size:0.7em" >Print back each key to console</span> </li>
-  <li><span style="font-size:0.7em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span>  </li>
+  <li><span style="font-size:0.7em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  </span>  </li>
 </ol>
 </div>
 <div class="right1">
@@ -1044,20 +1044,19 @@ Same as Slide
 ---
 @title[Lab 5 : How Hints]
 <p align="right"><span class="gold" ><b>Lab 5 : How Process (Hints)</b></span></p>
-<br>
 <ul style="line-height:0.8;">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li><br>
   </ul>
   <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY`&nbsp;&nbsp; ~ ln 399</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`OUT EFI_INPUT_KEY  *Key,`</span></font></span></li>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`OUT EFI_INPUT_KEY  *Key,`</span></font></span></li><br>
   </ul>
   <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
    <ul style="list-style-type:disc">
       <li><span style="font-size:0.7em" >Use MdePkg.chm to find `ZeroMem()` function</span>  </li>
-      <li><span style="font-size:0.7em" >Use `ZeroMem()` on your variable buffer “`Key`” of type `EFI_INPUT_KEY`</span>  </li>
+      <li><span style="font-size:0.7em" >Use `ZeroMem()` on your variable buffer “`Key`” of type `EFI_INPUT_KEY`</span>  </li><br>
    </ul> 
   <li><span style="font-size:0.8em" >Use Boolean flag “`ExitLoop`” to exit your loop once the user enters a DOT “.” character.</span>  </li>
 </ul>
