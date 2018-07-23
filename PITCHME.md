@@ -811,8 +811,8 @@ Note:
 @title[Lab 4 : How to locate functions ]
 <p align="right"><span class="gold" ><b>Lab 4 : HOW?</b></span></p>
 <span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
-<ul style="line-height:0.7;">
-  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span></li>
+<ul style="line-height:0.8;">
+  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - Note: "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span></li><br>
   <ul style="list-style-type:disc">
     <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
     <li><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li>
@@ -822,7 +822,7 @@ Note:
 	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
 	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
     </ul>
-  <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font> Search the working space for `WaitForEvent` for an example</span> </li>
+  <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font><br> Search the working space for `WaitForEvent` for an example</span> </li>
     <ul style="list-style-type:disc">
 	<li><span style="font-size:0.7em" >One can be found in <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">MdePkg/Library/UefiLib/Console.c</a>  ~ ln 569: </span> </li>
     </ul>
@@ -998,9 +998,8 @@ Note:
 <p style="line-height:80%"><span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </p></span>
 <br>
 <span style="font-size:0.9em" ><font color="cyan">Requirements:</font></span>
-<br>
 <div class="left1">
-<ul style="line-height:0.7;">
+<ul style="line-height:0.8;">
   <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (Like Lab 4)</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
   <li><span style="font-size:0.8em" >To exit, press “.” and  then &lt;Enter&gt; </span>  </li>
@@ -1023,14 +1022,13 @@ Same as Slide
 <p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
 <p style="line-height:80%"><span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </p></span>
-<br>
 <span style="font-size:01.0em" ><font color="cyan"><b>How:</b></font></span>
 <div class="left1">
-<ol style="line-height:0.7;">
-  <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </li>
-  <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
-  <li><span style="font-size:0.8em" >Print back each key to console</span> </li>
-  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span>  </li>
+<ol style="line-height:0.8;">
+  <li><span style="font-size:0.7em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </li>
+  <li><span style="font-size:0.7em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
+  <li><span style="font-size:0.7em" >Print back each key to console</span> </li>
+  <li><span style="font-size:0.7em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span>  </li>
 </ol>
 </div>
 <div class="right1">
