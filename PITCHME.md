@@ -463,9 +463,9 @@ Note:
 Not yet . . .
 <br>
 
-1. Need to add headers to the .C file |
-2. Need to add a reference to INF from the platform DSC |
-3. Need to add a few Package dependencies and libraries to the .INF |
+1. Need to add headers to the .C file 
+2. Need to add a reference to INF from the platform DSC 
+3. Need to add a few Package dependencies and libraries to the .INF 
 
 
 Note:
@@ -792,7 +792,6 @@ Note:
 <br>
 <br>
 <br>
-<br>
 <ul>
   <li><span style="font-size:0.8em" >Where are these functions located?</span> </li>
   <li><span style="font-size:0.8em" >What else can you do with the key press? </span> </li>
@@ -812,17 +811,16 @@ Note:
 @title[Lab 4 : How to locate functions ]
 <p align="right"><span class="gold" ><b>Lab 4 : HOW?</b></span></p>
 <span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
-<ul>
-  <li><p style="line-height:70%"><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span> </p></li>
-
+<ul style="line-height:0.7;">
+  <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span></li>
   <ul style="list-style-type:disc">
     <li><span style="font-size:0.7em" >Locate `WaitForEvent` in Boot Services</span> </li>
-    <li><p style="line-height:60%"><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </p></li>
+    <li><span style="font-size:0.7em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li>
    </ul>
   <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
    <ul style="list-style-type:disc">
-	<li><p style="line-height:60%"><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span></p> </li>
-	<li><p style="line-height:60%"><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </p> </li>
+	<li><span style="font-size:0.7em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
+	<li><span style="font-size:0.7em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
     </ul>
   <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font> Search the working space for `WaitForEvent` for an example</span> </li>
     <ul style="list-style-type:disc">
@@ -1002,7 +1000,7 @@ Note:
 <span style="font-size:0.9em" ><font color="cyan">Requirements:</font></span>
 <br>
 <div class="left1">
-<ul>
+<ul style="line-height:0.7;">
   <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (Like Lab 4)</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
   <li><span style="font-size:0.8em" >To exit, press “.” and  then &lt;Enter&gt; </span>  </li>
@@ -1028,11 +1026,11 @@ Same as Slide
 <br>
 <span style="font-size:01.0em" ><font color="cyan"><b>How:</b></font></span>
 <div class="left1">
-<ol>
-  <li><p style="line-height:60%"><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </p> </li>
-  <li><p style="line-height:60%"><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span> </p> </li>
-  <li><p style="line-height:60%"><span style="font-size:0.8em" >Print back each key to console</span> </p> </li>
-  <li><p style="line-height:60%"><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span> </p> </li>
+<ol style="line-height:0.7;">
+  <li><span style="font-size:0.8em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </li>
+  <li><span style="font-size:0.8em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
+  <li><span style="font-size:0.8em" >Print back each key to console</span> </li>
+  <li><span style="font-size:0.8em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  is entered</span>  </li>
 </ol>
 </div>
 <div class="right1">
