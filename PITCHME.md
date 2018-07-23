@@ -63,7 +63,7 @@ Note:
 ---?image=/assets/images/slides/Slide4.JPG
 @title[EDK II PCD’s Purpose and Goals]
 <br>
-<p align="center"><span class="gold" >EDK II PCD’s Purpose and Goals</span></p>
+<p align="center"><span class="gold" ><b>EDK II PCD’s Purpose and Goals</b></span></p>
 @fa[github gp-bullet-gold]<span style="font-size:0.7em">&nbsp;&nbsp;Documentaton :  <a href="https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Universal/PCD/Dxe/Pcd.inf"> MdeModulePkg/Universal/PCD/Dxe/Pcd.inf  </a> </span>
 <br>
 <div class="left1">
@@ -143,7 +143,7 @@ Note:
 @title[Lab 1: Writing UEFI Applications with PCDs]
 <br>
 <br>
-<p align="Left"><span class="gold" >Lab 1: Writing UEFI Applications with PCDs</span></p>
+<p align="Left"><span class="gold" ><b>Lab 1: Writing UEFI Applications with PCDs</b></span></p>
 <br>
 <div class="left1">
 <span style="font-size:0.8em" >In this lab, you’ll  learn how to write UEFI applications with PCDs.</span>
@@ -159,7 +159,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide8.JPG
 @title[EDK II HelloWorld  App  Lab ]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/2">Lab Setup </a></span>
 
 Note:
@@ -187,7 +187,7 @@ Note:
  
 +++
 @title[EDK II HelloWorld  App  Lab copy & paste ]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <span style="font-size:0.8em" >Copy HelloWorld.inf and paste into OvmfPkg/OvmfPkgX64.dsc at the End of the file - Save </span>
 ```
 [Components]
@@ -208,7 +208,7 @@ Note:
  
 ---
 @title[EDK II HelloWorld  App  Lab steps]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 1. <span style="font-size:0.8em" >Copy the HelloWorld.efi to the ~run-ovmf/hda-contents directory</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
@@ -235,7 +235,7 @@ Same as slide
 
 ---?image=/assets/images/slides/Slide11.JPG
 @title[EDK II HelloWorld  App  Lab location]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b>span></p>
 <br>
 @fa[github gp-bullet-gold]<span style="font-size:0.7em"><a href="https://github.com/tianocore/edk2/tree/master/MdeModulePkg/Application/HelloWorld"> MdeModulePkg/Application/HelloWorld </a></span>
 
@@ -246,7 +246,7 @@ First let's look at the source code for the HellowWorld Application
 
 ---
 @title[EDK II HelloWorld  App  Lab code]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Lab  </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <span style="font-size:01.0em" >Source: <font color="yellow">Helloworld.c</font></span>
 ```C
 EFI_STATUS
@@ -286,7 +286,7 @@ Source from Helloworld.c
 
 ---?image=/assets/images/slides/Slide14.JPG
 @title[EDK II HelloWorld  App  Lab solution]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Solution </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
 
 
 Note:
@@ -312,7 +312,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide16.JPG
 @title[EDK II HelloWorld  App  Lab solution 02]
-<p align="right"><span class="gold" >EDK II HelloWorld  App  Solution </span></p>
+<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
 
 
 Note:
@@ -352,7 +352,7 @@ Note:
 
 ---
 @title[Lab 2 - Write A Simple App]
-<p align="right"><span class="gold" ><b>LAB 2</b> - Writing a Simple UEFI Application</span></p>
+<p align="right"><span class="gold" ><b>LAB 2 - Writing a Simple UEFI Application</b></span></p>
 <span style="font-size:0.9em"  >In this lab, you’ll learn how to write simple UEFI applications. </span>
 
 <div class="left">
@@ -401,7 +401,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide20.JPG
 @title[Lab 2: Application Lab –start with .c and .inf template]
-<p align="right"><span class="gold" >Application Lab –start with .c and .inf template</span></p>
+<p align="right"><span class="gold" ><b>Application Lab –start with .c and .inf template</b></span></p>
 
 Note:
 
@@ -414,7 +414,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide22.JPG
 @title[Lab 2: Sample Application INF file]
-<p align="right"><span class="gold" >Lab 2: Sample Application INF file</span></p>
+<p align="right"><span class="gold" ><b>Lab 2: Sample Application INF file</b></span></p>
 <br>
 <br>
 <br>
@@ -437,7 +437,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide24.JPG
 @title[Lab 2: Sample Application C file]
-<p align="right"><span class="gold" >Lab 2: Sample Application ‘C’ file</span></p>
+<p align="right"><span class="gold" ><b>Lab 2: Sample Application ‘C’ file</b></span></p>
 
 Note:
 
@@ -458,7 +458,7 @@ Note:
 
 ---
 @title[Lab 2: Will it compile now?]
-<p align="right"><span class="gold" >Lab 2: Will it compile now?</span></p>
+<p align="right"><span class="gold" ><b>Lab 2: Will it compile now?</b></span></p>
 <br>
 Not yet . . .
 <br>
@@ -478,7 +478,7 @@ Note:
 
 ---
 @title[Lab 2: Application Lab – Update Files]
-<p align="right"><span class="gold" >Lab 2: Application Lab – Update Files</span></p>
+<p align="right"><span class="gold" ><b>Lab 2: Application Lab – Update Files</b></span></p>
 <br>
 <ul style="list-style-type:none">
  <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow">`.DSC` </font> (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
@@ -512,7 +512,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide28.JPG
 @title[Lab 2: Lab cont. Solution ]
-<p align="right"><span class="gold" >Lab 2: Lab cont. Solution </span></p>
+<p align="right"><span class="gold" ><b>Lab 2: Lab cont. Solution </b></span></p>
 
 
 Note:
@@ -530,7 +530,7 @@ Note:
 
 ---
 @title[Lab 2: Will it compile now? ]
-<p align="right"><span class="gold" >Lab 2 : Will it compile now?</span></p>
+<p align="right"><span class="gold" ><b>Lab 2 : Will it compile now?</b></span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```shell
   bash$ build
@@ -568,7 +568,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide32.JPG
 @title[Possible Build Errors ]
-<p align="right"><span class="gold" >Possible Build Errors</span></p>
+<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 
 Note:
 
@@ -576,20 +576,20 @@ Note:
 
 ---?image=/assets/images/slides/Slide34.JPG
 @title[Possible Build Errors 02 ]
-<p align="right"><span class="gold" >Possible Build Errors</span></p>
+<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 
 Note:
 
 
 ---?image=/assets/images/slides/Slide36.JPG
 @title[Possible Build Errors 03]
-<p align="right"><span class="gold" >Possible Build Errors</span></p>
+<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 
 Note:
 
 ---
 @title[Lab 2: If there are Build Errors ]
-<p align="right"><span class="gold" >Lab 2: If there are build errors …</span></p>
+<p align="right"><span class="gold" ><b>Lab 2: If there are build errors …</b></span></p>
 <br>
 <span style="font-size:0.9em" >See class files for the solution </span>
 <ul>
@@ -641,7 +641,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide40.JPG
 @title[Lab 3 : Add System Table Code]
-<p align="right"><span class="gold" >Lab 3 : Add System Table Code</span></p>
+<p align="right"><span class="gold" ><b>Lab 3 : Add System Table Code</b></span></p>
 
 Note:
 
@@ -654,7 +654,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide42.JPG
 @title[Locating the “Print” Function ]
-<p align="right"><span class="gold" >Lab 3 : Locating the `Print()` Function </span></p>
+<p align="right"><span class="gold" ><b>Lab 3 : Locating the `Print()` Function </b></span></p>
 
 Note:
 
@@ -668,7 +668,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide44.JPG
 @title[Modifying .C & .INF Files ]
-<p align="right"><span class="gold" >Lab 3 : Modifying .C & .INF Files</span></p>
+<p align="right"><span class="gold" ><b>Lab 3 : Modifying .C & .INF Files</b></span></p>
 
 Note:
 
@@ -699,7 +699,7 @@ UefiMain (
  
 +++
 @title[Modifying .C & .INF Files 02 ]
-<p align="right"><span class="gold" >Lab 3 : Modifying .C & .INF Files</span></p>
+<p align="right"><span class="gold" ><b>Lab 3 : Modifying .C & .INF Files</b></span></p>
 
 - <span style="font-size:0.8em" >SampleApp.c</span>
 
@@ -738,7 +738,7 @@ Note:
 
 ---
 @title[Build and Test SampleApp]
-<p align="right"><span class="gold" >Lab 3 : Build and Test SampleApp</span></p>
+<p align="right"><span class="gold" ><b>Lab 3 : Build and Test SampleApp</b></span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```shell
   bash$ build
@@ -785,7 +785,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide47.JPG
 @title[Lab 4 : Add Wait for Event ]
-<p align="right"><span class="gold" >Lab 4 : Add Wait for Event</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Add Wait for Event</b></span></p>
 <br>
 <span style="font-size:0.8em" >Add code to make your application wait for a key press event (`WaitForEvent` / `WaitForKey`)</span>
 <br>
@@ -810,7 +810,7 @@ Note:
 
 ---
 @title[Lab 4 : How to locate functions ]
-<p align="right"><span class="gold" >Lab 4 : HOW?</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : HOW?</b></span></p>
 <span style="font-size:0.8em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
 <ul>
   <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span> </li>
@@ -846,7 +846,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide50.JPG
 @title[Lab 4 :Update the C File for WaitForKey ]
-<p align="right"><span class="gold" >Lab 4 : Update the C File for `WaitForKey`</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Update the C File for `WaitForKey`</b></span></p>
 <br>
 
 
@@ -857,7 +857,7 @@ Next sub slide to copy paste from
 
 +++
 @title[Lab 4 :Update the C File for WaitForKey 02 ]
-<p align="right"><span class="gold" >Lab 4 : Update the C File for WaitForKey</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Update the C File for WaitForKey</b></span></p>
 <br>
 <span style="font-size:0.8em" >Add the following "Lab 4" statements to SampleApp.c</span>
 ```c
@@ -883,7 +883,7 @@ UefiMain (
  
 ---?image=/assets/images/slides/Slide53.JPG
 @title[Lab 4 :Test Compile ]
-<p align="right"><span class="gold" >Lab 4 :Test Compile</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 :Test Compile</b></span></p>
 <br>
 
 
@@ -901,7 +901,7 @@ Note:
  
 ---?image=/assets/images/slides/Slide55.JPG
 @title[Lab 4 : Update SampleApp.c for gBS & gST ]
-<p align="right"><span class="gold" >Lab 4 : Update for `gBS` & `gST`</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Update for `gBS` & `gST`</b></span></p>
 <br>
 
 Note:
@@ -911,7 +911,7 @@ Note:
 
 +++
 @title[Lab 4 : Update SampleApp.c for gBS & gST 02]
-<p align="right"><span class="gold" >Lab 4 : Update for `gBS` & `gST`</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Update for `gBS` & `gST`</b></span></p>
 <span style="font-size:0.8em" >SampleApp.c Should have the following for Lab 4: </span>
 
 ```C++
@@ -946,7 +946,7 @@ Note:
 
 ---
 @title[Lab 4 : Build and Test SampleApp ]
-<p align="right"><span class="gold" >Lab 4 : Build and Test SampleApp</span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Build and Test SampleApp</b></span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```shell
   bash$ build
@@ -995,7 +995,7 @@ Note:
  
 ---?image=/assets/images/slides/Slide58.JPG
 @title[Lab 5 :Create a Simple Typewriter Function]
-<p align="right"><span class="gold" >Lab 5 : Typewriter Function</span></p>
+<p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
 <span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
 <br>
@@ -1022,7 +1022,7 @@ Same as Slide
  
 ---?image=/assets/images/slides/Slide58.JPG
 @title[Lab 5 :Create a Simple Typewriter Function How]
-<p align="right"><span class="gold" >Lab 5 : Typewriter Function</span></p>
+<p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
 <span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </span>
 <br>
@@ -1048,7 +1048,7 @@ Same as Slide
  
 ---
 @title[Lab 5 : How Hints]
-<p align="right"><span class="gold" >Lab 5 : How Process (Hints)</span></p>
+<p align="right"><span class="gold" ><b>Lab 5 : How Process (Hints)</b></span></p>
 <br>
 <ul style="list-style-type:disc">
   <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
@@ -1074,7 +1074,7 @@ same as slide
  
 ---?image=/assets/images/slides/Slide62_1.JPG
 @title[Lab 5 :Typewriter Function Solution]
-<p align="right"><span class="gold" >Lab 5 : Solution</span></p>
+<p align="right"><span class="gold" ><b>Lab 5 : Solution</b></span></p>
 <br>
 
 Note:
@@ -1083,7 +1083,7 @@ Copy and paste from the following sub slide
 
 +++
 @title[Lab 5 :Typewriter Function Solution]
-<p align="right"><span class="gold" >Lab 5 :  Solution</span></p>
+<p align="right"><span class="gold" ><b>Lab 5 :  Solution</b></span></p>
 <span style="font-size:0.8em" >SampleApp.c Should have the following for Lab 5: </span>
 
 ```C++
@@ -1144,7 +1144,7 @@ Same as slide
 
 ---
 @title[Lab 5 :Build and Test SampleApp ]
-<p align="right"><span class="gold" >Lab 5 :Build and Test SampleApp</span></p>
+<p align="right"><span class="gold" ><b>Lab 5 :Build and Test SampleApp</b></span></p>
 <span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```shell
   bash$ build
@@ -1180,7 +1180,7 @@ End of Lab 5
  
 ---?image=/assets/images/slides/Slide67.JPG
 @title[Bonus Lab :Open Protocol example]
-<p align="right"><span class="gold" >Bonus Exercise: Open Protocol Example</span></p>
+<p align="right"><span class="gold" ><b>Bonus Exercise: Open Protocol Example</b></span></p>
 <br>
 
 Note:
@@ -1231,7 +1231,7 @@ Note:
  
 ---?image=/assets/images/slides/Slide70.JPG
 @title[Lab 6: With EDK II EADK]
-<p align="right"><span class="gold" >Lab 6: With EDK II EADK</span></p>
+<p align="right"><span class="gold" ><b>Lab 6: With EDK II EADK</b></span></p>
 <br>
 
 Note:
@@ -1242,7 +1242,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide72.JPG
 @title[Lab 6: EDK II using EADK]
-<p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
+<p align="right"><span class="gold" ><b>Lab 6: EDK II using EADK</b></span></p>
 <br>
 
 Note:
@@ -1255,7 +1255,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide74.JPG
 @title[Lab 6: EDK II using EADK 02]
-<p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
+<p align="right"><span class="gold" ><b>Lab 6: EDK II using EADK</b></span></p>
 <br>
 
 Note:
@@ -1265,7 +1265,7 @@ Note:
 
 +++
 @title[Lab 6: EDK II using EADK 02-1]
-<p align="right"><span class="gold" >Lab 6: EDK II using EADK</span></p>
+<p align="right"><span class="gold" ><b>Lab 6: EDK II using EADK</b></span></p>
 <span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
 
 <div class="left">
@@ -1318,7 +1318,7 @@ Note:
 
 ---
 @title[Lab 6 : Update AppPkg.dsc ]
-<p align="right"><span class="gold" >Lab 6 : Update AppPkg.dsc </span></p>
+<p align="right"><span class="gold" ><b>Lab 6 : Update AppPkg.dsc </b></span></p>
 <span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span><br>
 - <span style="font-size:0.6em" > (hint: search for "#### Sample Applications")</span>
 - <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
@@ -1343,7 +1343,7 @@ Note:
 
 ---
 @title[Lab 6 :Build and Test SampleCApp ]
-<p align="right"><span class="gold" >Lab 6 :Build and Test SampleCApp</span></p>
+<p align="right"><span class="gold" ><b>Lab 6 :Build and Test SampleCApp</b></span></p>
 <span style="font-size:0.8em" >Build AppPkg </span>
 ```shell
   bash$ build -p AppPkg/AppPkg.dsc –m AppPkg/Applications/SampleCApp/SampleCApp.inf
@@ -1371,7 +1371,7 @@ Note:
 @title[Lab 7: Adding Functionality to SampleCApp]
 <br>
 <br>
-<p align="Left"><span class="gold" >Lab 7:  Adding Functionality to SampleCApp</span></p>
+<p align="Left"><span class="gold" ><b>Lab 7:  Adding Functionality to SampleCApp</b></span></p>
 <br>
 <div class="left1">
 <span style="font-size:0.8em" >In this lab, you’ll add functionality to SampleCApp the same as in Lab 7.5. This lab will use EADK libraries so the coding style is similar to standard C.</span>
@@ -1386,7 +1386,7 @@ Note:
 ---?image=/assets/images/slides/Slide79.JPG
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK]
-<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+<p align="right"><span class="gold" ><b>Lab 7: Add the same functionally from Lab 5</b></span></p>
 <br>
 
 Note:
@@ -1395,7 +1395,7 @@ Note:
 <!-- .slide: data-background-transition="none" -->
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK 02]
-<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+<p align="right"><span class="gold" ><b>Lab 7: Add the same functionally from Lab 5</b></span></p>
 
 Note:
 
@@ -1404,7 +1404,7 @@ Note:
 <!-- .slide: data-background-transition="none" -->
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK 03]
-<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+<p align="right"><span class="gold" ><b>Lab 7: Add the same functionally from Lab 5</b></span></p>
 
 Note:
 
@@ -1413,13 +1413,13 @@ Note:
 <!-- .slide: data-background-transition="none" -->
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK 04]
-<p align="right"><span class="gold" >Lab 7: Add the same functionally from Lab 5</span></p>
+<p align="right"><span class="gold" ><b>Lab 7: Add the same functionally from Lab 5</b></span></p>
 
 Note:
 
 +++
 @title[Lab 7: With EDK II EADK solution]
-<p align="right"><span class="gold" >Lab 7: Solution</span></p>
+<p align="right"><span class="gold" ><b>Lab 7: Solution</b></span></p>
 <span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
 
 <div class="left">
@@ -1486,7 +1486,7 @@ Note:
 
 ---
 @title[Lab 7 :Build and Test SampleCApp 02]
-<p align="right"><span class="gold" >Lab 7 :Build and Test SampleCApp</span></p>
+<p align="right"><span class="gold" ><b>Lab 7 :Build and Test SampleCApp</b></span></p>
 <span style="font-size:0.8em" >Build AppPkg </span>
 ```shell
   bash$ build -p AppPkg/AppPkg.dsc –m AppPkg/Applications/SampleCApp/SampleCApp.inf
