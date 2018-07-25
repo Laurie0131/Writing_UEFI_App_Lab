@@ -372,7 +372,7 @@ UefiMain (
 </pre>
 
 <ul style="line-height:0.8;">
-  <li><span style="font-size:0.7em" >What goes into a Simplest “C”</span></li>
+  <li><span style="font-size:0.7em" >What goes into the Simplest “C”</span></li>
   <li><span style="font-size:0.7em" >Start with what should go into the Simplest .INF file</span></li>
 </ul>  
 </div>
@@ -642,7 +642,7 @@ Note:
 <span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
 ```shell
   bash$ cd ~/run-ovmf
-  bash$ cp cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
 ```
 <div class="left1">
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
@@ -671,7 +671,7 @@ Note:
 <span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf 	</span>
 ```shell
   bash$ cd ~/run-ovmf
-  bash$ cp cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
+  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
 ```
 <div class="left1">
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
