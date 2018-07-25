@@ -531,7 +531,8 @@ Note:
 ---
 @title[Lab 2: Will it compile now? ]
 <p align="right"><span class="gold" ><b>Lab 2 : Will it compile now?</b></span></p>
-<p><span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2 dir </span></p>
+<p style="line-height:90%"><span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2 dir </span></p>
+
 ```shell
   bash$ build -D BUILD_NEW_SHELL
 ```
@@ -646,8 +647,7 @@ Note:
  bash$ . RunQemu.sh
 ```
 </pre>
-<span style="font-size:0.8em" >Run the application from the shell</span>
-<p style="line-height:60%"><span style="font-size:0.7em" >Check the Shell Version with the “`Ver`” command</span></p>
+<p style="line-height:60%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command</span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -663,7 +663,7 @@ Note:
 ```shell
   bash$ build -D BUILD_NEW_SHELL
 ```
-<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
+<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf 	</span>
 ```shell
   bash$ cd ~/run-ovmf
   bash$ cp cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
@@ -676,8 +676,7 @@ Note:
  bash$ . RunQemu.sh
 ```
 </pre>
-<span style="font-size:0.8em" >Run the application from the shell</span>
-<p style="line-height:60%"><span style="font-size:0.7em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
+<p style="line-height:60%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -688,13 +687,13 @@ Note:
 ---?image=/assets/images/slides2/Slide30.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
-<p style="line-height:70%"><span style="font-size:0.8em" >Edit the file `~/src/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
-Change the `DEFINE BUILD_NEW_SHELL = FALSE` to “`TRUE`” </span><span style="font-size:0.5em" >(appx. Line 44)</span></p>
-<span style="font-size:0.8em" >Build again</span>
+<p style="line-height:80%"><span style="font-size:0.8em" >Edit the file `~/src/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
+Change the `DEFINE BUILD_NEW_SHELL = FALSE` to “`TRUE`” </span><span style="font-size:0.5em" ><br>(appx. Line 44)</span></p>
+<span style="font-size:0.8em" >Build again (no `-D` )</span>
 ```shell
-  bash$ build -D BUILD_NEW_SHELL
+  bash$ build 
 ```
-<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
+<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf  & Rename to bios.bin	</span>
 
 <div class="left1">
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
