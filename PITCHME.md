@@ -310,17 +310,17 @@ Note:
   - `bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .`
 
 
----?image=/assets/images/slides/Slide16.JPG
+---?image=/assets/images/slides2/Slide13.JPG
 @title[EDK II HelloWorld  App  Lab solution 02]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
 
 
 Note:
-5. Run Qemu
+4. Run Qemu
   - `bash$ cd ~/run-ovmf`
   - ` bash$ . RunQemu.sh`
 
-6. At the Shell prompt
+5. At the Shell prompt
   - `Shell> Helloworld`
   - `UEFI Hello World!`
   - `UEFI Hello World!`
@@ -619,7 +619,7 @@ Ensure the SampleApp.inf BaseName is SampleApp
 <p align="Left"><span class="gold" >Lab 2.1: Build Switches</span></p>
 <br>
 <div class="left1">
-<span style="font-size:0.8em" >In this lab, you’ll remove the build switch `BUILD_NEW_SHELL` to be always `TRUE`</span>
+<span style="font-size:0.8em" >In this lab, you’ll change the build switch `BUILD_NEW_SHELL` to be always `TRUE`</span>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -647,7 +647,7 @@ Note:
  bash$ . RunQemu.sh
 ```
 </pre>
-<p style="line-height:70%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command</span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command</span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -676,7 +676,7 @@ Note:
  bash$ . RunQemu.sh
 ```
 </pre>
-<p style="line-height:70%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -693,17 +693,17 @@ Change the `DEFINE BUILD_NEW_SHELL = FALSE` to `TRUE` </span><span style="font-s
 ```shell
   bash$ build 
 ```
-<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf  & Rename to bios.bin	</span>
+<span style="font-size:0.8em" >Copy  `OVMF.fd`  to `~/run-ovmf`  & Rename to `bios.bin`	</span>
 
 <div class="left1">
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 <pre>
 ```
- bash$ cd ~/run-ovmf
- bash$ . RunQemu.sh
+  bash$ cd ~/run-ovmf
+  bash$ . RunQemu.sh
 ```
 </pre>
-<p style="line-height:70%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command </span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command </span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
