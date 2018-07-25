@@ -531,7 +531,7 @@ Note:
 ---
 @title[Lab 2: Will it compile now? ]
 <p align="right"><span class="gold" ><b>Lab 2 : Will it compile now?</b></span></p>
-<span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2 dir </span>
+<p><span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2 dir </span></p>
 ```shell
   bash$ build -D BUILD_NEW_SHELL
 ```
@@ -685,7 +685,7 @@ Note:
 
 Note:
 
----?image=/assets/images/slides2/Slide31.JPG
+---?image=/assets/images/slides2/Slide30.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 <p style="line-height:70%"><span style="font-size:0.8em" >Edit the file `~/src/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
