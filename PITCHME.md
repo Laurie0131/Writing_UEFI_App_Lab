@@ -372,10 +372,9 @@ UefiMain (
 </pre>
 
 <ul style="line-height:0.8;">
-
-</ul>
   <li><span style="font-size:0.7em" >What goes into a Simplest “C”</span></li>
   <li><span style="font-size:0.7em" >Start with what should go into the Simplest .INF file</span></li>
+</ul>  
 </div>
 <div class="right1">
 <span style="font-size:0.9em" ><font color="yellow">.inf file</font></span>
