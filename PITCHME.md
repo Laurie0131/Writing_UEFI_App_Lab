@@ -550,7 +550,7 @@ Note:
 ```shell
  Shell> SampleApp
 ```
-<p style="line-height:60%"><span style="font-size:0.7em" >Notice that the program will immediately unload because the main function is empty</span></p>
+<p style="line-height:70%"><span style="font-size:0.8em" >Notice that the program will immediately unload because the main function is empty</span></p>
 
 Note:
 
@@ -647,7 +647,7 @@ Note:
  bash$ . RunQemu.sh
 ```
 </pre>
-<p style="line-height:60%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command</span></p>
+<p style="line-height:70%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command</span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -676,7 +676,7 @@ Note:
  bash$ . RunQemu.sh
 ```
 </pre>
-<p style="line-height:60%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
+<p style="line-height:70%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -688,8 +688,8 @@ Note:
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 <p style="line-height:80%"><span style="font-size:0.8em" >Edit the file `~/src/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
-Change the `DEFINE BUILD_NEW_SHELL = FALSE` to “`TRUE`” </span><span style="font-size:0.5em" ><br>(appx. Line 44)</span></p>
-<span style="font-size:0.8em" >Build again (no `-D` )</span>
+Change the `DEFINE BUILD_NEW_SHELL = FALSE` to `TRUE` </span><span style="font-size:0.45em" >(<i>Line 44</i>)</span></p>
+<span style="font-size:0.8em" >Build again (<b>no</b> `-D`  switch)</span>
 ```shell
   bash$ build 
 ```
@@ -703,8 +703,7 @@ Change the `DEFINE BUILD_NEW_SHELL = FALSE` to “`TRUE`” </span><span style="
  bash$ . RunQemu.sh
 ```
 </pre>
-<span style="font-size:0.8em" >Run the application from the shell</span>
-<p style="line-height:60%"><span style="font-size:0.7em" >Check the Shell Version with the “`Ver`” command </span></p>
+<p style="line-height:70%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command </span></p>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
