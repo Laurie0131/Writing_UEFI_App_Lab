@@ -157,7 +157,7 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide8.JPG
+---?image=/assets/images/slides2/Slide7.JPG
 @title[EDK II HelloWorld  App  Lab ]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/2">Lab Setup </a></span>
@@ -182,7 +182,7 @@ Note:
 
 - Build the OvmfPkgX64 from Terminal Prompt (Cnt-Alt-T)
  - `bash$ cd ~/src/edk2`
- - `bash$ build`
+ - `bash$ build -D BUILD_NEW_SHELL`
 </pre>
  
 +++
@@ -200,7 +200,7 @@ Note:
 <span style="font-size:0.8em" >Build OvmfPkgX64</span>
 ```
 bash$ cd ~/src/edk2
-bash$ build
+bash$ build -D BUILD_NEW_SHELL
 ```
 
 Note:
@@ -284,7 +284,7 @@ Source from Helloworld.c
 
 
 
----?image=/assets/images/slides/Slide14.JPG
+---?image=/assets/images/slides2/Slide12.JPG
 @title[EDK II HelloWorld  App  Lab solution]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
 
@@ -303,7 +303,7 @@ Note:
   - `gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3`
 
 2. Re-Build – Cd to ~/src/edk2 dir 
-  - `bash$ build`
+  - `bash$ build -D BUILD_NEW_SHELL`
 
 3. Copy  Helloworld.efi 	 
   - `bash$ cd ~/run-ovmf/hda-contents`
@@ -531,9 +531,9 @@ Note:
 ---
 @title[Lab 2: Will it compile now? ]
 <p align="right"><span class="gold" ><b>Lab 2 : Will it compile now?</b></span></p>
-<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+<span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2 dir </span>
 ```shell
-  bash$ build
+  bash$ build -D BUILD_NEW_SHELL
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
 ```shell
@@ -548,9 +548,8 @@ Note:
 <span style="font-size:0.8em" >Run the application from the shell</span>
 ```shell
  Shell> SampleApp
- Shell>
 ```
-<span style="font-size:0.6em" >Notice that the program will immediately unload because the main function is empty</span>
+<p style="line-height:60%"><span style="font-size:0.7em" >Notice that the program will immediately unload because the main function is empty</span></p>
 
 Note:
 
@@ -566,11 +565,15 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide32.JPG
+---?image=/assets/images/slides2/Slide23.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 
 Note:
+The `FILE_GUID` was invalid or not updated from “`XXX…`” to a proper formatted GUID
+- left is no FILE_GUID
+- right - left the "XXXX" 
+
 
 
 
@@ -579,6 +582,8 @@ Note:
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 
 Note:
+The `[Packages]` was invalid  or did not specify MdePkg/MdePkg.dec properly
+
 
 
 ---?image=/assets/images/slides/Slide36.JPG
@@ -586,6 +591,129 @@ Note:
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 
 Note:
+- The `#include <Library/UefiApplicationEntryPoint.h>`  has a typo (“Application” not “Applications”)
+
+
+
+---?image=/assets/images/slides2/Slide26.JPG
+@title[Possible Build Errors ]
+<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+
+Note:
+The SampleApp.inf section `[LibraryClasses]` did not reference `UefiApplicationEntryPoint`
+
+
+
+---?image=/assets/images/slides2/Slide27.JPG
+@title[Possible Build Errors ]
+<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+
+Note:
+Ensure the SampleApp.inf BaseName is SampleApp 
+
+---?image=/assets/images/slides/Slide_LabSec.JPG
+@title[Lab 2.1: Build Switches]
+<br>
+<br>
+<p align="Left"><span class="gold" >Lab 2.1: Build Switches</span></p>
+<br>
+<div class="left1">
+<span style="font-size:0.8em" >In this lab, you’ll remove the build switch `BUILD_NEW_SHELL` to be always `TRUE`</span>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
+---?image=/assets/images/slides2/Slide29.JPG
+@title[Lab 2.1: Compiling w/out Build Switch ]
+<p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
+<span style="font-size:0.8em" >Build SampleApp <font color="yellow">without</font> the `-D` Switch</span>
+```shell
+  bash$ build 
+```
+<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ cp cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
+```
+<div class="left1">
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+<pre>
+```
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+</pre>
+<span style="font-size:0.8em" >Run the application from the shell</span>
+<p style="line-height:60%"><span style="font-size:0.7em" >Check the Shell Version with the “`Ver`” command</span></p>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
+
+---?image=/assets/images/slides2/Slide30.JPG
+@title[Lab 2.1: Compiling w/out Build Switch 03]
+<p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
+<span style="font-size:0.8em" >Build SampleApp <font color="yellow">with</font> the `-D` Switch</span>
+```shell
+  bash$ build -D BUILD_NEW_SHELL
+```
+<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ cp cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
+```
+<div class="left1">
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+<pre>
+```
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+</pre>
+<span style="font-size:0.8em" >Run the application from the shell</span>
+<p style="line-height:60%"><span style="font-size:0.7em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
+---?image=/assets/images/slides2/Slide31.JPG
+@title[Lab 2.1: Compiling w/out Build Switch 02]
+<p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
+<p style="line-height:70%"><span style="font-size:0.8em" >Edit the file `~/src/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
+Change the `DEFINE BUILD_NEW_SHELL = FALSE` to “`TRUE`” </span><span style="font-size:0.5em" >(appx. Line 44)</span></p>
+<span style="font-size:0.8em" >Build again</span>
+```shell
+  bash$ build -D BUILD_NEW_SHELL
+```
+<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
+
+<div class="left1">
+<span style="font-size:0.8em" >Test by Invoking Qemu</span>
+<pre>
+```
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+```
+</pre>
+<span style="font-size:0.8em" >Run the application from the shell</span>
+<p style="line-height:60%"><span style="font-size:0.7em" >Check the Shell Version with the “`Ver`” command </span></p>
+</div>
+<div class="right1">
+<span style="font-size:0.8em" >&nbsp;  </span>
+</div>
+
+Note:
+
+
 
 ---
 @title[Lab 2: If there are Build Errors ]
