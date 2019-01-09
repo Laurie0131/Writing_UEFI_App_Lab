@@ -1,6 +1,10 @@
 ---?image=assets/images/gitpitch-audience.jpg
 @title[Writing_UEFI_App_Lab]
-<br><br><br><br><br>
+<br><br><br>
+<span style="font-size:0.75em" >This slide deck has moved to:
+https://gitpitch.com/tianocore-training/Writing_UEFI_App_Lab/master#/
+</span><br><br>
+<br><br>
 ## <span class="gold"   >UEFI & EDK II Training</span>
 
 #### How to Write a UEFI Application
@@ -96,10 +100,55 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide6.JPG
+---?image=/assets/images/slides/Slide4.JPG
 @title[PCD Syntax review]
 ### <p align="center"><span class="gold" >PCD Syntax</span></p>
 <span style="font-size:0.9em">PCDs can be located anywhere within the Workspace even though a different package will use those PCDs for a given project</span>
+
+
+@snap[west span-30 ]
+<br>
+<br>
+<br>
+<p align="center"><span style="font-size:01.49em; font-weight: bold;">@color[yellow](.DEC)</span></p>
+@box[bg-gold2 text-black waved  ](<span style="font-size:01.280em; font-weight: bold;" >Define <br>PCD</span>)
+<br>
+@snapend
+
+@snap[midpoint span-30 ]
+<br>
+<br>
+<br>
+<p align="center"><span style="font-size:01.49em; font-weight: bold;">@color[yellow](.INF)</span></p>
+@box[bg-green-pp text-black waved   ](<span style="font-size:01.280em; font-weight: bold;" >Reference PCD</span>)
+<br>
+@snapend
+
+
+@snap[east span-30 ]
+<br>
+<br>
+<br>
+<p align="center"><span style="font-size:01.49em; font-weight: bold;">@color[yellow](.DSC)</span></p>
+@box[bg-lt-blue-pp text-black waved  ](<span style="font-size:01.280em; font-weight: bold;" >Modify <br>PCD</span>)
+<br>
+@snapend
+
+
+@snap[west span-100 fragment]
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p align="left"><span style="font-size:01.125em; font-weight: bold;"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Package &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Platform</span></p>
+@snapend
+
 
 Note:
 
@@ -160,7 +209,7 @@ Note:
 ---?image=/assets/images/slides2/Slide7.JPG
 @title[EDK II HelloWorld  App  Lab ]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
-<span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/Laurie0131/Platform_Build_LAB/master#/2">Lab Setup </a></span>
+<span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/tianocore-training/Platform_Build_LAB/master#/2">Lab Setup </a></span>
 
 Note:
 
