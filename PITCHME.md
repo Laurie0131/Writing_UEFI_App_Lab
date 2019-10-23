@@ -1060,7 +1060,7 @@ Note:
 
 Note:
 
----?image=/assets/images/slides/Slide30.JPG
+---?image=/assets/images/slides/Slide31.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 
