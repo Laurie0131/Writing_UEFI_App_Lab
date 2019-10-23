@@ -976,16 +976,17 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 
 @snap[north-west span-60]
 <br>
-<br>
-<br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
+</span></p>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
 <br>
-<br>
-<br>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
-<br>
-<br>
-<br>
+
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" >
+<br><br>
+&nbsp;&nbsp;
+</span></p>
+
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
 @snapend
 
@@ -1000,11 +1001,11 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
  bash$ cd ~/run-ovmf/<br> &nbsp;&nbsp;
  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin<br>
 <br>
-<font face="Arial"><b>Test</b>by Invoking Qemu</font><br> &nbsp;&nbsp;
+<font face="Arial"><b>Test</b> by Invoking Qemu</font><br> &nbsp;&nbsp;
  bash$ cd ~/run-ovmf<br> &nbsp;&nbsp;
  bash$ . RunQemu.sh
 <br>
-<font face="Arial"><b>Check</b>the Shell version with "Ver" command </font>
+<font face="Arial"><b>Check</b> the Shell version with "Ver" command </font>
 </span></p>
 @snapend
 
