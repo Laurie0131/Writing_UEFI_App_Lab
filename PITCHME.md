@@ -1064,17 +1064,17 @@ Note:
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 
-<p style="line-height:80%"><span style="font-size:0.8em" >Edit the file <font face="Consolas">..edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
-Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> </span><span style="font-size:0.5em" >(<i>Line 31</i>)</span><br>
+<p style="line-height:70%"><span style="font-size:0.7em" >Edit the file <font face="Consolas">..edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
+Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> <span style="font-size:0.55em" >(<i>Line 31</i>)</span><br>
 Build again (<b>no</b> -D  switch)</span></p>
 
 ```shell
   bash$ build 
 ```
 
-<p style="line-height:80%"><span style="font-size:0.8em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
+<p style="line-height:70%"><span style="font-size:0.7em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
 Rename to bios.bin
-<br><br>
+<br><br><br><br>
 </span></p>
 
 
