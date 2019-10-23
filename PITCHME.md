@@ -1015,7 +1015,7 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 @snapend
 
 @snap[south-west span-100 ]
-<p style="line-height:50%" align="left" ><span style="font-size:0.57em;" >
+<p style="line-height:50%" align="left" ><span style="font-size:0.5em;" >
 @color[yellow](NOTE:) You will need to Delete directory:   <font face="Consolas">Build/OvmfPkgX64/DEBUG_GCC5/X64/@color[yellow](ShellPkg) </font>
 Between each build
 </span></p>
@@ -1024,12 +1024,22 @@ Between each build
 
 Note:
 
----
-blank slide
+
 ---?image=/assets/images/slides2/Slide30.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 03]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
-<span style="font-size:0.8em" >Build SampleApp <font color="yellow">with</font> the `-D` Switch</span>
+
+
+@snap[north-west span-75]
+<br><br><br><br><br><br><br><br><br><br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br>&nbsp;&nbsp;
+</span></p>
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
+@snapend
+
+@snap[north-west span-100]
+<br><br>
+<span style="font-size:0.8em" >Build SampleApp <font color="yellow">with</font> the <b>-D</b> Switch</span>
 ```shell
   bash$ build -D ADD_SHELL_STRING
 ```
@@ -1038,46 +1048,40 @@ blank slide
   bash$ cd ~/run-ovmf
   bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
 ```
-<div class="left1">
-<span style="font-size:0.8em" >Test by Invoking Qemu</span>
-<pre>
-```
- bash$ cd ~/run-ovmf
- bash$ . RunQemu.sh
-```
-</pre>
+
+<span style="font-size:0.8em" >Test by Invoking Qemu</span><br>
+
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br>&nbsp;&nbsp;
+ bash$ cd ~/run-ovmf<br>&nbsp;&nbsp;
+ bash$ . RunQemu.sh&nbsp;
+</span></p>
 <p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
-</div>
-<div class="right1">
-<span style="font-size:0.8em" >&nbsp;  </span>
-</div>
+@snapend
 
 Note:
 
 ---?image=/assets/images/slides2/Slide30.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
-<p style="line-height:80%"><span style="font-size:0.8em" >Edit the file `~/src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
-Change the `DEFINE ADD_SHELL_STRING = FALSE` to `TRUE` </span><span style="font-size:0.45em" >(<i>Line 44</i>)</span></p>
-<span style="font-size:0.8em" >Build again (<b>no</b> `-D`  switch)</span>
+
+<p style="line-height:80%"><span style="font-size:0.8em" >Edit the file <font face="Consolas">..edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
+Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> </span><span style="font-size:0.5em" >(<i>Line 44</i>)</span></p>
+<span style="font-size:0.8em" >Build again (<b>no</b> -D  switch)</span>
+
 ```shell
   bash$ build 
 ```
-<span style="font-size:0.8em" >Copy  `OVMF.fd`  to `~/run-ovmf`  & Rename to `bios.bin`	</span>
 
-<div class="left1">
-<span style="font-size:0.8em" >Test by Invoking Qemu</span>
-<pre>
+<span style="font-size:0.8em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
+Rename to bios.bin</span>
+<br>
+<br>
+<br>
 ```
   bash$ cd ~/run-ovmf
   bash$ . RunQemu.sh
 ```
-</pre>
 <p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command </span></p>
-</div>
-<div class="right1">
-<span style="font-size:0.8em" >&nbsp;  </span>
-</div>
 
 Note:
 
