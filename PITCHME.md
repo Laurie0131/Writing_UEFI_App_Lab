@@ -1885,7 +1885,7 @@ End of Lab 5
 <span style="font-size:0.59em" > Build SampleApp</span>
 ```shell
 bash$ build
-bash$ cp Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi ~/run-ovmf/hda-contents
+bash$ cp ~/src/edk2-ws/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi ~/run-ovmf/hda-contents
 bash$ cd ~/run-ovmf
 bash$ . RunQemu.sh
 ```
@@ -1944,10 +1944,29 @@ Note:
 Note:
 
  
----?image=/assets/images/slides/Slide70.JPG
+---?image=/assets/images/slides/Slide57.JPG
 @title[Lab 6: With EDK II EADK]
 <p align="right"><span class="gold" ><b>Lab 6: With EDK II EADK</b></span></p>
 <br>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+Write the same application with the same functionality as SampleApp.c using the LibC from the EADK
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+What libraries are needed <br>
+What differences are there using the LibC
+</span></p>
+
+
 
 Note:
 
@@ -1955,11 +1974,23 @@ Note:
 - What libraries are needed 
 - What differences are there using the LibC
 
----?image=/assets/images/slides/Slide72.JPG
+---?image=/assets/images/slides/Slide58.JPG
 @title[Lab 6: EDK II using EADK]
 <p align="right"><span class="gold" ><b>Lab 6: EDK II using EADK</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+Start with the packages for EADK from edk2-libc<br>
+</span></p>
+<p style="line-height:45%" align="left" ><span style="font-size:0.57em; font-family:Consolas;" >
+&bull; /edk2-libc - AppPkg	- <font face="Arial">has directory Applications</font><br>
+&bull; /edk2-libc - StdLib - <font face="Arial">contains the LibC libraries</font><br>
 <br>
+&bull; <font face="Arial"><b>Copy</b> and <b>paste </b> directory</font> ../FW/LabSampleCode/@color[yellow](SampleCApp)  to <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       ~/src/edk2-ws/edk2-libc/AppPkg/Applications/@color[yellow](SampleCApp) 
 
+<br><br><br>&nbsp;
+</span></p>
+
+<br>
 Note:
 - Start with the packages for EADK 
 - /edk2  - AppPkg	- has directory Applications
@@ -1968,75 +1999,78 @@ Note:
 
 - Copy and paste directory ~/FW/LabSampleCode/SampleCApp to ~src/edk2-ws/edk2-libc/AppPkg/Applications/SampleCApp 
 
----?image=/assets/images/slides/Slide74.JPG
+---?image=/assets/images/slides/Slide59.JPG
 @title[Lab 6: EDK II using EADK 02]
 <p align="right"><span class="gold" ><b>Lab 6: EDK II using EADK</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+Check out <font face="Consolas">AppPkg/Applications/SampleCApp<br>
+SampleCApp.c &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       </font> and  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font face="Consolas">SampleCApp.inf</font>
+</span></p>
+
+@snap[north-west span-50 ]
 <br>
+<br>
+<br>
+<br>
+<p style="line-height:35%" align="left" ><span style="font-size:0.42em; font-family:Consolas;" ><font color="black"><br><br>
+&num;include &lt;stdio.h&gt; <br>
+   // . . . <br>
+   int <br>
+   main ( <br>&nbsp;&nbsp;
+     IN int Argc, <br>&nbsp;&nbsp;
+     IN char **Argv <br>
+   ) <br>
+   { <br>&nbsp;&nbsp;
+      return 0; <br>
+   } <br>
+</font>   
+</span></p>
+@snapend
+
+
+@snap[north-east span-46 ]
+<br>
+<br>
+<br>
+<br>
+<p style="line-height:35%" align="left" ><span style="font-size:0.42em; font-family:Consolas;" ><font color="black"><br><br>
+[Defines] <br>&nbsp;&nbsp;
+  INF_VERSION &nbsp;&nbsp;       = 1.25 <br>&nbsp;&nbsp;
+  BASE_NAME  &nbsp;&nbsp;&nbsp;&nbsp;        = SampleCApp <br>&nbsp;&nbsp;
+  FILE_GUID  &nbsp;&nbsp;&nbsp;&nbsp;        = 4ea9… <br>&nbsp;&nbsp;
+  MODULE_TYPE &nbsp;&nbsp;       = UEFI_APPLICATION <br>&nbsp;&nbsp;
+  VERSION_STRING     = 0.1 <br>&nbsp;&nbsp;
+  ENTRY_POINT &nbsp;&nbsp;       = ShellCEntryLib <br>
+ <br>
+[Sources] <br>&nbsp;&nbsp;
+  SampleCApp.c <br>
+ <br>
+[Packages] <br>&nbsp;&nbsp;
+  StdLib/StdLib.dec <br>&nbsp;&nbsp;
+  MdePkg/MdePkg.dec <br>&nbsp;&nbsp;
+  ShellPkg/ShellPkg.dec <br>
+ <br>
+[LibraryClasses] <br>&nbsp;&nbsp;
+  LibC <br>&nbsp;&nbsp;
+  LibStdio <br>
+
+</font>   
+</span></p>
+@snapend
 
 Note:
 
 - EDK II using EADK
 - Check out AppPkg/Applications/SampleCApp
 
-+++
-@title[Lab 6: EDK II using EADK 02-1]
-<p align="right"><span class="gold" ><b>Lab 6: EDK II using EADK</b></span></p>
-<span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
-
-<div class="left">
-<span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
-<pre>
-```
-#include <stdio.h>
-   // . . .
-   int
-   main (
-     IN int Argc,
-     IN char **Argv
-   )
-   {
-      return 0;
-   }
-```
-</pre>
-</div>
-<div class="right1">
-<span style="font-size:0.8em" ><font color="yellow">.inf file</font></span>
-<pre>
-```
-[Defines]
-  INF_VERSION    = 1.25
-  BASE_NAME      = SampleCApp
-  FILE_GUID      = 54321…
-  MODULE_TYPE    = UEFI_APPLICATION
-  VERSION_STRING = 0.1
-  ENTRY_POINT    = ShellCEntryLib
-
-[Sources]
-  SampleCApp.c
-
-[Packages]
-  StdLib/StdLib.dec
-  MdePkg/MdePkg.dec
-  ShellPkg/ShellPkg.dec
-
-[LibraryClasses]
-  LibC
-  LibStdio
-```
-</pre>
-</div>
-
-Note:
-
 
 
 ---
 @title[Lab 6 : Update AppPkg.dsc ]
 <p align="right"><span class="gold" ><b>Lab 6 : Update AppPkg.dsc </b></span></p>
-<p style="line-height:70%"><span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add `SampleCApp.inf` at the end of the components section</span></p>
+<p style="line-height:70%"><span style="font-size:0.8em" >Edit the AppPkg/AppPkg.dsc and add <font face="Consolas">SampleCApp.inf</font> at the end of the components section</span></p>
 - <span style="font-size:0.6em" > (hint: search for "#### Sample Applications")</span>
-- <span style="font-size:0.6em" >`AppPkg/Applications/SampleCApp/SampleCApp.inf` </span>
+- <span style="font-size:0.6em" ><font face="Consolas">AppPkg/Applications/SampleCApp/SampleCApp.inf</font> </span>
 <br>
 
 ```php
@@ -2065,7 +2099,7 @@ Note:
 ```
 <span style="font-size:0.8em" >Copy the built application to the run OVMF hda-contents directory</span>
 ```shell
-  bash$ cp Build/AppPkg/DEBUG_GCC5/X64/SampleCApp.efi ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2-ws/Build/AppPkg/DEBUG_GCC5/X64/SampleCApp.efi ~/run-ovmf/hda-contents
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 ```shell
@@ -2098,7 +2132,7 @@ Note:
 Note:
 
  
----?image=/assets/images/slides/Slide79.JPG
+---?image=/assets/images/slides/Slide63.JPG
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK]
 <p align="right"><span class="gold" ><b>Lab 7: Add the same functionally from Lab 5</b></span></p>
@@ -2106,7 +2140,7 @@ Note:
 
 Note:
 
-+++?image=/assets/images/slides/Slide80.JPG
++++?image=/assets/images/slides/Slide64.JPG
 <!-- .slide: data-background-transition="none" -->
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK 02]
@@ -2115,7 +2149,7 @@ Note:
 Note:
 
 
-+++?image=/assets/images/slides/Slide81.JPG
++++?image=/assets/images/slides/Slide65.JPG
 <!-- .slide: data-background-transition="none" -->
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK 03]
@@ -2124,7 +2158,7 @@ Note:
 Note:
 
 
-+++?image=/assets/images/slides/Slide82.JPG
++++?image=/assets/images/slides/Slide66.JPG
 <!-- .slide: data-background-transition="none" -->
 <!-- .slide: data-transition="none" -->
 @title[Lab 7: With EDK II EADK 04]
@@ -2132,72 +2166,97 @@ Note:
 
 Note:
 
-+++
+---
 @title[Lab 7: With EDK II EADK solution]
 <p align="right"><span class="gold" ><b>Lab 7: Solution</b></span></p>
-<span style="font-size:0.9em"  >SampleCApp.c and SampleCApp.inf </span>
+<span style="font-size:0.75em;" > SampleCApp.c and SampleCApp.inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
 
-<div class="left">
-<span style="font-size:0.8em" ><font color="cyan">“C” file</font></span>
-<pre>
-```
-#include <stdio.h>
-#include <Library/UefiBootServicesTableLib.h>
-int
-main (
-  IN int Argc,
-  IN char **Argv
-  )
-{
-   char c;
-// Lab 3
-   printf("System Table: %p \n", gST) ; 
-// Lab 4
-   puts("Press any Key and then <Enter> to continue :  ");
-   c=(char)getchar();
- 
-// Lab 5
-   puts ("Enter text. Include a dot ('.') in a sentence then <Enter> to exit:");
-   do {
-      c=(char)getchar();
-     } while (c != '.');
-   puts ("\n");
-   return 0;
-}
-```
-</pre>
-</div>
-<div class="right1">
-<span style="font-size:0.8em" ><font color="yellow">.inf file</font></span>
-<pre>
-```
-[Defines]
-  INF_VERSION    = 1.25
-  BASE_NAME      = SampleCApp
-  FILE_GUID      = 54321…
-  MODULE_TYPE    = UEFI_APPLICATION
-  VERSION_STRING = 0.1
-  ENTRY_POINT    = ShellCEntryLib
 
-[Sources]
-  SampleCApp.c
+@snap[north-west span-53 ]
+<br>
+<br>
+<br>
 
-[Packages]
-  StdLib/StdLib.dec
-  MdePkg/MdePkg.dec
-  ShellPkg/ShellPkg.dec
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.9em;" ><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;</span></p>)
+@snapend
 
-[LibraryClasses]
-  LibC
-  LibStdio
-  UefiBootServicesTableLib
-```
-</pre>
-</div>
+@snap[north-east span-46 ]
+<br>
+<br>
+<br>
+
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.9em;" ><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;</span></p>)
+@snapend
+
+@snap[north-east span-98 ]
+<br>
+<br>
+
+<p style="line-height:32%" align="left" ><span style="font-size:0.42em; font-family:Consolas;" >
+<font color="cyan">@size[1.3em]("C" file)</font>
+<br>
+&num;include &lt;stdio.h&gt; <br>
+   // . . . <br>
+   int <br>
+   main ( <br>&nbsp;&nbsp;
+     IN int Argc, <br>&nbsp;&nbsp;
+     IN char **Argv <br>
+   ) <br>
+   { <br>&nbsp;&nbsp;
+   char c; <br>
+// Lab 3 <br>&nbsp;&nbsp;
+   printf("System Table: %p \n", gST) ;  <br>
+// Lab 4 <br>&nbsp;&nbsp;
+   puts("Press any Key and then <Enter> to continue :  "); <br>&nbsp;&nbsp;
+   c=(char)getchar(); <br>
+  <br>
+// Lab 5 <br>&nbsp;&nbsp;
+   puts ("Enter text. Include a dot ('.') <br>&nbsp;&nbsp;&nbsp;&nbsp;in a sentence then <Enter> to exit:"); <br>&nbsp;&nbsp;
+   do { <br>&nbsp;&nbsp;&nbsp;&nbsp;
+      c=(char)getchar(); <br>&nbsp;&nbsp;
+     } while (c != '.'); <br>&nbsp;&nbsp;
+   puts ("\n"); <br>&nbsp;&nbsp;
+   return 0; <br>
+} <br>
+
+</span></p>
+@snapend
+
+
+@snap[north-east span-44 ]
+<br>
+<br>
+<p style="line-height:32%" align="left" ><span style="font-size:0.42em; font-family:Consolas;" >
+<font color="yellow">@size[1.3em](.inf file)</font>
+<br>
+[Defines] <br>&nbsp;&nbsp;
+  INF_VERSION &nbsp;&nbsp;       = 1.25 <br>&nbsp;&nbsp;
+  BASE_NAME  &nbsp;&nbsp;&nbsp;&nbsp;        = SampleCApp <br>&nbsp;&nbsp;
+  FILE_GUID  &nbsp;&nbsp;&nbsp;&nbsp;        = 4ea9… <br>&nbsp;&nbsp;
+  MODULE_TYPE &nbsp;&nbsp;       = UEFI_APPLICATION <br>&nbsp;&nbsp;
+  VERSION_STRING     = 0.1 <br>&nbsp;&nbsp;
+  ENTRY_POINT &nbsp;&nbsp;       = ShellCEntryLib <br>
+ <br>
+[Sources] <br>&nbsp;&nbsp;
+  SampleCApp.c <br>
+ <br>
+[Packages] <br>&nbsp;&nbsp;
+  StdLib/StdLib.dec <br>&nbsp;&nbsp;
+  MdePkg/MdePkg.dec <br>&nbsp;&nbsp;
+  ShellPkg/ShellPkg.dec <br>
+ <br>
+[LibraryClasses] <br>&nbsp;&nbsp;
+  LibC <br>&nbsp;&nbsp;
+  LibStdio <br>&nbsp;&nbsp;
+ UefiBootServicesTableLib
+</span></p>
+@snapend
+
+
 
 Note:
 
-
+Copy and paste slide
 
 ---
 @title[Lab 7 :Build and Test SampleCApp 02]
@@ -2208,7 +2267,7 @@ Note:
 ```
 <span style="font-size:0.8em" >Copy the built application to the run OVMF hda-contents directory</span>
 ```shell
-  bash$ cp Build/AppPkg/DEBUG_GCC5/X64/SampleCApp.efi ~/run-ovmf/hda-contents
+  bash$ cp ~/src/edk2-ws/Build/AppPkg/DEBUG_GCC5/X64/SampleCApp.efi ~/run-ovmf/hda-contents
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 ```shell
@@ -2227,7 +2286,7 @@ Shell>
 
 Note:
 
-
+End of lab 7
 
 
 
