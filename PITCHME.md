@@ -212,19 +212,20 @@ Note:
 <span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/tianocore-training/Platform_Build_Linux_Ovmf_Lab/master#/2">Lab Setup </a></span>
 <p style="line-height:70%" align="left" ><span style="font-size:0.7em;" >
 Edit the file <font face="Consolas">C:/FW/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
-At the end of the Components section add <font face="Consolas">HelloWorld.inf </font> and then <b>Save</b> the file
-<br>
+At the end of the Components section add <font face="Consolas">HelloWorld.inf </font><br>
+<b>Save</b> the file
 <br>
 </span></p>
 
 <p style="line-height:45%" align="left" ><span style="font-size:0.52em; font-family:Consolas;" ><font color="black"><br>
-[Componnents]<br>
-&num; Add new modules here
+[Componnents]<br>&nbsp;&nbsp;
+ . . .<br>
+&num; Add new modules here<br> &nbsp;&nbsp;
  MdeModulePkg/Application/HelloWorld/HelloWorld.inf
 </font>
 </span></p>
 
-<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>
 Build the <font face="Consolas">OvmfPkgX64</font> from the Terminal Prompt(Cnt-Alt-T)
 </span></p>
 
