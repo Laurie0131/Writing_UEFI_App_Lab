@@ -1080,12 +1080,33 @@ Rename to bios.bin
 
 ```shell
   bash$ cd ~/run-ovmf
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
   bash$ . RunQemu.sh
 ```
 <p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the "Ver" command </span></p>
 
 Note:
 
+```shell
+  bash$ cd ~/run-ovmf
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
+   bash$ . RunQemu.sh
+```
+
+---
+@title[Lab 2: What we learned from LAB 2]
+<p align="right"><span class="gold" ><b>What we learned from LAB 2</b></span></p>
+<ol style="line-height: 60%">
+ <li><span style="font-size:0.7em">How to write a simple native UEFI Application </span></li>
+ <li><span style="font-size:0.7em">Each module requires a .inf file with a unique GUID (use http://www.guidgenerator.com/ )  </span></li>
+ <li><span style="font-size:0.7em">The module created will be the base name defined in the .inf file </span></li>
+ <li><span style="font-size:0.7em">The module’s .inf  file is required to be included in the platform .dsc file </span></li>
+ <li><span style="font-size:0.7em">The [Packages] section is required at minimum to include MdePkg/dePkg.dec </span></li>
+ <li><span style="font-size:0.7em">When using a Build Switch (-D) on the command line it overrides the value in the .DSC file </span></li>
+ <li><span style="font-size:0.7em">If it is a Library is getting updated, it is required to Build clean or delete the previous built module(s) including the library depending on what is getting re-built. </span></li>
+</ol>
+
+Note:
 
 
 ---
@@ -1140,9 +1161,17 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide40.JPG
+---?image=/assets/images/slides/Slide36.JPG
 @title[Lab 3 : Add System Table Code]
 <p align="right"><span class="gold" ><b>Lab 3 : Add System Table Code</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+Add code to print to the console the hex address of the system table pointer
+</span></p>
+<ul style="list-style-type:disc; line-height:0.7;">
+  <li><span style="font-size:0.7em;" >  Where is the "print" function? </span></li>
+  <li><span style="font-size:0.7em;" >  Where does the app get the pointer value? @size[.8em](&lpar;compared to mem command below&rpar;) </span></li>
+
+</ul>
 
 Note:
 
@@ -1153,9 +1182,23 @@ Note:
 - So also as an exercise you can look at the file in the sample lab code Min.dsc, this is a platform description file without a platform or any packages that go with it,  and this demonstrates the minimal contents for a DSC file that can build this application. So it will build a single application orientated toward the one we just created except nothing else. So unlike the NT32 platform description file, if you were to look at it, There are huge amounts of other components, library classes, and all of that, this Min.dsc only does the minimum requirements.
 
 
----?image=/assets/images/slides/Slide42.JPG
+---?image=/assets/images/slides/Slide37.JPG
 @title[Locating the “Print” Function ]
 <p align="right"><span class="gold" ><b>Lab 3 : Locating the `Print()` Function </b></span></p>
+<br>
+<ul style="list-style-type:none; line-height:0.7;">
+  <li><span style="font-size:0.7em;" >  1. Search the <font face="Consolas">MdePkg.chm</font> and find that the Print function by clicking<br>&nbsp;&nbsp;&nbsp;&nbsp; on the "<u>I</u>ndex" tab</span></li>
+  <li><span style="font-size:0.7em;" >  2. Type "Print" and double click</span></li>
+  <li><span style="font-size:0.7em;" >  3. Scroll to the top in the right window to see that the print function is<br>&nbsp;&nbsp;&nbsp;&nbsp; in the <font face="Consolas">UefiLib.h</font> file</span></li>
+</ul>
+
+@snap[south-west span-100]
+<p style="line-height:40%" align="left" ><span style="font-size:0.47em;" >*Note: 
+Install a CHM Viewer for Ubuntu  - Clear Linux* Project See <a href='https://community.clearlinux.org/t/how-to-view-chm-files/1423/2'>link</a> for .chm viewer
+<br>&nbsp;&nbsp;
+@size[.9em](bash$ sudo aptitude install kchmviewer)
+</span></p>
+@snapend
 
 Note:
 
