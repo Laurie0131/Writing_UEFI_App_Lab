@@ -211,7 +211,7 @@ Note:
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/tianocore-training/Platform_Build_Linux_Ovmf_Lab/master#/2">Lab Setup </a></span>
 <p style="line-height:70%" align="left" ><span style="font-size:0.7em;" >
-Edit the file <font face="Consolas">C:/FW/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
+Edit the file: <font face="Consolas">@size[.8em](~/src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc)</font><br>
 At the end of the Components section add <font face="Consolas">HelloWorld.inf </font><br>
 <b>Save</b> the file
 <br>
