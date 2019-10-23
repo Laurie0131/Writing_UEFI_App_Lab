@@ -1116,12 +1116,13 @@ Note:
 <span style="font-size:0.9em" >See class files for the solution </span>
 <ul>
   <li><span style="font-size:0.8em" >. . .FW/LabSampleCode/LabSolutions/LessonB.2 </span>  </li>
-  <li><span style="font-size:0.8em" >Copy the .inf and .c files to  ~src/edk2-ws/edk2/SampleApp </span>  </li>
-  <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
+  <li><span style="font-size:0.8em" >Copy the .inf and .c files to  <font face="Consolas">~src/edk2-ws/edk2/SampleApp</font> </span>  </li>
+  <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; 
+  <font face="Consolas">~src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc</font> </span>  </li>
 </ul>
 <br>
 <br>
-<span style="font-size:0.9em" >Invoke <b>`build`</b> again and check the solution </span>
+<span style="font-size:0.9em" >Invoke <b><font face="Consolas">build</font></b> again and check the solution </span>
 
 Note:
 
@@ -1184,7 +1185,7 @@ Note:
 
 ---?image=/assets/images/slides/Slide37.JPG
 @title[Locating the “Print” Function ]
-<p align="right"><span class="gold" ><b>Lab 3 : Locating the `Print()` Function </b></span></p>
+<p align="right"><span class="gold" ><b>Lab 3 : Locating the <font face="Consolas">Print()</font> Function </b></span></p>
 <br>
 <ul style="list-style-type:none; line-height:0.7;">
   <li><span style="font-size:0.7em;" >  1. Search the <font face="Consolas">MdePkg.chm</font> and find that the Print function by clicking<br>&nbsp;&nbsp;&nbsp;&nbsp; on the "<u>I</u>ndex" tab</span></li>
@@ -1193,8 +1194,8 @@ Note:
 </ul>
 
 @snap[south-west span-100]
-<p style="line-height:40%" align="left" ><span style="font-size:0.47em;" >*Note: 
-Install a CHM Viewer for Ubuntu  - Clear Linux* Project See <a href='https://community.clearlinux.org/t/how-to-view-chm-files/1423/2'>link</a> for .chm viewer
+<p style="line-height:40%" align="left" ><span style="font-size:0.47em;" >&ast;Note: 
+Install a CHM Viewer for Ubuntu  - Clear Linux&ast; Project See <a href='https://community.clearlinux.org/t/how-to-view-chm-files/1423/2'>link</a> for .chm viewer
 <br>&nbsp;&nbsp;
 @size[.9em](bash$ sudo aptitude install kchmviewer)
 </span></p>
@@ -1210,9 +1211,55 @@ Note:
 - bash$ sudo aptitude install kchmviewer
 
 
----?image=/assets/images/slides/Slide44.JPG
+---?image=/assets/images/slides/Slide38.JPG
 @title[Modifying .C & .INF Files ]
 <p align="right"><span class="gold" ><b>Lab 3 : Modifying .C & .INF Files</b></span></p>
+
+@snap[north-west span-60]
+<br>
+<br>
+<br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black"><br>
+ <br><br>
+&num;include &lt;Uefi.h&gt; <br>
+&num;include &lt;Library/UefiApplicationEntryPoint.h&gt; <br>
+@color[red](&num;include &lt;Library/UefiLib.h&gt;) <br>
+ <br>
+EFI_STATUS <br>
+EFIAPI <br>
+UefiMain ( <br>&nbsp;&nbsp;
+  IN EFI_HANDLE        ImageHandle, <br>&nbsp;&nbsp;
+  IN EFI_SYSTEM_TABLE  *SystemTable <br>&nbsp;&nbsp;
+  ) <br>
+{ <br>&nbsp;&nbsp;
+  @color[red](Print&lpar;L"System Table: 0x%p\n", SystemTable&rpar;; ) <br>&nbsp;&nbsp;
+  return EFI_SUCCESS; <br>
+} <br>
+</font>
+</span></p>
+
+@snapend
+
+
+@snap[north-east span-40]
+<br>
+<br>
+<br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black"><br>
+ <br><br>
+ [LibraryClasses] <br>&nbsp;&nbsp;
+  UefiApplicationEntryPoint <br>&nbsp;&nbsp;
+  @color[red](UefiLib)
+</font>
+</span></p>
+@snapend
+
+@snap[south span-60]
+<p style="line-height:60%" align="left" ><span style="font-size:0.47em;" >Note: 
+Solution files are in the lab materials directory
+</span></p>
+@snapend
+
 
 Note:
 
@@ -1240,44 +1287,6 @@ UefiMain (
   UefiLib
 
 </pre>
- 
-+++
-@title[Modifying .C & .INF Files 02 ]
-<p align="right"><span class="gold" ><b>Lab 3 : Modifying .C & .INF Files</b></span></p>
-
-- <span style="font-size:0.8em" >SampleApp.c</span>
-
-```C++
-#include <Uefi.h>
-#include <Library/UefiApplicationEntryPoint.h>
-// Lab 3
-#include <Library/UefiLib.h>
-
-EFI_STATUS
-EFIAPI
-UefiMain (
-  IN EFI_HANDLE        ImageHandle,
-  IN EFI_SYSTEM_TABLE  *SystemTable
-  )
-{
-// Lab 3
-  Print(L"System Table: 0x%08x\n", SystemTable); //
-  return EFI_SUCCESS;
-}
-```
-
-- <span style="font-size:0.8em" > SampleApp.inf</span>
-
-```Shell
- [LibraryClasses]
-  UefiApplicationEntryPoint
-# Lab 3
-  UefiLib
-```
-
-Note:
- 
- - c code and inf file
 
 
 ---
@@ -1327,11 +1336,11 @@ End of LAB 3
 Note:
 
 
----?image=/assets/images/slides/Slide47.JPG
+---?image=/assets/images/slides/Slide41.JPG
 @title[Lab 4 : Add Wait for Event ]
 <p align="right"><span class="gold" ><b>Lab 4 : Add Wait for Event</b></span></p>
 <br>
-<p style="line-height:80%"><span style="font-size:0.8em" >Add code to make your application wait for a key press event (`WaitForEvent` / `WaitForKey`)</span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" >Add code to make your application wait for a key press event (<font face="Consolas">WaitForEvent / WaitForKey</font>)</span></p>
 <br>
 <br>
 <br>
@@ -1340,7 +1349,6 @@ Note:
   <li><span style="font-size:0.8em" >Where are these functions located?</span> </li>
   <li><span style="font-size:0.8em" >What else can you do with the key press? </span> </li>
 </ul>  
-
 
 Note:
 
@@ -1354,19 +1362,19 @@ Note:
 ---
 @title[Lab 4 : How to locate functions ]
 <p align="right"><span class="gold" ><b>Lab 4 : HOW?</b></span></p>
-<span style="font-size:0.9em" >Locate Functions:  </span><span style="font-size:0.7em" > ` WaitForEvent / WaitForKey`</span>
+<span style="font-size:0.9em" >Locate Functions:  </span><span style="font-size:0.7em" > <font face="Consolas"> WaitForEvent / WaitForKey</font></span>
 <ul style="line-height:0.8;">
   <li><span style="font-size:0.8em" >Search MdePkg.chm</span><span style="font-size:0.5em" > - Note: "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation</span></li>
   <ul style="list-style-type:disc">
-    <li><span style="font-size:0.65em" >Locate `WaitForEvent` in Boot Services</span> </li>
-    <li><span style="font-size:0.65em" >Locate `WaitForKey` and find ( `EFI_SIMPLE_TEXT_INPUT_PROTOCOL` will be part of `ConIn` ) </span> </li><br>
+    <li><span style="font-size:0.65em" >Locate <font face="Consolas">WaitForEvent</font> in Boot Services</span> </li>
+    <li><span style="font-size:0.65em" >Locate <font face="Consolas">WaitForKey</font> and find ( <font face="Consolas">EFI_SIMPLE_TEXT_INPUT_PROTOCOL</font> will be part of <font face="Consolas">ConIn</font> ) </span> </li><br>
    </ul>
   <li><span style="font-size:0.8em" >Check the <a href="http://uefi.org">UEFI Spec</a> for parameters needed:</span> </li>
    <ul style="list-style-type:disc">
-	<li><span style="font-size:0.65em" >`WaitForEvent` is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
-	<li><span style="font-size:0.65em" >`WaitForKey`	 can be referenced through the EFI System Table passed into the application</span> </li>
+	<li><span style="font-size:0.65em" ><font face="Consolas">WaitForEvent</font> is referenced via Boot Services pointer, which is referenced via EFI System Table </span> </li>
+	<li><span style="font-size:0.65em" ><font face="Consolas">WaitForKey</font>	 can be referenced through the EFI System Table passed into the application</span> </li>
     </ul>
-  <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font><br> Search the working space for `WaitForEvent` for an example</span> </li>
+  <li><span style="font-size:0.8em" ><font color="yellow"><b>OR</b></font><br> Search the working space for <font face="Consolas">WaitForEvent</font> for an example</span> </li>
     <ul style="list-style-type:disc">
 	<li><span style="font-size:0.65em" >One can be found in <a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">MdePkg/Library/UefiLib/Console.c</a>  ~ ln 569: </span> </li>
     </ul>
@@ -1386,10 +1394,41 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide50.JPG
+---?image=/assets/images/slides/Slide43.JPG
 @title[Lab 4 :Update the C File for WaitForKey ]
-<p align="right"><span class="gold" ><b>Lab 4 : Update the C File for `WaitForKey`</b></span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Update the C File for <font face="Consolas">WaitForKey</font></b></span></p>
+<p style="line-height:55%" align="left" ><span style="font-size:0.6em;" >
+Search the work space and find the following <font face="Consolas">@size[.8em](MdePkg/Library/UefiLib/Console.c )</font> ~ ln 563:
+</span></p>
+
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black"><br><br>
+   &nbsp;&nbsp;UINTN  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EventIndex;<br>
+  @color[green](. . . )<br>
+ <br>
+	@color[blue](// If we encounter error, continue to read another key in.) <br>
+    @color[blue](// ) <br>&nbsp;&nbsp;
+       if (Status != EFI_NOT_READY) { <br>&nbsp;&nbsp;&nbsp;&nbsp;
+        continue; <br>&nbsp;&nbsp;
+      } <br>&nbsp;&nbsp;
+      gBS-&gt;WaitForEvent (1, &gST-&gt;ConIn-&gt;WaitForKey, &EventIndex); <br>
+    } <br>
+  @color[green](. . .)	 <br>
+ <br>
+<font face="Arial">
+@color[white](@size[1.2em]( Add the following to SampleApp.c))
+</font>
 <br>
+ <br>
+ <br><br>
+ @color[red](UINTN  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EventIndex; ) <br>
+ Print(L"System Table: 0x%p\n",SystemTable);  <br>
+ @color[red](Print&lpar;L"\nPress any Key to continue : \n"&rpar;;) <br>
+ @color[red](gBS-&gt;WaitForEvent &lpar;1, &gST-&gt;ConIn-&gt;WaitForKey, &EventIndex&rpar;; )<br>
+
+<br><br><br>&nbsp;
+</font>
+</span></p>
+
 
 
 
@@ -1397,11 +1436,6 @@ Note:
 
 Next sub slide to copy paste from
 
-+++
-@title[Lab 4 :Update the C File for WaitForKey 02 ]
-<p align="right"><span class="gold" ><b>Lab 4 : Update the C File for WaitForKey</b></span></p>
-<br>
-<span style="font-size:0.8em" >Add the following "Lab 4" statements to SampleApp.c</span>
 ```c
 EFI_STATUS
 EFIAPI
@@ -1420,15 +1454,28 @@ UefiMain (
  Print(L"\nPress any Key to continue : \n");
  gBS->WaitForEvent (1, &gST->ConIn->WaitForKey, &EventIndex);
 
- ```
+```
 
  
----?image=/assets/images/slides/Slide53.JPG
+---?image=/assets/images/slides/Slide44.JPG
 @title[Lab 4 :Test Compile ]
 <p align="right"><span class="gold" ><b>Lab 4 :Test Compile</b></span></p>
+<p style="line-height:65%" align="left" ><span style="font-size:0.7em;" >
+However, this won’t compile . . . <font face="Consolas">gBS and gST </font> are not defined.
+</span></p>
+
+@snap[south-west span-100]
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" >
+<font face="Arial">
+<b>Search</b> the </font>MdePkg.chm for "gBS" and "gST"<font face="Arial"> – they are located in</font> UefiBootServicesTableLib.h<br>
 <br>
-
-
+<font face="Arial">
+<b>Add</b> the boot services lib to</font> SampleApp.c . . .<br>
+@color[yellow](&num;include &lt;Library/UefiBootServicesTableLib.h&gt;) <br><br>
+<font face="Arial">@size[.8em](&lpar;hint: Lesson B4 has the solution&rpar;)</font>
+</span></p>
+<br>
+@snapend
 
 Note:
 - However, this won’t compile … gBS and gST are not defined.
@@ -1441,20 +1488,68 @@ Note:
 -  (hint: Lesson B.4 has the solution)
 
  
----?image=/assets/images/slides/Slide55.JPG
+---?image=/assets/images/slides/Slide45.JPG
 @title[Lab 4 : Update SampleApp.c for gBS & gST ]
-<p align="right"><span class="gold" ><b>Lab 4 : Update for `gBS` & `gST`</b></span></p>
+<p align="right"><span class="gold" ><b>Lab 4 : Update for <font face="Consolas">gBS & gST</font></b></span></p>
+
+@snap[north-west span-100]
+<br><br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black"><br><br><br>
+&num;include &lt;Uefi.h&gt; <br>
+&num;include &lt;Library/UefiApplicationEntryPoint.h&gt; <br>
+&num;include &lt;Library/UefiLib.h&gt; <br>
+@color[red](&num;include &lt;Library/UefiBootServicesTableLib.h&gt;) &nbsp;&nbsp;&nbsp; <br>
+@color[blue](// . . . )<br>
+EFI_STATUS <br>
+EFIAPI <br>
+UefiMain ( <br>&nbsp;&nbsp;
+  IN EFI_HANDLE        ImageHandle, <br>&nbsp;&nbsp;
+  IN EFI_SYSTEM_TABLE  *SystemTable <br>&nbsp;&nbsp;
+  ) <br>
+{  <br>&nbsp;&nbsp;
+  @color[red](UINTN                EventIndex;)<br>&nbsp;&nbsp;
+  Print(L"System Table: 0x%p\n", SystemTable);  <br>&nbsp;&nbsp;
+  @color[red](Print&lpar;L"\nPress any Key to  continue :\n"&rpar;; )<br>&nbsp;&nbsp;
+  @color[red](gBS-&gt;WaitForEvent &lpar;1, &amp;gST-&gt;ConIn-&gt;WaitForKey, &amp;EventIndex&rpar;; )<br>&nbsp;&nbsp;
+  return EFI_SUCCESS;  <br>
+} <br>
+<br><br><br>&nbsp;
+</font>
+</span></p>
+@snapend
+
+
+@snap[north-east span-22]
+<br><br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black"><br><br><br>
+ <br>
+ <br>
 <br>
+@color[#7030a0](@size[1.4em](&larr;) Lab 4) <br>
+<br>
+<br>
+ <br>
+<br>&nbsp;&nbsp;
+  <br>&nbsp;&nbsp;
+  <br>&nbsp;&nbsp;
+   <br>
+ <br>
+  @color[#7030a0](@size[1.4em](&larr;) Lab 4)<br>&nbsp;&nbsp;
+   <br>
+  @color[#7030a0](@size[1.4em](&larr;) Lab 4)<br>
+  @color[#7030a0](@size[1.4em](&larr;) Lab 4)<br>&nbsp;&nbsp;
+  <br>
+ <br>
+<br><br><br>&nbsp;
+</font>
+</span></p>
+@snapend
 
 Note:
 
 - add:
 - `#include <Library/UefiBootServicesTableLib.h>`
 
-+++
-@title[Lab 4 : Update SampleApp.c for gBS & gST 02]
-<p align="right"><span class="gold" ><b>Lab 4 : Update for `gBS` & `gST`</b></span></p>
-<span style="font-size:0.8em" >SampleApp.c Should have the following for Lab 4: </span>
 
 ```C++
 #include <Uefi.h>
@@ -1484,7 +1579,6 @@ UefiMain (
 // End of lab
 ```
 
-Note:
 
 ---
 @title[Lab 4 : Build and Test SampleApp ]
@@ -1535,7 +1629,7 @@ Same as slide
 Note:
 
  
----?image=/assets/images/slides/Slide58.JPG
+---?image=/assets/images/slides/Slide48.JPG
 @title[Lab 5 :Create a Simple Typewriter Function]
 <p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
@@ -1545,13 +1639,12 @@ Note:
 <ul style="line-height:0.8;">
   <li><span style="font-size:0.8em" >Retrieve keys entered from keyboard (<i>Like</i> Lab 4)</span>  </li>
   <li><span style="font-size:0.8em" >Print back each key entered to the console</span>  </li>
-  <li><span style="font-size:0.8em" >To Exit, press  “.” (DOT) and  then &lt;Enter&gt; </span>  </li>
+  <li><span style="font-size:0.8em" >To Exit, press  "." (DOT) and  then &lt;Enter&gt; </span>  </li>
 </ul>
 </div>
 <div class="right1">
 <span style="font-size:01.0em" ><font color="cyan"></font></span>
 </div>
-
 
 
 Note:
@@ -1560,23 +1653,24 @@ Same as Slide
 
 
  
----?image=/assets/images/slides/Slide58.JPG
+---?image=/assets/images/slides/Slide48.JPG
 @title[Lab 5 :Create a Simple Typewriter Function How]
 <p align="right"><span class="gold" ><b>Lab 5 : Typewriter Function</b></span></p>
 <br>
 <p style="line-height:80%"><span style="font-size:0.9em" >Create a Simple Typewriter Function using the SampleApp from Lab 4 </p></span>
 <span style="font-size:01.0em" ><font color="cyan"><b>How:</b></font></span>
 <div class="left1">
-<ol style="line-height:0.8;">
-  <li><span style="font-size:0.7em" >Add a Loop using `WaitForEvent` with `WaitForKey`</span> </li>
-  <li><span style="font-size:0.7em" >Use the `ReadKeyStroke` function from `ConIn`</span>  </li>
+ <ol style="line-height: 60%">
+  <li><span style="font-size:0.7em" >Add a Loop using <font face="Consolas">WaitForEvent with WaitForKey</font></span> </li>
+  <li><span style="font-size:0.7em" >Use the <font face="Consolas">ReadKeyStroke</font> function from <font face="Consolas">ConIn</font></span>  </li>
   <li><span style="font-size:0.7em" >Print back each key to console</span> </li>
-  <li><span style="font-size:0.7em" >Exit the loop when DOT “.” character followed by an &lt;`Enter`&gt; key  </span>  </li>
+  <li><span style="font-size:0.7em" >Exit the loop when DOT "." character followed by an &lt;<font face="Consolas">Enter</font>&gt; key  </span>  </li>
 </ol>
 </div>
 <div class="right1">
 <span style="font-size:01.0em" ><font color="cyan"></font></span>
 </div>
+
 
 
 
@@ -1589,31 +1683,95 @@ Same as Slide
 @title[Lab 5 : How Hints]
 <p align="right"><span class="gold" ><b>Lab 5 : How Process (Hints)</b></span></p>
 <ul style="line-height:0.8;">
-  <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find “`ReadKeyStroke`” in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
+  <li><span style="font-size:0.8em" >Use the same procedure as with Lab 4 to find "<font face="Consolas">ReadKeyStroke</font>" in the work space: 	<a href="https://github.com/tianocore/edk2/blob/master/MdePkg/Library/UefiLib/Console.c">  MdePkg/Library/UefiLib/Console.c</a>  ~ ln 558</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`Status = gST->ConIn->ReadKeyStroke (gST->ConIn, Key);`</span></font></span></li><br>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010"><font face="Consolas">Status = gST-&gt;ConIn-&gt;ReadKeyStroke (gST-&gt;ConIn, Key);</font></span></font></span></li><br>
   </ul>
-  <li><span style="font-size:0.8em" >`ReadKeyStroke` uses buffer called `EFI_INPUT_KEY`&nbsp;&nbsp; ~ ln 399</span>  </li>
+  <li><span style="font-size:0.8em" ><font face="Consolas">ReadKeyStroke</font> uses buffer called <font face="Consolas">EFI_INPUT_KEY</font>&nbsp;&nbsp; ~ ln 399</span>  </li>
   <ul style="list-style-type:none">
-   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010">`OUT EFI_INPUT_KEY  *Key,`</span></font></span></li><br>
+   <li><span style="font-size:0.6em" ><font color="white"><span style="background-color: #101010"><font face="Consolas">OUT EFI_INPUT_KEY  *Key,</font></span></font></span></li><br>
   </ul>
   <li><span style="font-size:0.8em" >TIP: Good Idea to zero out a buffer in your function  </span>  </li>
    <ul style="list-style-type:disc">
-      <li><span style="font-size:0.7em" >Use MdePkg.chm to find `ZeroMem()` function</span>  </li>
-      <li><span style="font-size:0.7em" >Use `ZeroMem()` on your variable buffer “`Key`” of type `EFI_INPUT_KEY`</span>  </li><br>
+      <li><span style="font-size:0.7em" >Use MdePkg.chm to find <font face="Consolas">ZeroMem()</font> function</span>  </li>
+      <li><span style="font-size:0.7em" >Use <font face="Consolas">ZeroMem()</font> on your variable buffer "<font face="Consolas">Key</font>" of type <font face="Consolas">EFI_INPUT_KEY</font></span>  </li><br>
    </ul> 
-  <li><span style="font-size:0.8em" >Use Boolean flag “`ExitLoop`” to exit your loop once the user enters a DOT “.” character.</span>  </li>
+  <li><span style="font-size:0.8em" >Use Boolean flag "<font face="Consolas">ExitLoop</font>" to exit your loop once the user enters a DOT "." character.</span>  </li>
 </ul>
 
 Note:
 same as slide
 
 
+
  
----?image=/assets/images/slides/Slide62_1.JPG
+---?image=/assets/images/slides/Slide51.JPG
 @title[Lab 5 :Typewriter Function Solution]
 <p align="right"><span class="gold" ><b>Lab 5 : Solution</b></span></p>
+
+@snap[north-west span-55 ]
 <br>
+<p style="line-height:28%" align="left" ><span style="font-size:0.38em; font-family:Consolas;" ><font color="black"><br>
+&num;include &lt;Uefi.h&gt; <br>
+&num;include &lt;Library/UefiApplicationEntryPoint.h&gt; <br>
+&num;include &lt;Library/UefiLib.h&gt; <br>
+&num;include &lt;Library/UefiBootServicesTableLib.h&gt; <br>
+// Lab 5 <br>
+&num;include &lt;Library/BaseMemoryLib.h&gt; <br>
+&num;define CHAR_DOT  0x002E    // '.' in Unicode <br>
+ <br>
+EFI_STATUS <br>
+EFIAPI <br>
+UefiMain ( <br>&nbsp;&nbsp;
+  IN EFI_HANDLE        ImageHandle, <br>&nbsp;&nbsp;
+  IN EFI_SYSTEM_TABLE  *SystemTable <br>&nbsp;&nbsp;
+  ) <br>
+{ <br>&nbsp;&nbsp;
+  UINTN &nbsp;&nbsp;&nbsp;&nbsp;         EventIndex; <br>
+// Lab 5 <br>&nbsp;&nbsp;
+  BOOLEAN        ExitLoop; <br>&nbsp;&nbsp;
+  EFI_INPUT_KEY  Key; <br>
+   <br>
+// Lab 3 <br>&nbsp;&nbsp;
+ Print(L"System Table: 0x%p \n",SystemTable);  <br>
+ <br>
+//Lab 4 <br>&nbsp;&nbsp;
+ Print( L"\nPress any Key to continue : \n\n"); <br>&nbsp;&nbsp;
+ gBS-&gt;WaitForEvent (1, &gST-&gt;ConIn-&gt;WaitForKey,<br>&nbsp;  &nbsp;&nbsp;  	&EventIndex); <br>
+<br><br><br>&nbsp;
+</font>
+</span></p>
+@snapend
+
+@snap[north-east span-45 ]
+<br>
+<br>
+<p style="line-height:31%"><span style="font-size:0.45em;" >(hint: Lesson B.5 has the solution)</span)</p>
+<br>
+<br>
+<p style="line-height:26%" align="left" ><span style="font-size:0.35em; font-family:Consolas;" ><font color="black"><br>
+<b>// Lab 5 </b> <br>&nbsp;&nbsp;
+ Print(L"Enter text. Include a dot ('.') in a \<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sentence then <Enter> to exit:\n "); //  <br>&nbsp;&nbsp;
+ ZeroMem (&Key, sizeof (EFI_INPUT_KEY));  <br>&nbsp;&nbsp;
+ gST-&gt;ConIn->ReadKeyStroke (gST-&gt;ConIn, &Key);  <br>&nbsp;&nbsp;
+ ExitLoop = FALSE;  <br>&nbsp;&nbsp;
+ do {    // Do loop until "DOT" and "enter"   <br>&nbsp;&nbsp;&nbsp;&nbsp;
+	 gBS-&gt;WaitForEvent (1, &gST-&gt;ConIn-&gt;WaitForKey, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&EventIndex);  <br>&nbsp;&nbsp;&nbsp;&nbsp;
+	 gST-&gt;ConIn->ReadKeyStroke (gST-&gt;ConIn, &Key);  <br>&nbsp;&nbsp;&nbsp;&nbsp;
+	 Print(L"%c", Key.UnicodeChar);  <br>&nbsp;&nbsp;&nbsp;&nbsp;
+	 if (Key.UnicodeChar == CHAR_DOT){  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		ExitLoop = TRUE;  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	 }  <br>&nbsp;&nbsp;&nbsp;&nbsp;
+    } while (!(Key.UnicodeChar == CHAR_LINEFEED || <br>&nbsp;&nbsp;&nbsp;&nbsp;
+	    Key.UnicodeChar == CHAR_CARRIAGE_RETURN) ||   <br>&nbsp;&nbsp;&nbsp;&nbsp;
+       !(ExitLoop) );  <br>&nbsp;&nbsp;
+  <br>&nbsp;&nbsp;
+ Print(L"\n");  <br>&nbsp;&nbsp;
+ return EFI_SUCCESS;  <br>
+}
+</font>
+</span></p>
+@snapend
 
 Note:
 
@@ -1646,7 +1804,7 @@ UefiMain (
   EFI_INPUT_KEY  Key;
   
 // Lab 3
- Print(L"System Table: 0x%08x\n",SystemTable); 
+ Print(L"System Table: 0x%p\n",SystemTable); 
 
 //Lab 4
  Print( L"\nPress any Key to continue : \n\n");
@@ -1714,13 +1872,33 @@ Note:
 
 End of Lab 5
 
-
  
----?image=/assets/images/slides/Slide67.JPG
+---
 @title[Bonus Lab :Open Protocol example]
 <p align="right"><span class="gold" ><b>Bonus Exercise: Open Protocol Example</b></span></p>
+<span style="font-size:0.79em" >Write an Application using <font face="Consolas">argv, argc</font> parameters</span>
+<ul style="line-height:0.7;">
+ <li><span style="font-size:0.68em" >Captures command line parameters using Open Protocol</span></li>
+ <li><span style="font-size:0.68em" >Will need to open </span><span style="font-size:0.5em" ><font face="Consolas">SHELL_INTERFACE_PROTOCOL</font></span></li>
+ <li><span style="font-size:0.68em" >Note  : Requires ShellPkg</span></li>
+</ul>
 <br>
+<span style="font-size:0.59em" > Build SampleApp</span>
+```shell
+bash$ build
+bash$ cp Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi ~/run-ovmf/hda-contents
+bash$ cd ~/run-ovmf
+bash$ . RunQemu.sh
+```
+<span style="font-size:0.9em" >Run the application from the shell </span>
 
+```shell
+ Shell> SampleApp  test1 test2
+```
+<span style="font-size:0.58em" >(hint: <font face="Consolas">..FW/LabSampleCode/ShellAppSample</font> has the solution)</span>
+
+
+ 
 Note:
 
 - Write an Application using argv, argc parameters
