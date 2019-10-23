@@ -263,31 +263,31 @@ Note:
 ---
 @title[EDK II HelloWorld  App  Lab steps]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
-1. <span style="font-size:0.8em" >Copy the HelloWorld.efi to the ~run-ovmf/hda-contents directory</span>
+<span style="font-size:0.8em" >1. Copy the HelloWorld.efi to the ~run-ovmf/hda-contents directory</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
   bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .
 ```
-2. <span style="font-size:0.8em" >CD to the run-ovmf directory and run Qemu with the RunQemu.sh shell</span>
+<span style="font-size:0.8em" >2. CD to the run-ovmf directory and run Qemu with the RunQemu.sh shell</span>
 ```shell
   bash$ cd ~/run-ovmf
   bash$ . RunQemu.sh
 ```
-3. <span style="font-size:0.8em" >At the UEFI Shell prompt</span>
+<span style="font-size:0.8em" >3. At the UEFI Shell prompt</span>
 ```shell
 Shell> Helloworld
 UEFI Hello World!
 Shell> 
 ```
 
-<span style="font-size:0.9em" ><font color="cyan">How can we force the HelloWorld application to print out 3 times ?</font></span>
+<span style="font-size:0.8em" ><font color="cyan">How can we force the HelloWorld application to print out 3 times ?</font></span>
 
 
 Note:
 
 Same as slide
 
----?image=/assets/images/slides/Slide11.JPG
+---?image=/assets/images/slides/Slide9.JPG
 @title[EDK II HelloWorld  App  Lab location]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
 <br>
@@ -342,7 +342,7 @@ Source from Helloworld.c
 @title[EDK II HelloWorld  App  Lab solution]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
 <p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >1. Edit the file <font face="Consolas">~/src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc</font><br><br>
-After the section <font face="Consolas">[PcdsFixedAtBuild] </font> (search for "<font face="Consolas">PcdsFixedAtBuild</font>" or "Hello")
+After the section <font face="Consolas">[PcdsFixedAtBuild] </font> (@size[.8em](search for "<font face="Consolas">PcdsFixedAtBuild</font>" or "Hello"))
 <br>
 <br>
 <br>
@@ -351,11 +351,11 @@ After the section <font face="Consolas">[PcdsFixedAtBuild] </font> (search for "
 
 <p style="line-height:45%" align="left" ><span style="font-size:0.52em; font-family:Consolas;" ><font color="black"><br>
 [PcdsFixedAtBuild]<br>
-gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3
+gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3 <br>
 </font>
 </span></p>
 
-<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>2. 
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >2. 
 Re-Build – Cd to <font face="Consolas">~/src/edk2-ws/edk2</font>
 </span></p>
 
@@ -363,7 +363,7 @@ Re-Build – Cd to <font face="Consolas">~/src/edk2-ws/edk2</font>
  bash$ build –D ADD_SHELL_STRING
 ```
 
-<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>3.
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >3.
 Copy <font face="Consolas">HelloWorld.efi</font>
 </span></p>
 
@@ -549,7 +549,7 @@ Copy the <font face="Consolas">LabSampleCode/SampleApp directory to C:/FW/edk2-w
 </span></p>
 
 @snap[south-west span-100]
-<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >2. 
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br>2. 
 <b>Edit</b> <font face="Consolas">SampleApp.inf</font>
 </span></p>
 <ul style="line-height:0.8;">
@@ -790,7 +790,7 @@ SampleApp/SampleApp.c - near the top of the file
 ```shell
  Shell> SampleApp
 ```
-<p style="line-height:70%"><span style="font-size:0.68em" >Notice that the program will immediately unload because the main function is empty</span></p>
+<p style="line-height:60%"><span style="font-size:0.68em" >Notice that the program will immediately unload because the main function is empty</span></p>
 
 Note:
 
@@ -806,7 +806,7 @@ Note:
 
 
 
----?image=/assets/images/slides2/Slide22.JPG
+---?image=/assets/images/slides/Slide22.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 <p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
@@ -863,7 +863,7 @@ Compiler Error on SampleApp.c
 <br><br><br>&nbsp;
 <br><br><br>&nbsp;
 <br><br><br>
-<br><br><br>
+<br><br><br><br>
 The <font face="Consolas">#include &lt;Library/UefiApplicationEntryPoint.h&gt;</font>  has a typo ("Application" not "Applications")
 
 </span></p>
@@ -874,7 +874,7 @@ Note:
 
 
 
----?image=/assets/images/slides2/Slide25.JPG
+---?image=/assets/images/slides/Slide25.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 <p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
@@ -897,7 +897,7 @@ The SampleApp.inf section `[LibraryClasses]` did not reference `UefiApplicationE
 
 
 
----?image=/assets/images/slides2/Slide26.JPG
+---?image=/assets/images/slides/Slide26.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
 <p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
@@ -923,7 +923,7 @@ Ensure the SampleApp.inf BaseName is SampleApp
 <p align="Left"><span class="gold" >Lab 2.1: Build Switches</span></p>
 <br>
 <div class="left1">
-<span style="font-size:0.8em" >In this lab, you’ll change the build switch `ADD_SHELL_STRING` to be always `TRUE`</span>
+<span style="font-size:0.8em" >In this lab, you’ll change the build switch <font face="Consolas">ADD_SHELL_STRING</font> to be always TRUE</span>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -949,7 +949,7 @@ The build for OvmfPkg is using build MACRO Switch:<br>
 </font></span></p>
 
 <p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>
-First delete directory   Build/OvmfPkgX64/DEBUG_GCC5/X64/ShellPkg
+First delete directory   <font face="Consolas">~/src/edk2-ws/Build/OvmfPkgX64/DEBUG_GCC5/X64/ShellPkg</font>
 <br><br><br>&nbsp;
 </span></p>
 
@@ -977,6 +977,7 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 @snap[north-west span-60]
 <br>
 <br>
+<br>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
 <br>
 <br>
@@ -990,7 +991,7 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 
 @snap[north-west span-58 ]
 <br>
-<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br>&nbsp;&nbsp;
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
   bash$ build<br> &nbsp;&nbsp;
 <br><br>
 
