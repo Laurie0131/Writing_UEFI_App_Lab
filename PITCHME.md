@@ -1031,7 +1031,7 @@ Note:
 
 
 @snap[north-west span-55]
-<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
 <p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br>&nbsp;&nbsp;
 </span></p>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
@@ -1065,7 +1065,7 @@ Note:
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 
 <p style="line-height:80%"><span style="font-size:0.8em" >Edit the file <font face="Consolas">..edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
-Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> </span><span style="font-size:0.5em" >(<i>Line 31</i>)<br><br>
+Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> </span><span style="font-size:0.5em" >(<i>Line 31</i>)</span><br>
 Build again (<b>no</b> -D  switch)</span></p>
 
 ```shell
@@ -1073,9 +1073,8 @@ Build again (<b>no</b> -D  switch)</span></p>
 ```
 
 <p style="line-height:80%"><span style="font-size:0.8em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
-Rename to bios.bin</span></p>
-<br>
-<br>
+Rename to bios.bin</span><br></p>
+
 
 ```
   bash$ cd ~/run-ovmf
