@@ -1018,7 +1018,8 @@ Between each build
 
 Note:
 
-
+---
+blank slide
 ---?image=/assets/images/slides2/Slide30.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 03]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
