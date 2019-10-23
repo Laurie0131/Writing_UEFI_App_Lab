@@ -975,13 +975,13 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 <span style="font-size:0.8em" >Build SampleApp <font color="yellow">without</font> the <b>"-D"</b> Switch</span>
 
 @snap[north-west span-75]
-<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br>&nbsp;&nbsp;
 </span></p>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
 <br>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
 
-<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" >
+<p style="line-height:10%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" >
 <br>
 &nbsp;&nbsp;
 </span></p>
@@ -999,11 +999,11 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 <font face="Arial"><b>Copy</b>  OVMF.fd  to run-ovmf</font><br> &nbsp;&nbsp;
  bash$ cd ~/run-ovmf/<br> &nbsp;&nbsp;
  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin<br>
-<br>
+<br><br>
 <font face="Arial"><b>Test</b> by Invoking Qemu</font><br> &nbsp;&nbsp;
  bash$ cd ~/run-ovmf<br> &nbsp;&nbsp;
  bash$ . RunQemu.sh
-<br>
+<br><br><br>
 <font face="Arial"><b>Check</b> the Shell version with "Ver" command </font>
 </span></p>
 @snapend
