@@ -14,7 +14,7 @@ https://gitpitch.com/tianocore-training/Writing_UEFI_App_Lab/master#/
 Note:
   PITCHME.md for UEFI / EDK II Training  How to Write a UEFI Application Lab
 
-  Copyright (c) 2018, Intel Corporation. All rights reserved.<BR>
+  Copyright (c) 2019, Intel Corporation. All rights reserved.<BR>
 
   Redistribution and use in source (original document form) and 'compiled'
   forms (converted to PDF, epub, HTML and other formats) with or without
@@ -206,10 +206,36 @@ Note:
 
 
 
----?image=/assets/images/slides2/Slide7.JPG
+---?image=/assets/images/slides/Slide7.JPG
 @title[EDK II HelloWorld  App  Lab ]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
-<span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/tianocore-training/Platform_Build_LAB/master#/2">Lab Setup </a></span>
+<span style="font-size:0.8em" >First Setup for Building EDK II for OVMF, See <a href="https://gitpitch.com/tianocore-training/Platform_Build_Linux_Ovmf_Lab/master#/2">Lab Setup </a></span>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+Edit the file <font face="Consolas">C:/FW/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc</font><br><br>
+At the end of the Components section add <font face="Consolas">HelloWorld.inf </font> and then <b>Save</b> the file
+<br>
+<br>
+<br>
+<br>
+</span></p>
+
+<p style="line-height:45%" align="left" ><span style="font-size:0.52em; font-family:Consolas;" ><font color="black"><br>
+[Componnents]<br>
+&num; Add new modules here
+ MdeModulePkg/Application/HelloWorld/HelloWorld.inf
+</font>
+</span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>2. 
+Build the <font face="Consolas">OvmfPkgX64</font> from the Terminal Prompt(Cnt-Alt-T)
+</span></p>
+
+```shell
+ bash$ cd ~/src/edk2-ws/edk2
+ bash$ build  –D ADD_SHELL_STRING 
+```
+
+
 
 Note:
 
@@ -230,29 +256,9 @@ Note:
  - `MdeModulePkg/Application/HelloWorld/HelloWorld.inf`
 
 - Build the OvmfPkgX64 from Terminal Prompt (Cnt-Alt-T)
- - `bash$ cd ~/src/edk2`
- - `bash$ build -D BUILD_NEW_SHELL`
+ - `bash$ cd ~/src/edk2-ws/edk2`
+ - `bash$ build -D ADD_SHELL_STRING`
 </pre>
- 
-+++
-@title[EDK II HelloWorld  App  Lab copy & paste ]
-<p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Lab  </b></span></p>
-<p style="line-height:80%"> <span style="font-size:0.8em" >Copy HelloWorld.inf and paste into OvmfPkg/OvmfPkgX64.dsc at the End of the file - Save </span></p>
-```
-[Components]
-#  . . . 
-
-# Add new modules here
- MdeModulePkg/Application/HelloWorld/HelloWorld.inf
-
-```
-<span style="font-size:0.8em" >Build OvmfPkgX64</span>
-```
-bash$ cd ~/src/edk2
-bash$ build -D BUILD_NEW_SHELL
-```
-
-Note:
 
  
 ---
@@ -261,7 +267,7 @@ Note:
 1. <span style="font-size:0.8em" >Copy the HelloWorld.efi to the ~run-ovmf/hda-contents directory</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .
 ```
 2. <span style="font-size:0.8em" >CD to the run-ovmf directory and run Qemu with the RunQemu.sh shell</span>
 ```shell
@@ -333,9 +339,40 @@ Source from Helloworld.c
 
 
 
----?image=/assets/images/slides2/Slide12.JPG
+---?image=/assets/images/slides/Slide11.JPG
 @title[EDK II HelloWorld  App  Lab solution]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >1. Edit the file <font face="Consolas">~/src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc</font><br><br>
+After the section <font face="Consolas">[PcdsFixedAtBuild] </font> (search for "<font face="Consolas">PcdsFixedAtBuild</font>" or "Hello")
+<br>
+<br>
+<br>
+<br>
+</span></p>
+
+<p style="line-height:45%" align="left" ><span style="font-size:0.52em; font-family:Consolas;" ><font color="black"><br>
+[PcdsFixedAtBuild]<br>
+gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3
+</font>
+</span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>2. 
+Re-Build – Cd to <font face="Consolas">~/src/edk2-ws/edk2</font>
+</span></p>
+
+```shell
+ bash$ build –D ADD_SHELL_STRING
+```
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>3.
+Copy <font face="Consolas">HelloWorld.efi</font>
+</span></p>
+
+```shell
+ bash$ cd ~/run-ovmf/hda-contents
+ bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .
+
+```
 
 
 Note:
@@ -351,17 +388,46 @@ Note:
   - `[PcdsFixedAtBuild]`
   - `gEfiMdeModulePkgTokenSpaceGuid.PcdHelloWorldPrintTimes|3`
 
-2. Re-Build – Cd to ~/src/edk2 dir 
-  - `bash$ build -D BUILD_NEW_SHELL`
+2. Re-Build – Cd to ~/src/edk2-ws/edk2 dir 
+  - `bash$ build -D ADD_SHELL_STRING`
 
 3. Copy  Helloworld.efi 	 
   - `bash$ cd ~/run-ovmf/hda-contents`
-  - `bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .`
+  - `bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/HelloWorld.efi .`
 
 
----?image=/assets/images/slides2/Slide13.JPG
+---
 @title[EDK II HelloWorld  App  Lab solution 02]
 <p align="right"><span class="gold" ><b>EDK II HelloWorld  App  Solution </b></span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >4. 
+Run Qwmu
+</span></p>
+```shell
+ bash$ cd ~/run-ovmf
+ bash$ . RunQemu.sh
+
+```
+
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >5. 
+At the Shell prompt
+</span></p>
+```shell
+Shell> Helloworld
+UEFI Hello World!
+UEFI Hello World!
+UEFI Hello World!
+Shell> 
+
+```
+
+<p style="line-height:70%" align="left" ><span style="font-size:0.8em;" >
+@color[#A8ff60](How can we change the string of the HelloWorld application?)<br>
+@size[.8em]( Also see  <font face="Consolas">../edk2/MdeModulePkg/MdeModulePkg.Dec</font>)
+
+</span></p>
+
 
 
 Note:
@@ -378,7 +444,7 @@ Note:
 
 
 - How can we change the string of the HelloWorld application?
-- Also see  ~src/edk2/MdeModulePkg/MdeModulePkg.Dec
+- Also see  ~src/edk2-ws/edk2/MdeModulePkg/MdeModulePkg.Dec
 
 
 
@@ -404,48 +470,70 @@ Note:
 <p align="right"><span class="gold" ><b>LAB 2 - Writing a Simple UEFI Application</b></span></p>
 <span style="font-size:0.9em"  >In this lab, you’ll learn how to write simple UEFI applications. </span>
 
-<div class="left">
-<span style="font-size:0.9em" ><font color="cyan">“C” file</font></span>
-<pre>
-```
-EFI_STATUS
-EFIAPI
-UefiMain (
-  IN EFI_HANDLE        ImageHandle,
-  IN EFI_SYSTEM_TABLE *SystemTable
-)
-{ 
-  return EFI_SUCCESS;
-}
-```
-</pre>
+@snap[north-west span-50 ]
+<br>
+<br>
+<br>
+<p style="line-height:45%" align="left" ><span style="font-size:0.9em" ><font color="cyan">"C" file</font></span></p>
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:59% "><span style="font-size:0.9em;" ><br><br><br><br><br><br><br><br><br><br><br>&nbsp;</span></p>)
+@snapend
 
+@snap[north-east span-48]
+<br>
+<br>
+<br>
+<p style="line-height:45%" align="left" ><span style="font-size:0.9em" ><font color="yellow">&nbsp;&nbsp;.inf file</font></span></p>
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:59% "><span style="font-size:0.9em;" ><br><br><br><br><br><br><br><br><br><br><br>&nbsp;</span></p>)
+@snapend
+
+
+
+@snap[south-west span-95 fragment ]
 <ul style="line-height:0.8;">
-  <li><span style="font-size:0.7em" >What goes into the Simplest “C”</span></li>
+  <li><span style="font-size:0.7em" >What goes into the Simplest "C"</span></li>
   <li><span style="font-size:0.7em" >Start with what should go into the Simplest .INF file</span></li>
 </ul>  
-</div>
-<div class="right1">
-<span style="font-size:0.9em" ><font color="yellow">.inf file</font></span>
-<pre>
-```
-[Defines]
-  INF_VERSION    = 
-  BASE_NAME      = 
-  FILE_GUID      = 
-  MODULE_TYPE    = 
-  VERSION_STRING = 
-  ENTRY_POINT    = 
- 
-[Sources]
- 
-[Packages]
- 
-[LibraryClasses]
+<br>
+@snapend
 
-```
-</pre>
-</div>
+
+@snap[north-east span-98 ]
+<br>
+<br>
+<br>
+<p style="line-height:45%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><br><br>
+EFI_STATUS <br>
+EFIAPI <br>
+UefiMain ( <br>
+  IN EFI_HANDLE        ImageHandle, <br>
+  IN EFI_SYSTEM_TABLE *SystemTable <br>
+) <br>
+{  <br>
+  return EFI_SUCCESS; <br>
+} <br>
+</span></p>
+@snapend
+
+@snap[north-east span-46 ]
+<br>
+<br>
+<br>
+<p style="line-height:45%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><br><br>
+[Defines] <br>
+  INF_VERSION    &nbsp;&nbsp;&nbsp;=  <br>
+  BASE_NAME    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=  <br>
+  FILE_GUID     &nbsp;&nbsp;&nbsp;&nbsp; =  <br>
+  MODULE_TYPE    &nbsp;&nbsp;&nbsp;=  <br>
+  VERSION_STRING&nbsp;=  <br>
+  ENTRY_POINT   &nbsp;&nbsp; =  <br>
+  <br>
+[Sources] <br>
+  <br>
+[Packages] <br>
+  <br>
+[LibraryClasses] <br>
+</span></p>
+@snapend
 
 Note:
 
@@ -453,30 +541,86 @@ Note:
 - What goes into a Simplest “C”
 
 
----?image=/assets/images/slides/Slide20.JPG
+---?image=/assets/images/slides/Slide15.JPG
 @title[Lab 2: Application Lab –start with .c and .inf template]
 <p align="right"><span class="gold" ><b>Application Lab –start with .c and .inf template</b></span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >1. 
+Copy the <font face="Consolas">LabSampleCode/SampleApp directory to C:/FW/edk2-ws/edk2</font>
+</span></p>
+
+@snap[south-west span-100]
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >2. 
+<b>Edit</b> <font face="Consolas">SampleApp.inf</font>
+</span></p>
+<ul style="line-height:0.8;">
+  <li><span style="font-size:0.7em" > Look in the INF for "XXXXXXXXXXX" sections that will need information  </span></li>
+  <li><span style="font-size:0.7em" > Create <font face="Consolas">Name & GUID</font>, and then fill in the <font face="Consolas">MODULE_TYPE</font> </span></li>
+</ul>  
+<br>
+<br>
+@snapend
+
 
 Note:
 
 ##### Steps
-1. Copy the LabSampleCode/SampleApp directory to ~/src/edk2
+1. Copy the LabSampleCode/SampleApp directory to ~/src/edk2-ws/edk2
 2. Edit SampleApp.inf
   - Look in the INF for “XXXXXXXXXXX” sections that will need information  
   - Create Name & GUID, and then fill in the MODULE_TYPE 
 
 
----?image=/assets/images/slides/Slide22.JPG
+---?image=/assets/images/slides/Slide16.JPG
 @title[Lab 2: Sample Application INF file]
 <p align="right"><span class="gold" ><b>Lab 2: Sample Application INF file</b></span></p>
+
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black">
+<br><br>
+<br><br>
+[Defines] <br>
+  INF_VERSION &nbsp;&nbsp;     =  0x00010005<br>
+  BASE_NAME   &nbsp;&nbsp;&nbsp;&nbsp;     =  XXXXXXXXXXXXXXX <br>
+  FILE_GUID   &nbsp;&nbsp;&nbsp;&nbsp;     =  XXXXXXXXXXXXXXX <br>
+  MODULE_TYPE &nbsp;&nbsp;     =  XXXXXXXXXXXXXXX <br>
+  VERSION_STRING =  1.0<br>
+  ENTRY_POINT  &nbsp;&nbsp;    =  UefiMain<br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+[Sources]<br>
+  XXXXXXXXX<br>
+  <br>
+[Packages]<br>
+  &num;XXXXXXXX<br>
+  <br>
+[LibraryClasses]<br>
+  &num;XXXXXXXXXXXXX<br>
+    <br>
+[Guids]<br>
+ &num; . . .<br>
+</font></span></p>
+
 <p align="right"><span style="font-size:0.5em">Get a GUID: <a href="http://www.guidgenerator.com/">guidgerator.com</a></span></p>
+
+@snap[north-east span-49 ]
+<br>
+<br>
+<br>
+<br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.55em; font-family:Consolas;" ><br><br>
+@color[red](&larr; ------) &nbsp;SampleApp <br> 
+@color[red](&larr; ------) &nbsp;Get a GUID <a href="http://www.guidgenerator.com/">guidgerator.com</a> <br> 
+@color[red](&larr; ------) &nbsp;UEFI_APPLICATION <br> 
+<br>
+<br>
+<br>
+<br>
+
+@color[red](&larr; ------) &nbsp;SampleApp.c
+<br><br>&nbsp;
+</span></p>
+@snapend
+
+
 
 Note:
 
@@ -489,9 +633,41 @@ Note:
 - So a couple of the things that the prototype will require are a pointer to the system table and a image handle parameter. 
 
 
----?image=/assets/images/slides/Slide24.JPG
+---?image=/assets/images/slides/Slide17.JPG
 @title[Lab 2: Sample Application C file]
 <p align="right"><span class="gold" ><b>Lab 2: Sample Application ‘C’ file</b></span></p>
+
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" >
+<br><br>
+<br><br>
+<br><br><font color="blue"> 
+/&ast;&ast; @file <br>
+  This is a simple shell application <br>
+&ast;&ast;/ </font><br><font color="black">
+ EFI_STATUS <br>
+ EFIAPI <br>
+ UefiMain ( <br>
+   IN EFI_HANDLE        ImageHandle, <br>
+   IN EFI_SYSTEM_TABLE  *SystemTable <br>
+   ) <br>
+ { <br>
+   @color[red](return) EFI_SUCCESS; <br>
+ } <br>
+</font>
+</span></p>
+
+
+@snap[south-east span-45 ]
+<p style="line-height:45%" align="left" ><span style="font-size:02.02em">@color[#A8ff60](&larr;)<br> </span></p>
+<br><br><br><br>
+@snapend
+
+@snap[south-east span-39 ]
+@box[bg-navy text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.79em;" >@color[yellow](Does not do anything but return Success)<br>&nbsp;</span></p>)
+<br>
+<br>
+<br>
+@snapend
 
 Note:
 
@@ -533,24 +709,24 @@ Note:
 ---
 @title[Lab 2: Application Lab – Update Files]
 <p align="right"><span class="gold" ><b>Lab 2: Application Lab – Update Files</b></span></p>
-<br>
-<ul style="list-style-type:none">
- <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow">`.DSC` </font> (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
-  <ul style="list-style-type:none">
-     <li><span style="font-size:0.7em" >`[Components . . .]`</span>  </li>
+<ul style="list-style-type:none; line-height:0.95;">
+ <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow" face="Consolas">.DSC </font> (EmulatorPkg/EmulatorPkg.dsc)</span>  </li>
+  <ul style="list-style-type:none; line-height:0.75;">
+     <li><span style="font-size:0.7em" ><font face="Consolas">[Components . . .]</font></span>  </li>
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Add INF to components section, before build options </span>  </li>
-     <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add to the end of the file <span style="background-color: #101010">`SampleApp/SampleApp.inf` </span> </span> </li>
+     <li><span style="font-size:0.7em" >&nbsp;&nbsp;Hint: add after comment&nbsp;</span><span style="font-size:0.6em" >"<font color="#00CC99">&num; Add new modules here</font>"</span>
+	  <br><span style="font-size:0.7em" > &nbsp;&nbsp;<span style="background-color: #101010">&nbsp;<font face="Consolas">&nbsp;&nbsp;@size[.8em](SampleApp/SampleApp.inf)&nbsp;&nbsp;</font><br> <br></span> </span> </li>
  </ul>
- <li><span style="font-size:0.8em" >2.&nbsp;&nbsp; <font color="yellow">`.INF` </font> file (SampleApp/SampleApp.inf) </span>  </li>
-  <ul style="list-style-type:none">
+ <li><span style="font-size:0.8em" >2.&nbsp;&nbsp; <font face="Consolas" color="yellow">.INF</font> file (SampleApp/SampleApp.inf) </span>  </li>
+  <ul style="list-style-type:none; line-height:0.75;">
      <li><span style="font-size:0.7em" >Packages (all depend on MdePkg)</span>  </li>
-     <li><span style="font-size:0.7em" ><span style="background-color: #101010">&nbsp;&nbsp;`[Packages]`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`MdePkg/MdePkg.dec` </span> </span> </li>
-     <li><span style="font-size:0.7em" ><span style="background-color: #101010">&nbsp;&nbsp;`[LibraryClasses]`&nbsp;&nbsp;`UefiApplicationEntryPoint`</span> </span> </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010">&nbsp;&nbsp;<font face="Consolas">@size[.8em]([Packages]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MdePkg/MdePkg.dec)&nbsp;&nbsp;&nbsp;</font> </span> </span> </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010">&nbsp;&nbsp;<font face="Consolas">@size[.8em]([LibraryClasses]&nbsp;&nbsp;UefiApplicationEntryPoint)&nbsp;&nbsp;</font></span><br> <br>&nbsp; </span><br> </li>
  </ul>
- <li><span style="font-size:0.8em" >3.&nbsp;&nbsp; <font color="yellow">`.C` </font> file - Header references File (SampleApp/SampleApp.c) </span>  </li>
-  <ul style="list-style-type:none">
-     <li><span style="font-size:0.7em" ><span style="background-color: #101010">`#include <Uefi.h>`</span> </span> </li>
-     <li><span style="font-size:0.7em" ><span style="background-color: #101010">`#include <Library/UefiApplicationEntryPoint.h>`</span></span>  </li>
+ <li><span style="font-size:0.8em" >3.&nbsp;&nbsp; <font face="Consolas" color="yellow">.C </font> file - Header references File (SampleApp/SampleApp.c) </span>  </li>
+  <ul style="list-style-type:none; line-height:0.75;">
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010"><font face="Consolas">@size[.8em](&num;include &lt;Uefi.h&gt;)&nbsp;&nbsp;</font></span> </span> </li>
+     <li><span style="font-size:0.7em" ><span style="background-color: #101010"><font face="Consolas">@size[.8em](&num;include &lt;Library/UefiApplicationEntryPoint.h&gt;)&nbsp;&nbsp;</font></span></span>  </li>
  </ul>
 </ul>
 
@@ -564,7 +740,7 @@ Note:
 - Then in the DSC file under the “[components]” section you’re going to add a reference to your new sample INF file.
 
 
----?image=/assets/images/slides/Slide28.JPG
+---?image=/assets/images/slides/Slide20.JPG
 @title[Lab 2: Lab cont. Solution ]
 <p align="right"><span class="gold" ><b>Lab 2: Lab cont. Solution </b></span></p>
 
@@ -572,11 +748,22 @@ Note:
 Note:
 
 <pre>
+
+OvmfPkg/OvmfPkgX64.dsc in the components section of the file towards the bottom
  SampleApp/SampleApp.inf
- MdePkg/MdePkg.dec
- UefiApplicationEntryPoint
- `#include <Uefi.h>`
- `#include <Library/UefiApplicationEntryPoint.h>`
+ 
+SampleApp/SampleApp.inf
+
+[Packages] 
+MdePkg/MdePkg.dec 
+[LibraryClasses] 
+UefiApplicationEntryPoint 
+
+
+SampleApp/SampleApp.c - near the top of the file
+#include &lt;Uefi.h&gt; 
+#include &lt;Library/UefiApplicationEntryPoint.h&gt;
+
 </pre>
 
 
@@ -585,15 +772,15 @@ Note:
 ---
 @title[Lab 2: Will it compile now? ]
 <p align="right"><span class="gold" ><b>Lab 2 : Will it compile now?</b></span></p>
-<p style="line-height:90%"><span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2 dir </span></p>
+<p style="line-height:90%"><span style="font-size:0.8em" >Yes, Build SampleApp – Cd to ~/src/edk2-ws/edk2 dir </span></p>
 
 ```shell
-  bash$ build -D BUILD_NEW_SHELL
+  bash$ build -D ADD_SHELL_STRING
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 ```shell
@@ -604,7 +791,7 @@ Note:
 ```shell
  Shell> SampleApp
 ```
-<p style="line-height:70%"><span style="font-size:0.8em" >Notice that the program will immediately unload because the main function is empty</span></p>
+<p style="line-height:70%"><span style="font-size:0.68em" >Notice that the program will immediately unload because the main function is empty</span></p>
 
 Note:
 
@@ -620,9 +807,21 @@ Note:
 
 
 
----?image=/assets/images/slides2/Slide23.JPG
+---?image=/assets/images/slides2/Slide22.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+<br>
+Error on SampleApp.inf
+
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>
+<br><br><br>
+<br><br><br>
+The FILE_GUID was invalid or not updated from "XXX…" to a proper formatted GUID
+</span></p>
+
 
 Note:
 The `FILE_GUID` was invalid or not updated from “`XXX…`” to a proper formatted GUID
@@ -632,36 +831,88 @@ The `FILE_GUID` was invalid or not updated from “`XXX…`” to a proper forma
 
 
 
----?image=/assets/images/slides/Slide34.JPG
+---?image=/assets/images/slides/Slide23.JPG
 @title[Possible Build Errors 02 ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+<br>
+Error on SampleApp.inf
+
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>
+<br><br><br><br>
+The <font face="Consolas">[Packages]</font> was invalid  or did not specify MdePkg/MdePkg.dec properly
+
+</span></p>
 
 Note:
 The `[Packages]` was invalid  or did not specify MdePkg/MdePkg.dec properly
 
 
 
----?image=/assets/images/slides/Slide36.JPG
+---?image=/assets/images/slides/Slide24.JPG
 @title[Possible Build Errors 03]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+<br>
+Compiler Error on SampleApp.c
+
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>
+<br><br><br>
+The <font face="Consolas">#include &lt;Library/UefiApplicationEntryPoint.h&gt;</font>  has a typo ("Application" not "Applications")
+
+</span></p>
+
 
 Note:
-- The `#include <Library/UefiApplicationEntryPoint.h>`  has a typo (“Application” not “Applications”)
+- The `#include <Library/UefiApplicationEntryPoint.h>`  has a typo ("Application" not "Applications")
+
+
+
+---?image=/assets/images/slides2/Slide25.JPG
+@title[Possible Build Errors ]
+<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+<br>
+Compile Linker Error on unresolved reference
+
+
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>
+<br><br><br>
+The SampleApp.inf section <font face="Consolas">[LibraryClasses]</font> did not reference <font face="Consolas">UefiApplicationEntryPoint</font>
+
+</span></p>
+
+Note:
+
+The SampleApp.inf section `[LibraryClasses]` did not reference `UefiApplicationEntryPoint`
 
 
 
 ---?image=/assets/images/slides2/Slide26.JPG
 @title[Possible Build Errors ]
 <p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" >
+<br>
+Error at the Shell prompt
 
-Note:
-The SampleApp.inf section `[LibraryClasses]` did not reference `UefiApplicationEntryPoint`
 
-
-
----?image=/assets/images/slides2/Slide27.JPG
-@title[Possible Build Errors ]
-<p align="right"><span class="gold" ><b>Possible Build Errors</b></span></p>
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>&nbsp;
+<br><br><br>
+<br><br><br>
+Ensure the SampleApp.inf BaseName is SampleApp 
+</span></p>
 
 Note:
 Ensure the SampleApp.inf BaseName is SampleApp 
@@ -673,7 +924,7 @@ Ensure the SampleApp.inf BaseName is SampleApp
 <p align="Left"><span class="gold" >Lab 2.1: Build Switches</span></p>
 <br>
 <div class="left1">
-<span style="font-size:0.8em" >In this lab, you’ll change the build switch `BUILD_NEW_SHELL` to be always `TRUE`</span>
+<span style="font-size:0.8em" >In this lab, you’ll change the build switch `ADD_SHELL_STRING` to be always `TRUE`</span>
 </div>
 <div class="right1">
 <span style="font-size:0.8em" >&nbsp;  </span>
@@ -681,31 +932,89 @@ Ensure the SampleApp.inf BaseName is SampleApp
 
 Note:
 
----?image=/assets/images/slides2/Slide29.JPG
+
+
+---?image=/assets/images/slides/Slide28.JPG
+@title[Lab 2.1: Build MACRO Switches  ]
+<p align="right"><span class="gold" ><b>Build MACRO Switches </b></span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br>
+The build for OvmfPkg is using build MACRO Switch:<br>
+@color[yellow](-D &nbsp;ADD_SHELL_STRING) – used to change a string in the UEFI Shell application, only used for EDK II Training (requires ShellPkg be re-built on a change of this switch)
+</span></p>
+<p style="line-height:40%" align="left" ><span style="font-size:0.5em; font-family:Consolas;" ><font color="black"><br><br><br>
+&nbsp; &num; For UEFI / EDK II Training <br>
+&nbsp; &num; This flag is to enable a different ver string for building of the ShellPkg<br>
+&nbsp; &num; These can be changed on the command line.<br>
+&nbsp;   DEFINE ADD_SHELL_STRING      = FALSE 
+</font></span></p>
+
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>
+First delete directory   Build/OvmfPkgX64/DEBUG_GCC5/X64/ShellPkg
+<br><br><br>&nbsp;
+</span></p>
+
+Note:
+
+The build for OvmfPkg is using a build MACRO Switch with the “Build” command line.
+
+By looking at the OvmfPkgX64.dsc we see  macros near the top of the file.  
+To start out they are set to FALSE
+
+We override these settings by using “-D” switch on the command line:
+
+-D ADD_SHELL_STRING – used to change a string in the UEFI Shell application, only used for EDK II Training (requires ShellPkg be re-built on a change of this switch)
+
+Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
+
+
+
+
+---?image=/assets/images/slides/Slide29.JPG
 @title[Lab 2.1: Compiling w/out Build Switch ]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
-<span style="font-size:0.8em" >Build SampleApp <font color="yellow">without</font> the `-D` Switch</span>
-```shell
-  bash$ build 
-```
-<span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf	</span>
-```shell
-  bash$ cd ~/run-ovmf
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
-```
-<div class="left1">
-<span style="font-size:0.8em" >Test by Invoking Qemu</span>
-<pre>
-```
- bash$ cd ~/run-ovmf
+<span style="font-size:0.8em" >Build SampleApp <font color="yellow">without</font> the <b>"-D"</b> Switch</span>
+
+@snap[north-west span-60]
+<br>
+<br>
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
+<br>
+<br>
+<br>
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
+<br>
+<br>
+<br>
+@box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
+@snapend
+
+@snap[north-west span-58 ]
+<br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br>&nbsp;&nbsp;
+  bash$ build<br> &nbsp;&nbsp;
+<br><br>
+
+
+<font face="Arial"><b>Copy</b>  OVMF.fd  to run-ovmf</font><br> &nbsp;&nbsp;
+ bash$ cd ~/run-ovmf/<br> &nbsp;&nbsp;
+ bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin<br>
+<br>
+<font face="Arial"><b>Test</b>by Invoking Qemu</font><br> &nbsp;&nbsp;
+ bash$ cd ~/run-ovmf<br> &nbsp;&nbsp;
  bash$ . RunQemu.sh
-```
-</pre>
-<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command</span></p>
-</div>
-<div class="right1">
-<span style="font-size:0.8em" >&nbsp;  </span>
-</div>
+<br>
+<font face="Arial"><b>Check</b>the Shell version with "Ver" command </font>
+</span></p>
+@snapend
+
+@snap[south-west span-100 ]
+<p style="line-height:50%" align="left" ><span style="font-size:0.57em;" >
+@color[yellow](NOTE:) You will need to Delete directory:   <font face="Consolas">Build/OvmfPkgX64/DEBUG_GCC5/X64/@color[yellow](ShellPkg) </font>
+Between each build
+</span></p>
+@snapend
+
 
 Note:
 
@@ -715,12 +1024,12 @@ Note:
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 <span style="font-size:0.8em" >Build SampleApp <font color="yellow">with</font> the `-D` Switch</span>
 ```shell
-  bash$ build -D BUILD_NEW_SHELL
+  bash$ build -D ADD_SHELL_STRING
 ```
 <span style="font-size:0.8em" >Copy  OVMF.fd  to run-ovmf 	</span>
 ```shell
   bash$ cd ~/run-ovmf
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin
 ```
 <div class="left1">
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
@@ -741,8 +1050,8 @@ Note:
 ---?image=/assets/images/slides2/Slide30.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
-<p style="line-height:80%"><span style="font-size:0.8em" >Edit the file `~/src/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
-Change the `DEFINE BUILD_NEW_SHELL = FALSE` to `TRUE` </span><span style="font-size:0.45em" >(<i>Line 44</i>)</span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" >Edit the file `~/src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc`<br>
+Change the `DEFINE ADD_SHELL_STRING = FALSE` to `TRUE` </span><span style="font-size:0.45em" >(<i>Line 44</i>)</span></p>
 <span style="font-size:0.8em" >Build again (<b>no</b> `-D`  switch)</span>
 ```shell
   bash$ build 
@@ -774,8 +1083,8 @@ Note:
 <span style="font-size:0.9em" >See class files for the solution </span>
 <ul>
   <li><span style="font-size:0.8em" >. . .FW/LabSampleCode/LabSolutions/LessonB.2 </span>  </li>
-  <li><span style="font-size:0.8em" >Copy the .inf and .c files to  ~src/edk2/SampleApp </span>  </li>
-  <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
+  <li><span style="font-size:0.8em" >Copy the .inf and .c files to  ~src/edk2-ws/edk2/SampleApp </span>  </li>
+  <li><span style="font-size:0.8em" >Search sample DSC for reference to SampleApp.inf and add this line to your workspace DSC file<br>&nbsp;&nbsp;&nbsp;&nbsp; `~src/edk2-ws/edk2/OvmfPkg/OvmfPkgX64.dsc` </span>  </li>
 </ul>
 <br>
 <br>
@@ -919,14 +1228,14 @@ Note:
 ---
 @title[Build and Test SampleApp]
 <p align="right"><span class="gold" ><b>Lab 3 : Build and Test SampleApp</b></span></p>
-<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2-ws/edk2 dir </span>
 ```shell
   bash$ build
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 ```shell
@@ -1125,14 +1434,14 @@ Note:
 ---
 @title[Lab 4 : Build and Test SampleApp ]
 <p align="right"><span class="gold" ><b>Lab 4 : Build and Test SampleApp</b></span></p>
-<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2-ws/edk2 dir </span>
 ```shell
   bash$ build
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 ```shell
@@ -1319,14 +1628,14 @@ Same as slide
 ---
 @title[Lab 5 :Build and Test SampleApp ]
 <p align="right"><span class="gold" ><b>Lab 5 :Build and Test SampleApp</b></span></p>
-<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2 dir </span>
+<span style="font-size:0.8em" >Build SampleApp – Cd to ~/src/edk2-ws/edk2 dir </span>
 ```shell
   bash$ build
 ```
 <span style="font-size:0.8em" >Copy  SampleApp.efi  to hda-contents	</span>
 ```shell
   bash$ cd ~/run-ovmf/hda-contents
-  bash$ cp ~/src/edk2/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
+  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi . 
 ```
 <span style="font-size:0.8em" >Test by Invoking Qemu</span>
 ```shell
@@ -1364,7 +1673,7 @@ Note:
   - Need to open SHELL_INTERFACE_PROTOCOL
   - Note  : Requires ShellPkg
 
-- Build SampleApp – Cd to ~/src/edk2     	bash$ build
+- Build SampleApp – Cd to ~/src/edk2-ws/edk2     	bash$ build
 
 - Copy  SampleApp.efi  to hda-contents	`bash$ cp Build/OvmfX64/DEBUG_GCC5/X64/SampleApp.efi \`
 										`~/run-ovmf/hda-contents`
@@ -1425,7 +1734,7 @@ Note:
 - /edk2 -  StdLib 	- contains the LibC libraries
 
 
-- Copy and paste directory ~/FW/LabSampleCode/SampleCApp to ~src/edk2/AppPkg/Applications/SampleCApp 
+- Copy and paste directory ~/FW/LabSampleCode/SampleCApp to ~src/edk2-ws/edk2-libc/AppPkg/Applications/SampleCApp 
 
 ---?image=/assets/images/slides/Slide74.JPG
 @title[Lab 6: EDK II using EADK 02]
