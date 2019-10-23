@@ -1073,10 +1073,12 @@ Build again (<b>no</b> -D  switch)</span></p>
 ```
 
 <p style="line-height:80%"><span style="font-size:0.8em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
-Rename to bios.bin</span><br></p>
+Rename to bios.bin
+<br><br>
+</span></p>
 
 
-```
+```shell
   bash$ cd ~/run-ovmf
   bash$ . RunQemu.sh
 ```
