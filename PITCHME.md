@@ -1474,7 +1474,6 @@ However, this won’t compile . . . <font face="Consolas">gBS and gST </font> ar
 @color[yellow](&num;include &lt;Library/UefiBootServicesTableLib.h&gt;) <br><br>
 <font face="Arial">@size[.8em](&lpar;hint: Lesson B4 has the solution&rpar;)</font>
 </span></p>
-<br>
 @snapend
 
 Note:
