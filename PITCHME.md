@@ -1031,8 +1031,8 @@ Note:
 
 
 @snap[north-west span-55]
-<br><br><br><br><br><br>
-<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br>&nbsp;&nbsp;
+<br><br><br><br><br><br><br>
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
 </span></p>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
 @snapend
@@ -1055,7 +1055,7 @@ Note:
  bash$ cd ~/run-ovmf<br>&nbsp;&nbsp;
  bash$ . RunQemu.sh&nbsp;
 </span></p>
-<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command - See the differences</span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" ><br>Check the Shell Version with the “`Ver`” command - See the differences</span></p>
 @snapend
 
 Note:
@@ -1065,23 +1065,23 @@ Note:
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 
 <p style="line-height:80%"><span style="font-size:0.8em" >Edit the file <font face="Consolas">..edk2/OvmfPkg/OvmfPkgX64.dsc</font><br>
-Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> </span><span style="font-size:0.5em" >(<i>Line 44</i>)</span></p>
-<span style="font-size:0.8em" >Build again (<b>no</b> -D  switch)</span>
+Change the <font face="Consolas">DEFINE ADD_SHELL_STRING = TRUE</font> </span><span style="font-size:0.5em" >(<i>Line 44</i>)<br><br>
+Build again (<b>no</b> -D  switch)</span></p>
 
 ```shell
   bash$ build 
 ```
 
-<span style="font-size:0.8em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
-Rename to bios.bin</span>
+<p style="line-height:80%"><span style="font-size:0.8em" >Copy  OVMF.fd  to ~/run-ovmf  and<br>
+Rename to bios.bin</span></p>
 <br>
 <br>
-<br>
+
 ```
   bash$ cd ~/run-ovmf
   bash$ . RunQemu.sh
 ```
-<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the “`Ver`” command </span></p>
+<p style="line-height:80%"><span style="font-size:0.8em" >Check the Shell Version with the "Ver" command </span></p>
 
 Note:
 
