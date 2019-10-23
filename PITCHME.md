@@ -241,7 +241,7 @@ Note:
 - So the steps for getting the source code, hopefully everyone did this prior to this training because it does take some time to download.
 - So here are the steps:
 
-- First create a directory, and for our example case we are using the directory “~src/Fw”
+- First create a directory, and for our example case we are using the directory "~src/Fw"
 
 - Use instructions on wiki here: https://github.com/tianocore/tianocore.github.io/wiki/UDK2018-How-to-Build or use the lab material edk2 
 
@@ -328,7 +328,7 @@ UefiMain (
 }
 ```
 @[12](PCD that is a boolean for if this feature is enabled)
-@[13](PCD that is an integer `For` loop for how many times to print to the the string)
+@[13](PCD that is an integer "For" loop for how many times to print to the the string)
 @[18](PCD that is a pointer for the string to print out) 
 
 Note:
@@ -537,7 +537,7 @@ UefiMain ( <br>
 Note:
 
 - Start with what should go into the Simplest .INF file
-- What goes into a Simplest “C”
+- What goes into a Simplest "C"
 
 
 ---?image=/assets/images/slides/Slide15.JPG
@@ -566,7 +566,7 @@ Note:
 ##### Steps
 1. Copy the LabSampleCode/SampleApp directory to ~/src/edk2-ws/edk2
 2. Edit SampleApp.inf
-  - Look in the INF for “XXXXXXXXXXX” sections that will need information  
+  - Look in the INF for "XXXXXXXXXXX" sections that will need information  
   - Create Name & GUID, and then fill in the MODULE_TYPE 
 
 
@@ -733,10 +733,10 @@ Note:
 Note:
 
 - So what are our steps for adding that
-- So first we need to add the MDE package to the INF file and you need to reference the file by the DEC file so under the [packages] section you Are going to add “MdePkg/MdePkg.dec” 
-- Under the [LibraryClasses] section of the INF you’re going to add a reference to “UefiApplicationsEntryPoint” . And just as an interesting note is actually dependent on the “UefiBootServiecesTableLib”.
-- Next in the .C. file you are going to add some header references, the “Uefi.h” and “Library/UefiApplicationEntryPoint.h”  
-- Then in the DSC file under the “[components]” section you’re going to add a reference to your new sample INF file.
+- So first we need to add the MDE package to the INF file and you need to reference the file by the DEC file so under the [packages] section you Are going to add "MdePkg/MdePkg.dec" 
+- Under the [LibraryClasses] section of the INF you’re going to add a reference to "UefiApplicationsEntryPoint" . And just as an interesting note is actually dependent on the "UefiBootServiecesTableLib".
+- Next in the .C. file you are going to add some header references, the "Uefi.h" and "Library/UefiApplicationEntryPoint.h"  
+- Then in the DSC file under the "[components]" section you’re going to add a reference to your new sample INF file.
 
 
 ---?image=/assets/images/slides/Slide20.JPG
@@ -823,7 +823,7 @@ The FILE_GUID was invalid or not updated from "XXX…" to a proper formatted GUI
 
 
 Note:
-The `FILE_GUID` was invalid or not updated from “`XXX…`” to a proper formatted GUID
+The `FILE_GUID` was invalid or not updated from "`XXX…`" to a proper formatted GUID
 - left is no FILE_GUID
 - right - left the "XXXX" 
 
@@ -955,12 +955,12 @@ First delete directory   <font face="Consolas">~/src/edk2-ws/Build/OvmfPkgX64/DE
 
 Note:
 
-The build for OvmfPkg is using a build MACRO Switch with the “Build” command line.
+The build for OvmfPkg is using a build MACRO Switch with the "Build" command line.
 
 By looking at the OvmfPkgX64.dsc we see  macros near the top of the file.  
 To start out they are set to FALSE
 
-We override these settings by using “-D” switch on the command line:
+We override these settings by using "-D" switch on the command line:
 
 -D ADD_SHELL_STRING – used to change a string in the UEFI Shell application, only used for EDK II Training (requires ShellPkg be re-built on a change of this switch)
 
@@ -1184,7 +1184,7 @@ Note:
 
 
 ---?image=/assets/images/slides/Slide37.JPG
-@title[Locating the “Print” Function ]
+@title[Locating the "Print" Function ]
 <p align="right"><span class="gold" ><b>Lab 3 : Locating the <font face="Consolas">Print()</font> Function </b></span></p>
 <br>
 <ul style="list-style-type:none; line-height:0.7;">
@@ -1204,8 +1204,8 @@ Install a CHM Viewer for Ubuntu  - Clear Linux&ast; Project See <a href='https:/
 Note:
 
 - "MdePkg Document With Libraries.chm" located in ... Lab_Material_FW/FW/Documentation
-1. Search the MdePkg.chm and find that the Print function by clicking on the “Index” tab
-2. Type “Print” and double click
+1. Search the MdePkg.chm and find that the Print function by clicking on the "Index" tab
+2. Type "Print" and double click
 3. Scroll to the top in the right window to see that the print function is in the UefiLib.h file
 - * NOTE -:  Install a CHM Viewer for Ubuntu
 - bash$ sudo aptitude install kchmviewer
@@ -1354,9 +1354,9 @@ Note:
 
 - Add code to make your application wait for an event (WaitForEvent) and use the (WaitForKey) as the event
 
-- Hint: use the MdePkg.chm to find where the “WaitForEvent” and the “WaitForKey” functions are located
+- Hint: use the MdePkg.chm to find where the "WaitForEvent" and the "WaitForKey" functions are located
 - Another Hint: The system table is passed in as a parameter to your sample application
-- Search the EDK II code for “WaitForEvent” 
+- Search the EDK II code for "WaitForEvent" 
 - Test by running your application in the Shell
 
 ---
@@ -1384,8 +1384,8 @@ Note:
 
 Note:
 
-1. Search the MdePkg.chm and find where the “WaitForEvent” is located.  It is part of the “Boot Services”.
-2. Search the MdePkg.chm and find where the “WaitForKey” is located.  It is part of the “EFI_SIMPLE_TEXT_INPUT_PROTOCOL as part of ConIn.
+1. Search the MdePkg.chm and find where the "WaitForEvent" is located.  It is part of the "Boot Services".
+2. Search the MdePkg.chm and find where the "WaitForKey" is located.  It is part of the "EFI_SIMPLE_TEXT_INPUT_PROTOCOL as part of ConIn.
 3. The WaitForEvent can be referenced through the Boot Services pointer which can be referenced through the System Table
 4. The WaitForKey can be referenced through the System Table passed into our Sample application
 5. Check the UEFI Spec for the parameters needed
@@ -1479,7 +1479,7 @@ However, this won’t compile . . . <font face="Consolas">gBS and gST </font> ar
 Note:
 - However, this won’t compile … gBS and gST are not defined.
 
-- Search the MdePkg.chm for “gBS” and “gST” – they are located in UefiBootServicesTableLib.h
+- Search the MdePkg.chm for "gBS" and "gST" – they are located in UefiBootServicesTableLib.h
 
   - Add the boot services lib to SampleApp.c …
   - #include <Library/UefiBootServicesTableLib.h>
@@ -2347,7 +2347,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS DOCUMENTATION, EVEN IF ADVISED OF THE POSSIBILITY 
 OF SUCH DAMAGE.
 
-Copyright (c) 2018, Intel Corporation. All rights reserved.
+Copyright (c) 2019, Intel Corporation. All rights reserved.
 **/
 
 ```
