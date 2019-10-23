@@ -1032,7 +1032,7 @@ Note:
 
 @snap[north-west span-55]
 <br><br><br><br><br><br><br>
-<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
+<p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br>&nbsp;&nbsp;
 </span></p>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
 @snapend
@@ -1060,7 +1060,7 @@ Note:
 
 Note:
 
----?image=/assets/images/slides/Slide30.JPG
+---?image=/assets/images/slides/Slide31.JPG
 @title[Lab 2.1: Compiling w/out Build Switch 02]
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 
