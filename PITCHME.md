@@ -990,6 +990,7 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 @snapend
 
 @snap[north-west span-100]
+<br>
 <p style="line-height:20%" align="left" ><span style="font-size:0.8em" ><br>Build SampleApp <font color="yellow">without</font> the <b>"-D"</b> Switch</span></p>
 @snapend
 
@@ -1004,11 +1005,11 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 <font face="Arial"><b>Copy</b>  OVMF.fd  to run-ovmf</font><br> &nbsp;&nbsp;
  bash$ cd ~/run-ovmf/<br> &nbsp;&nbsp;
  bash$ cp ~/src/Build/OvmfX64/DEBUG_GCC5/FV/OVMF.fd bios.bin<br>
-<br><br>
+<br><br><br>,Br>
 <font face="Arial"><b>Test</b> by Invoking Qemu</font><br> &nbsp;&nbsp;
  bash$ cd ~/run-ovmf<br> &nbsp;&nbsp;
  bash$ . RunQemu.sh
-<br><br><br>
+<br><br><br><br>
 <font face="Arial"><b>Check</b> the Shell version with "Ver" command </font>
 </span></p>
 @snapend
