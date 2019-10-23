@@ -974,8 +974,7 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 <p align="right"><span class="gold" ><b>Lab 2.1: Compiling w/out Build Switch</b></span></p>
 <span style="font-size:0.8em" >Build SampleApp <font color="yellow">without</font> the <b>"-D"</b> Switch</span>
 
-@snap[north-west span-60]
-<br>
+@snap[north-west span-75]
 <p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
 </span></p>
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" >&nbsp;</span></p>)
@@ -983,14 +982,14 @@ Be sure to checkout how the macros are used within the .DSC, INF and FDF files.
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
 
 <p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" >
-<br><br>
+<br>
 &nbsp;&nbsp;
 </span></p>
 
 @box[bg-black text-white rounded my-box-pad2  ](<p style="line-height:60% "><span style="font-size:0.5em;" ><br>&nbsp;</span></p>)
 @snapend
 
-@snap[north-west span-58 ]
+@snap[north-west span-78 ]
 <br>
 <p style="line-height:40%" align="left" ><span style="font-size:0.45em; font-family:Consolas;" ><br><br><br>&nbsp;&nbsp;
   bash$ build<br> &nbsp;&nbsp;
