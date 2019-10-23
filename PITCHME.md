@@ -2012,7 +2012,7 @@ SampleCApp.c &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       </font> and 
 <br>
 <br>
 <br>
-<p style="line-height:35%" align="left" ><span style="font-size:0.42em; font-family:Consolas;" ><font color="black"><br><br>
+<p style="line-height:35%" align="left" ><span style="font-size:0.42em; font-family:Consolas;" ><font color="black"><br><br><br>
 &num;include &lt;stdio.h&gt; <br>
    // . . . <br>
    int <br>
@@ -2168,7 +2168,7 @@ Note:
 
 ---
 @title[Lab 7: With EDK II EADK solution]
-<p align="right"><span class="gold" ><b>Lab 7: Solution</b></span></p>
+<p align="right"><span class="gold" >@size[1.0em](<b>Lab 7: Solution  </b>)</span><br>
 <span style="font-size:0.75em;" > SampleCApp.c and SampleCApp.inf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
 
 
