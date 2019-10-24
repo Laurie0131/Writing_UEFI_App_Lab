@@ -549,7 +549,7 @@ Copy the <font face="Consolas">LabSampleCode/SampleApp directory to C:/FW/edk2-w
 </span></p>
 
 @snap[south-west span-100]
-<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br>2. 
+<p style="line-height:60%" align="left" ><span style="font-size:0.7em;" ><br><br>2. 
 <b>Edit</b> <font face="Consolas">SampleApp.inf</font>
 </span></p>
 <ul style="line-height:0.8;">
@@ -709,7 +709,7 @@ Note:
 @title[Lab 2: Application Lab – Update Files]
 <p align="right"><span class="gold" ><b>Lab 2: Application Lab – Update Files</b></span></p>
 <ul style="list-style-type:none; line-height:0.95;">
- <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow" face="Consolas">.DSC </font> (EmulatorPkg/EmulatorPkg.dsc)</span>  </li>
+ <li><span style="font-size:0.8em" >1.&nbsp;&nbsp; <font color="yellow" face="Consolas">.DSC </font> (OvmfPkg/OvmfPkgX64.dsc)</span>  </li>
   <ul style="list-style-type:none; line-height:0.75;">
      <li><span style="font-size:0.7em" ><font face="Consolas">[Components . . .]</font></span>  </li>
      <li><span style="font-size:0.7em" >&nbsp;&nbsp;Add INF to components section, before build options </span>  </li>
